@@ -26,81 +26,77 @@ The following guide might be helpful as you work through your teams charter:
 
 ### Team Members
 
-- _Team Member A_
-- _Team Member B_
-- _Team Member C_
-- _Team Member D_
+- _Sanjay Tummalapalli_
+- _Jack Siri_
+- _Josh Taylor_
+- _Jesse Bass_
+- _Shilpa Nair_
 
 ### Psychological safety
 
 * **How can we take risks on this team without feeling insecure or embarrassed?**
-  _E.g., Be open to opinions that differ from your own, actively ask for opinions from each member of the team, do not interrupt each other, don’t place blame, all suggestions or questions are encouraged, listened to, considered equally, and never judged_
+  _Be open to opinions that differ from your own, actively ask for opinions from each member of the team, do not interrupt each other, don’t place blame, all suggestions or questions are encouraged, listened to, considered equally, and never judged_
+
 
 * **How do we address situations where any team member feels unsafe?**
-  _E.g., communicate when there is a misunderstanding, don’t move forward until the situation is resolved, directly address and resolve negativity, give and receive feedback with a positive, strength-building mindset, if necessary, escalate to an instructor 
+  _We will communicate when there is a misunderstanding, don’t move forward until the situation is resolved, directly address and resolve negativity, give and receive feedback with a positive, strength-building mindset, if necessary, escalate to an instructor_
 
 ### Dependability, Structure, Clarity
 
 * **How can we count on each other to do high quality work on time?**
-  _E.g., estimate task size, break down large tasks, call out tasks at risk early, ask each other for help, how to ensure timely code reviews, how to share knowledge, help each other hold accountability give frequent, scheduled updates_
+  _We will estimate task size, break down large tasks, call out tasks at risk early, ask each other for help, how to ensure timely code reviews, how to share knowledge, help each other hold accountability give frequent, scheduled updates_
 
 * **How do we address missed deadlines?**
-  _E.g., acknowledge, but don’t punish slipped dates, figure out what went wrong, identify lessons for future_
+  _Acknowledge, but don’t punish slipped dates, figure out what went wrong, identify lessons for future_
 
 * **How can we make goals, roles, and execution plans on our team clear?**
-  _E.g., where to track goals and when to review them, use definitive, quantifiable terminology, include clear background on why this goal is necessary, include “done” criteria for the goal (code is pushed with integration tests, document is reviewed, etc.)_
-
+  _We will make our goals and plans clear during our stand-up meetings. We will also communicate on Slack to notify team members of any updates_
 
 ### Goals
 
 * **Overall: What is our overall objective for the Learn & Be Curious unit?**
-  _E.g., “Apply what we’ve learned throughout this program in a team project to prepare ourselves for internships and full-time SDE roles.”_
-
+  _Learning to learn new things, working with a new team, pushing boundaries of what we’ve learnt so far and taking risks._
 
 * **Performance: What do we want to prioritize in terms of what we achieve?**
-  _What will be true when you have 'succeeded' on this project? E.g. enjoy ourselves, maintain our energy to the end, ensure all team members participate, create professional connections, exceed instructor expectations, efficiently pace the project so we’re not rushing at the end, etc._
-
+  _We have 'succeeded' when we have written quality code with minimal bugs (if any), maintain our energy and cooperation to the end, ensure all team members participate, create professional connections, exceed instructor expectations, efficiently pace the project so we’re not rushing at the end, etc._
 
 * **Learning: What are the things that our team wants to learn?**
-  _E.g., develop SDE knowledge, enhance leadership skills, master project planning, improve testing skills, etc_
+  _We want to develop SDE knowledge, enhance leadership skills, master project planning, improve testing skills, etc_
 
 
 * **Task processes: What processes will our team follow to meet our goals, complete tasks, or to build team relationships?**
-  _E.g., leadership, meeting procedures/length of meetings, expectations for meeting attendance and timeliness, other types of meetings (happy hours, lunch and learns)_
-
+  _We will state our goals and expectations for the day and review what we have worked on previously. We will be mindful of others work schedules and respect everyone's opinion_
 ## Meaning & Impact
 
 **What is personally important for each team member about becoming an SDE?**
 
-* _Team Member A_:
-* _Team Member B_:
-* _Team Member C_:
-* _Team Member D_:
+* Sanjay Tummalapalli: Creating advanced algorithms that can make an impact in the tech industry
+* Jack Siri: I like to learn new things and solve problems.
+* Josh Taylor: Solving problems and doing things efficiently
+* Jesse Bass: Engaging in and providing groundwork that can revolutionize the tech industry and have a positive impact on all user’s daily lives.
+* Shilpa Nair: Building solutions that make a difference
+
+
 
 **What each team member wants to achieve: e.g. improve analytical skills, learn project management skills, develop public speaking skills, speak up more, speak up less, etc.**
 
-* _Team Member A_:
-* _Team Member B_:
-* _Team Member C_:
-* _Team Member D_:
+* Sanjay Tummalapalli: I want to improve my analytical skills and public speaking
+* Jack Siri: Improve in analytical skills
+* Josh Taylor: Learn project management skills and speak up more
+* Jesse Bass: Definitely improve analytical skills and program output. Maybe speak less.
+* Shilpa Nair: Develop public speaking skills.
+
 
 ## Team Member Roles and Responsibilities
-
-_Filling out the following roles and responsibilities is suggested only. Some roles will be permanent and some may be temporary. Some roles may be assigned to one or two people, and others may be rotated. Feel free to create additional rotating or permanent roles as you go._
-
-|**Role**               |**Responsibilities** |**Primary person** |**Secondary person** |
-|---                    |---                  |---                |---                  |
-|Liaison to Instructors |                     |                   |                     |
-|Rotating Role 1        |                     |                   |                     |
-|Rotating Role 2        |                     |                   |                     |
-|Rotating Role 3        |                     |                   |                     |
-|Rotating Role 4        |                     |                   |                     |
-
+N/A
 ## Acknowledgement
 
 **I agree to the terms and conditions of these team agreements:**
 
-* _Team Member A_:
-* _Team Member B_:
-* _Team Member C_:
-* _Team Member D_:
+* Sanjay Tummalapalli: Sanjay T
+* Jack Siri: S.J.S
+* Josh Taylor: Josh T
+* Jesse Bass: J.A.B
+* Shilpa Nair: S.S.N.
+
+
