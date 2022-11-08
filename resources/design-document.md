@@ -25,19 +25,19 @@ _List the most important questions you have about your design, or things that yo
 
 _This is where we work backwards from the customer and define what our customers would like to do (and why). You may also include use cases for yourselves (as developers), or for the organization providing the product to customers._
 
-U1. As an admin, I want to be able to view all employees contact info
+U1. As an admin, I want to be able to view all employees contact info, so that I can contact them.
 
-U2. As an admin, I want to be able to view employee contact info based on the department
+U2. As an admin, I want to be able to view employee contact info based on the department to contact them.
 
 U3. As an admin, I want to be able to create a new employee and then add their contact info plus which department they are in.
 
-U4. As an admin I want to be able to update an employee’s contact information
+U4. As an admin I want to be able to update an employee’s contact information, so that I change their information if needed.
 
-U5. As an admin I want to be able to view a list of all the departments and the current employee counts for each
+U5. As an admin I want to be able to view a list of all the departments and the current employee counts for each.
 
-U6. As an admin, I want to be able to get a specific employee based on their name or employeeID
+U6. As an admin, I want to be able to get a specific employee based on their name or employeeID, so I can contact them specifically.
 
-*U7. As an employee I want to be able to view limited employee contact info (name + email) in my department
+*U7. As an employee I want to be able to view limited employee contact info (name + email) in my department.
 
 
 *EXTRA FEATURES
@@ -98,6 +98,13 @@ String phoneNumber;
 ZonedDateTime dateOfBirth;
 
 ```
+```
+// DepartmentModel
+
+String deptId;
+String deptName;
+
+```
 
 ## 6.2. _GetEmployee Endpoint_
 
@@ -145,7 +152,7 @@ database.](images/UpdateEmployeeSd.png)
 
 ## 6.6. _AddEmployee Endpoint_
 
-* Accepts `POST` requests to `/employee/:id`
+* Accepts `POST` requests to `/employee/`
 * Accepts data to create a new employee which includes their
   firstName, lastName, jobTitle, deptId , dateOfBirth , email, and      
   phoneNumber. Returns the new employee.
@@ -169,6 +176,11 @@ database.](images/UpdateEmployeeSd.png)
 * If the employee name contains invalid characters, will throw an
   `InvalidAttributeValueException`
 
+## 6.8 GetDeptGlobal 
+* Accepts `GET` requests to `/department`
+* Returns all the departments in the DepartmentTable format.
+  * If there is no data found, will throw a
+    `NoDataFoundException`
 
 # 7. Tables
 
@@ -185,10 +197,12 @@ _Define the DynamoDB tables you will need for the data your service will use. It
   - phoneNumber // string
   - dateOfBirth // string
 
+* DepartmentTable
+  * deptId // partition key, string
+  * deptName // string
+   
 
 # 8. Pages
-
-_Include mock-ups of the web pages you expect to build. These can be as sophisticated as mockups/wireframes using drawing software, or as simple as hand-drawn pictures that represent the key customer-facing components of the pages. It should be clear what the interactions will be on the page, especially where customers enter and submit data. You- may want to accompany the mockups with some description of behaviors of the page (e.g. “When customer submits the submit-dog-photo button, the customer is sent to the doggie detail page”)_
 
 https://www.figma.com/file/5rmM0IQhuG0wefUsezsCud/Purple-Haze?node-id=0%3A1
 
