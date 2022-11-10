@@ -1,9 +1,11 @@
-package main.java.com.nashss.se.employeecontactservice.activity;
+package com.nashss.se.employeecontactservice.activity;
 
-import main.java.com.nashss.se.employeecontactservice.activity.requests.GetAllEmployeesRequest;
-import main.java.com.nashss.se.employeecontactservice.activity.results.GetAllEmployeesResult;
-import main.java.com.nashss.se.employeecontactservice.dynamodb.EmployeeDao;
-import main.java.com.nashss.se.employeecontactservice.dynamodb.models.Employee;
+import com.nashss.se.employeecontactservice.activity.requests.GetAllEmployeesRequest;
+import com.nashss.se.employeecontactservice.activity.results.GetAllEmployeesResult;
+import com.nashss.se.employeecontactservice.dynamodb.EmployeeDao;
+import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import java.util.List;

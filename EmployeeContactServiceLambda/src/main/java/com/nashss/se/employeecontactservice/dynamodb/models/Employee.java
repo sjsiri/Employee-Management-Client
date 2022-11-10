@@ -1,9 +1,9 @@
-package main.java.com.nashss.se.employeecontactservice.dynamodb.models;
+package com.nashss.se.employeecontactservice.dynamodb.models;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
-import main.java.com.nashss.se.employeecontactservice.converters.ZonedDateTimeConverter;
+import com.nashss.se.employeecontactservice.converters.ZonedDateTimeConverter;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -21,6 +21,8 @@ public class Employee {
         private String email;
 
         private String deptId;
+
+        private String deptName;
 
         private ZonedDateTime hireDate;
 
@@ -68,6 +70,8 @@ public class Employee {
         public void setEmail(String email) {
             this.email = email;
         }
+
+        // DeptId will be GSI Index HashKey( will implement later )
         @DynamoDBAttribute(attributeName = "deptId")
         public String getDeptId() {
             return deptId;
@@ -76,6 +80,12 @@ public class Employee {
         public void setDeptId(String deptId) {
             this.deptId = deptId;
         }
+
+
+        @DynamoDBAttribute(attributeName = "deptName")
+        public String getDeptName() { return deptName; }
+
+        public void setDeptName(String deptName) { this.deptName = deptName; }
         @DynamoDBAttribute(attributeName = "hireDate")
         @DynamoDBTypeConverted(converter = ZonedDateTimeConverter.class)
         public ZonedDateTime getHireDate() {

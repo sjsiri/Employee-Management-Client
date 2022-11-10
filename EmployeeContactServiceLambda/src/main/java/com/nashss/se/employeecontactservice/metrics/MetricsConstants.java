@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.metrics;
+package com.nashss.se.employeecontactservice.metrics;
 
 /**
  * Constant values for use with metrics.

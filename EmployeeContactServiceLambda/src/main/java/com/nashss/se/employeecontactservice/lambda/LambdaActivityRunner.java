@@ -1,7 +1,7 @@
-package main.java.com.nashss.se.employeecontactservice.lambda;
+package com.nashss.se.employeecontactservice.lambda;
 
-import com.nashss.se.musicplaylistservice.dependency.DaggerServiceComponent;
-import com.nashss.se.musicplaylistservice.dependency.ServiceComponent;
+import com.nashss.se.employeecontactservice.dependency.DaggerServiceComponent;
+import com.nashss.se.employeecontactservice.dependency.ServiceComponent;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

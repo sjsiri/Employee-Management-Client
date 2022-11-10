@@ -1,12 +1,13 @@
-package main.java.com.nashss.se.employeecontactservice.dynamodb;
+package com.nashss.se.employeecontactservice.dynamodb;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.ScanResultPage;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import main.java.com.nashss.se.employeecontactservice.dynamodb.models.Employee;
-import main.java.com.nashss.se.employeecontactservice.exceptions.EmployeeNotFoundException;
+import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
+import com.nashss.se.employeecontactservice.exceptions.EmployeeNotFoundException;
 
+import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.Map;
 public class EmployeeDao {
 
     private final DynamoDBMapper dynamoDBMapper;
-
+    @Inject
     public EmployeeDao(DynamoDBMapper dynamoDBMapper) {
         this.dynamoDBMapper = dynamoDBMapper;
     }

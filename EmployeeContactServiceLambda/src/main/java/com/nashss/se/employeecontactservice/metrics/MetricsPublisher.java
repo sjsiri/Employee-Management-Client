@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.metrics;
+package com.nashss.se.employeecontactservice.metrics;
 
 import com.amazonaws.services.cloudwatch.AmazonCloudWatch;
 import com.amazonaws.services.cloudwatch.model.Dimension;

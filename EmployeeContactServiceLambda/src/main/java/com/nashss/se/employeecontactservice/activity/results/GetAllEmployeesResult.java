@@ -1,6 +1,7 @@
-package main.java.com.nashss.se.employeecontactservice.activity.results;
+package com.nashss.se.employeecontactservice.activity.results;
 
-import main.java.com.nashss.se.employeecontactservice.dynamodb.models.Employee;
+
+import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 
 import java.util.ArrayList;
 import java.util.List;

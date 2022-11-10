@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.dependency;
+package com.nashss.se.employeecontactservice.dependency;
 
 import com.nashss.se.aws.dynamodb.DynamoDbClientProvider;
 

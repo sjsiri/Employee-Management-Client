@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.utils;
+package com.nashss.se.employeecontactservice.utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.nashss.se.musicplaylistservice.utils.NullUtils.ifNotNull;
+import static com.nashss.se.employeecontactservice.utils.NullUtils.ifNotNull;
 
 /**
  * Various helpful utilities for converting collections.

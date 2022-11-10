@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.lambda;
+package com.nashss.se.employeecontactservice.lambda;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;

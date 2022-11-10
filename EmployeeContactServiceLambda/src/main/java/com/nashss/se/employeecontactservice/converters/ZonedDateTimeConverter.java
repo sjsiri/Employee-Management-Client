@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.converters;
+package com.nashss.se.employeecontactservice.converters;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverter;
 

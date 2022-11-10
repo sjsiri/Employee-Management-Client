@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.dependency;
+package com.nashss.se.employeecontactservice.dependency;
 
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatch;

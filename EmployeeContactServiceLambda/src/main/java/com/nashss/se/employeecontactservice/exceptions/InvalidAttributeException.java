@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.exceptions;
+package com.nashss.se.employeecontactservice.exceptions;
 
 /**
  * General exception covering cases where an attribute is invalid.

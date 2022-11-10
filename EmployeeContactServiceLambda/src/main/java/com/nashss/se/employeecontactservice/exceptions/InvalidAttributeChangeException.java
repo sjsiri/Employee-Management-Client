@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.exceptions;
+package com.nashss.se.employeecontactservice.exceptions;
 
 /**
  * Exception to throw when a provided value is an invalid attribute change.

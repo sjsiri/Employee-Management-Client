@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.activity.requests;
+package com.nashss.se.employeecontactservice.activity.requests;
 
 
 public class GetAllEmployeesRequest {

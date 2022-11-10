@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.lambda;
+package com.nashss.se.employeecontactservice.lambda;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -10,7 +10,8 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static com.nashss.se.musicplaylistservice.utils.NullUtils.ifNull;
+import static com.nashss.se.employeecontactservice.utils.NullUtils.ifNull;
+
 
 /**
  * Represents a generic "APIGateway" request made to a lambda function.

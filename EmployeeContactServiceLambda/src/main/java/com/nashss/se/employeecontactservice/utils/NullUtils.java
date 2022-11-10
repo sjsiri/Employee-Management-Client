@@ -1,4 +1,4 @@
-package main.java.com.nashss.se.employeecontactservice.utils;
+package com.nashss.se.employeecontactservice.utils;
 
 import java.util.function.Supplier;
 
