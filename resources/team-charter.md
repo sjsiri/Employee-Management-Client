@@ -32,6 +32,8 @@ The following guide might be helpful as you work through your teams charter:
 - _Jesse Bass_
 - _Shilpa Nair_
 
+
+
 ### Psychological safety
 
 * **How can we take risks on this team without feeling insecure or embarrassed?**
@@ -88,7 +90,7 @@ The following guide might be helpful as you work through your teams charter:
 
 
 ## Team Member Roles and Responsibilities
-N/A
+
 ## Acknowledgement
 
 **I agree to the terms and conditions of these team agreements:**
@@ -98,5 +100,3 @@ N/A
 * Josh Taylor: Josh T
 * Jesse Bass: J.A.B
 * Shilpa Nair: S.S.N.
-
-
