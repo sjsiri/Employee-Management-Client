@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+database Contacts
+Client -> WebsiteUpdate.AddPage: Submit employee update form
+WebsiteUpdate.AddPage--> UpdateEmployee.AddActivity: Send update request
+UpdateEmployee.AddActivity--> Contacts: save updates
+database Contacts
+@enduml

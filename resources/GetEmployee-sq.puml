@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+database Contacts
+
+Client -> WebsiteViewEmployeePage: Submit get employee form
+WebsiteViewEmployeePage--> GetEmployeeActivity: Send get employee request
+GetEmployeeActivity--> Contacts: load employee
+Contacts--> GetEmployeeActivity: employee item
+GetEmployeeActivity-->WebsiteViewEmployeePage: List<EmployeeModel>
+WebsiteViewEmployeePage-->Client: present list of employees
+
+database Contacts
+
+@enduml
