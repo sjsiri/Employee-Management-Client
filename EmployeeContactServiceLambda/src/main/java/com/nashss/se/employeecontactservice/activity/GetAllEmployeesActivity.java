@@ -4,11 +4,13 @@ import com.nashss.se.employeecontactservice.activity.requests.GetAllEmployeesReq
 import com.nashss.se.employeecontactservice.activity.results.GetAllEmployeesResult;
 import com.nashss.se.employeecontactservice.dynamodb.EmployeeDao;
 import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.inject.Inject;
 import java.util.List;
+import javax.inject.Inject;
+
 
 
 public class GetAllEmployeesActivity {
