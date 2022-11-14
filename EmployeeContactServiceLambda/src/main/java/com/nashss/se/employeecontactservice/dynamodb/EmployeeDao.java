@@ -4,7 +4,6 @@ import com.nashss.se.employeecontactservice.exceptions.EmployeeNotFoundException
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
-import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedQueryList;
 
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
@@ -19,6 +18,7 @@ import javax.inject.Inject;
  */
 public class EmployeeDao {
 
+    private static final int PAGE_SIZE = 20;
     private final DynamoDBMapper dynamoDBMapper;
 
     /**
@@ -49,7 +49,7 @@ public class EmployeeDao {
     }
 
     /**
-     * Returns the {@link Employee} corresponding to the specified id.
+     * Returns the list of {@link Employee} starting at the supplied ID.
      *
      * @param employeeStartKey the Employee ID
      * @param forward boolean if true the page will go to the next if false it will go to previous.
@@ -61,22 +61,18 @@ public class EmployeeDao {
         startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
         startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
 
-
-
         Map<String, AttributeValue> valueMap = new HashMap<>();
         valueMap.put(":employeeStatus", new AttributeValue().withS("Active"));
         DynamoDBQueryExpression<Employee> queryExpression = new DynamoDBQueryExpression<Employee>()
                 .withIndexName(Employee.EMPLOYEE_STATUS)
-                .withLimit(20)
+                .withLimit(PAGE_SIZE)
                 .withScanIndexForward(forward)
                 .withConsistentRead(false)
                 .withExclusiveStartKey(startKeyMap)
                 .withKeyConditionExpression("employeeStatus = :employeeStatus")
                 .withExpressionAttributeValues(valueMap);
 
-        PaginatedQueryList<Employee> employeesList = dynamoDBMapper.query(Employee.class, queryExpression);
-
-        return employeesList;
+        return dynamoDBMapper.query(Employee.class, queryExpression);
     }
 
 }

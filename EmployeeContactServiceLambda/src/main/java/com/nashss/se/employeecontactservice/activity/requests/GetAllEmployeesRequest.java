@@ -4,19 +4,19 @@ public class GetAllEmployeesRequest {
 
     private final String employeeId;
 
-    private Boolean pageMovement;
+    private Boolean forwardBoolean;
 
-    private GetAllEmployeesRequest(String employeeId, Boolean pageMovement) {
+    private GetAllEmployeesRequest(String employeeId, Boolean forwardBoolean) {
         this.employeeId = employeeId;
-        this.pageMovement = pageMovement;
+        this.forwardBoolean = forwardBoolean;
     }
 
     public String getEmployeeId() {
         return employeeId;
     }
 
-    public Boolean getPageMovement() {
-        return pageMovement;
+    public Boolean getForwardBoolean() {
+        return forwardBoolean;
     }
 
     @Override
@@ -33,19 +33,19 @@ public class GetAllEmployeesRequest {
     public static class Builder {
         private String employeeId;
 
-        private Boolean pageMovement;
+        private Boolean forwardBoolean;
 
         public Builder withEmployeeId(String employeeId) {
             this.employeeId = employeeId;
             return this;
         }
 
-        public Builder withPageMovement(Boolean pageMovement) {
-            this.pageMovement = pageMovement;
+        public Builder withforwardBoolean(Boolean forwardBoolean) {
+            this.forwardBoolean = forwardBoolean;
             return this;
         }
         public GetAllEmployeesRequest build() {
-            return new GetAllEmployeesRequest(employeeId, pageMovement);
+            return new GetAllEmployeesRequest(employeeId, forwardBoolean);
         }
     }
 }
