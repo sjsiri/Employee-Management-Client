@@ -6,12 +6,13 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexRangeKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
 
 import java.time.ZonedDateTime;
 
 import java.util.Objects;
-
+@DynamoDBTable(tableName = "Employees")
 public class Employee {
 
     public static final String EMPLOYEE_STATUS = "EmployeeStatusIndex";
@@ -36,7 +37,7 @@ public class Employee {
 
     private ZonedDateTime dateOfBirth;
 
-    private String status;
+    private String employeeStatus;
 
     @DynamoDBHashKey(attributeName = "employeeId")
     @DynamoDBIndexRangeKey(globalSecondaryIndexName = EMPLOYEE_STATUS)
@@ -125,12 +126,13 @@ public class Employee {
     public void setDateOfBirth(ZonedDateTime dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    @DynamoDBIndexHashKey(globalSecondaryIndexName = EMPLOYEE_STATUS, attributeName = "status")
-    public String getStatus() {
-        return status; }
+    @DynamoDBAttribute(attributeName = "employeeStatus")
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = EMPLOYEE_STATUS, attributeName = "employeeStatus")
+    public String getEmployeeStatus() {
+        return employeeStatus; }
 
-    public void setStatus(String status) {
-        this.status = status; }
+    public void setEmployeeStatus(String employeeStatus) {
+        this.employeeStatus = employeeStatus; }
 
     @Override
     public boolean equals(Object o) {

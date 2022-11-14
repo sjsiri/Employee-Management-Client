@@ -15,6 +15,7 @@ public class GetAllEmployeesLambda extends LambdaActivityRunner<GetAllEmployeesR
             () -> input.fromPath(path ->
                     GetAllEmployeesRequest.builder()
                             .withEmployeeId(path.get("employeeId"))
+                            .withPageMovement(Boolean.parseBoolean(path.get("forward")))
                             .build()),
             (request, serviceComponent) ->
                     serviceComponent.provideGetAllEmployeesActivity().handleRequest(request)

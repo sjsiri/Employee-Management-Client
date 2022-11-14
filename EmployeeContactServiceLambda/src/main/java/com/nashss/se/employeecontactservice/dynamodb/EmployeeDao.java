@@ -56,17 +56,22 @@ public class EmployeeDao {
      * @return the stored Employees, or null if none was found.
      */
 
-    public List<Employee> getAllActiveEmployeesWithLimit(Employee employeeStartKey, Boolean forward) {
+    public List<Employee> getAllActiveEmployeesWithLimit(String employeeStartKey, Boolean forward) {
+        Map<String, AttributeValue> startKeyMap = new HashMap<>();
+        startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
+        startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
+
+
+
         Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":status", new AttributeValue().withS("Active"));
-        valueMap.put("employeeId", new AttributeValue().withS(employeeStartKey.getEmployeeId()));
+        valueMap.put(":employeeStatus", new AttributeValue().withS("Active"));
         DynamoDBQueryExpression<Employee> queryExpression = new DynamoDBQueryExpression<Employee>()
                 .withIndexName(Employee.EMPLOYEE_STATUS)
                 .withLimit(20)
                 .withScanIndexForward(forward)
                 .withConsistentRead(false)
-                .withExclusiveStartKey(valueMap)
-                .withKeyConditionExpression("status = :status")
+                .withExclusiveStartKey(startKeyMap)
+                .withKeyConditionExpression("employeeStatus = :employeeStatus")
                 .withExpressionAttributeValues(valueMap);
 
         PaginatedQueryList<Employee> employeesList = dynamoDBMapper.query(Employee.class, queryExpression);
@@ -74,7 +79,4 @@ public class EmployeeDao {
         return employeesList;
     }
 
-    public List<Employee> getAllActiveEmployeesWithLimit() {
-        return getAllActiveEmployeesWithLimit(null, true);
-    }
 }

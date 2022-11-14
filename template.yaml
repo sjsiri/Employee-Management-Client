@@ -161,7 +161,7 @@ Resources:
         EmployeeManagementClient:
           Type: Api
           Properties:
-            Path: /employees/{employeeId}
+            Path: /employee/{employeeId}
             Method: get
 
   GetAllEmployeesLambda:
@@ -181,7 +181,7 @@ Resources:
         EmployeeManagementClient:
           Type: Api
           Properties:
-            Path: /employees
+            Path: /employees/{employeeId}/{forward}
             Method: get
 
   CreateEmployeeLambda:
@@ -252,7 +252,7 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "employeeId"
           AttributeType: "S"
-        - AttributeName: "status"
+        - AttributeName: "employeeStatus"
           AttributeType: "S"
       KeySchema:
         - AttributeName: "employeeId"
@@ -262,9 +262,9 @@ Resources:
       GlobalSecondaryIndexes:
         - IndexName: "EmployeeStatusIndex"
           KeySchema:
-            - AttributeName: "status"
+            - AttributeName: "employeeStatus"
               KeyType: "HASH"
             - AttributeName: "employeeId"
               KeyType: "RANGE"
           Projection:
-            - ProjectionType: "ALL"
+            ProjectionType: "ALL"
