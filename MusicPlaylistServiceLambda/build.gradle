@@ -53,6 +53,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/${name}.exec")
+    }
 }
 
 /* checkstyles */
