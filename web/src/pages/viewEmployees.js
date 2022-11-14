@@ -13,7 +13,7 @@ class ViewEmployees extends BindingClass {
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.addEmployeesToPage);
         this.header = new Header(this.dataStore);
-        console.log("viewemployees constructor");
+        console.log("viewEmployees constructor");
     }
 
  /**
@@ -28,6 +28,8 @@ class ViewEmployees extends BindingClass {
         document.getElementById('employees').innerText = "(Loading employee list...)";
         const employees = await this.client.getAllEmployees();
         this.dataStore.set('employees', employees);
+        this.addEmployeesToPage();
+
     }
 
     /**
@@ -37,7 +39,7 @@ class ViewEmployees extends BindingClass {
         document.getElementById('add-employee').addEventListener('click', this.addEmployee);
         this.header.addHeaderToPage();
         this.header.loadData();
-        this.client = new EmployeeMgmtClientClient();
+        this.client = new EmployeeMgmtClient();
         this.clientLoaded();
     }
 
@@ -56,9 +58,9 @@ class ViewEmployees extends BindingClass {
         for (employee of employees) {
             employeeHtml += `
                 <li class="employee">
-                    <span class="department">${employee.department}</span>
-                    <span class="firstname">${employee.firstname}</span>
-                    <span class="lastname">${employee.lastname}</span>
+                    <span class="department">${employee.deptId}</span>
+                    <span class="firstname">${employee.firstName}</span>
+                    <span class="lastname">${employee.lastName}</span>
                     <span class="email">${employee.email}</span>
 
                 </li>

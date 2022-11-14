@@ -1,24 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script type="text/javascript" src="assets/createPlaylist.js"></script>
+    <meta charset="UTF-8">
+    <title>Employee Management Client</title>
+    <script type="text/javascript" src="assets/viewEmployees.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
-<body class="background">
+<body>
     <header class="header" id="header"></header>
     <div class="card">
-        <h2>Create Playlist</h2>
-        <form class="card-content" id="create-playlist-form">
-            <p class="form-field">
-                <label>Playlist Name</label>
-                <input type="text" required class="validated-field" id="playlist-name" placeholder="smooth-jamz" autofocus>
-            </p>
-            <p class="form-field">
-                <label>Tags</label>
-                <input type="text" id="tags" class="tags" placeholder="tag1,tag2" data-tip="Must be a comma separated list of tags">
-            </p>
-        </form>
-        <button type="button" id="create">Create Playlist</button>
+        <h2>View Employees</h2>
+
+        <table class="table">
+            <tr class="tr">
+                <th>Department</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+        </table>
+        <ol id="employees"></ol>
+
+        <button type="button" id="add-employee" onclick="location.href='add_employee.html';">Add Employee</button>
     </div>
 </body>
 </html>
