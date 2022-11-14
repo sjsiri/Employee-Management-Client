@@ -1,11 +1,11 @@
 package com.nashss.se.employeecontactservice.dynamodb;
-
 import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 import com.nashss.se.employeecontactservice.exceptions.EmployeeNotFoundException;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
-import com.amazonaws.services.dynamodbv2.datamodeling.ScanResultPage;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedQueryList;
+
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
 import java.util.HashMap;
@@ -51,25 +51,30 @@ public class EmployeeDao {
     /**
      * Returns the {@link Employee} corresponding to the specified id.
      *
-     * @param employee the Employee ID
+     * @param employeeStartKey the Employee ID
+     * @param forward boolean if true the page will go to the next if false it will go to previous.
      * @return the stored Employees, or null if none was found.
      */
 
-    public List<Employee> getAllEmployeesWithLimit(Employee employee) {
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withLimit(20);
+    public List<Employee> getAllActiveEmployeesWithLimit(Employee employeeStartKey, Boolean forward) {
+        Map<String, AttributeValue> valueMap = new HashMap<>();
+        valueMap.put(":status", new AttributeValue().withS("Active"));
+        valueMap.put("employeeId", new AttributeValue().withS(employeeStartKey.getEmployeeId()));
+        DynamoDBQueryExpression<Employee> queryExpression = new DynamoDBQueryExpression<Employee>()
+                .withIndexName(Employee.EMPLOYEE_STATUS)
+                .withLimit(20)
+                .withScanIndexForward(forward)
+                .withConsistentRead(false)
+                .withExclusiveStartKey(valueMap)
+                .withKeyConditionExpression("status = :status")
+                .withExpressionAttributeValues(valueMap);
 
-        if (employee != null) {
-            Map<String, AttributeValue> startKeyMap = new HashMap<>();
-            startKeyMap.put("employeeId", new AttributeValue().withS(employee.getEmployeeId()));
-            scanExpression.setExclusiveStartKey(startKeyMap);
-        }
+        PaginatedQueryList<Employee> employeesList = dynamoDBMapper.query(Employee.class, queryExpression);
 
-        ScanResultPage<Employee> employeePage = dynamoDBMapper.scanPage(Employee.class, scanExpression);
-        return employeePage.getResults();
+        return employeesList;
     }
 
-    public List<Employee> getAllEmployeesWithLimit() {
-        return getAllEmployeesWithLimit(null);
+    public List<Employee> getAllActiveEmployeesWithLimit() {
+        return getAllActiveEmployeesWithLimit(null, true);
     }
 }

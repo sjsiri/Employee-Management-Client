@@ -4,12 +4,17 @@ import com.nashss.se.employeecontactservice.converters.ZonedDateTimeConverter;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
 
 import java.time.ZonedDateTime;
+
 import java.util.Objects;
 
 public class Employee {
+
+    public static final String EMPLOYEE_STATUS = "EmployeeStatusIndex";
 
     private String employeeId;
 
@@ -31,7 +36,10 @@ public class Employee {
 
     private ZonedDateTime dateOfBirth;
 
+    private String status;
+
     @DynamoDBHashKey(attributeName = "employeeId")
+    @DynamoDBIndexRangeKey(globalSecondaryIndexName = EMPLOYEE_STATUS)
     public String getEmployeeId() {
         return employeeId;
     }
@@ -117,6 +125,12 @@ public class Employee {
     public void setDateOfBirth(ZonedDateTime dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = EMPLOYEE_STATUS, attributeName = "status")
+    public String getStatus() {
+        return status; }
+
+    public void setStatus(String status) {
+        this.status = status; }
 
     @Override
     public boolean equals(Object o) {

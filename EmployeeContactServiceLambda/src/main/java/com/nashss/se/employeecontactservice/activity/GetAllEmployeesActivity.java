@@ -42,8 +42,8 @@ public class GetAllEmployeesActivity {
         log.info("Received GetEmployeeRequest {}", getEmployeeRequest);
         String requestedId = getEmployeeRequest.getEmployeeId();
         Employee employee = employeeDao.getEmployee(requestedId);
-        List<Employee> employeeList = employeeDao.getAllEmployeesWithLimit(employee);
-
+        Boolean forward = getEmployeeRequest.getPageMovement();
+        List<Employee> employeeList = employeeDao.getAllActiveEmployeesWithLimit(employee, forward);
 
         return GetAllEmployeesResult.builder()
                 .withEmployeeList(employeeList)

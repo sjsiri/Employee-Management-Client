@@ -252,8 +252,19 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "employeeId"
           AttributeType: "S"
+        - AttributeName: "status"
+          AttributeType: "S"
       KeySchema:
         - AttributeName: "employeeId"
           KeyType: "HASH"
       BillingMode: "PAY_PER_REQUEST"
       TableName: "Employees"
+      GlobalSecondaryIndexes:
+        - IndexName: "EmployeeStatusIndex"
+          KeySchema:
+            - AttributeName: "status"
+              KeyType: "HASH"
+            - AttributeName: "employeeId"
+              KeyType: "RANGE"
+          Projection:
+            - ProjectionType: "ALL"
