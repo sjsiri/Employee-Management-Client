@@ -1,11 +1,15 @@
 package com.nashss.se.employeecontactservice.dynamodb;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.QueryResultPage;
 import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 import com.nashss.se.employeecontactservice.exceptions.EmployeeNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -15,6 +19,9 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
 class EmployeeDaoTest {
+
+    @Mock
+    QueryResultPage<Employee> queryResultPage;
 
     @Mock
     DynamoDBMapper mapper;
@@ -59,13 +66,15 @@ class EmployeeDaoTest {
     @Test
     void getAllActiveEmployeesWithLimit_queriesDatabase() {
         // GIVEN
-        String employeeIdStart = "1";
+        String employeeIdStart = "0";
         Boolean forward = true;
 
         // WHEN
+        when(mapper.queryPage(eq(Employee.class), any())).thenReturn(queryResultPage);
         employeeDao.getAllActiveEmployeesWithLimit(employeeIdStart, forward);
 
         // THEN
-        verify(mapper).query(eq(Employee.class), any());
+        verify(mapper).queryPage(eq(Employee.class), any());
+        verify(queryResultPage).getResults();
     }
 }

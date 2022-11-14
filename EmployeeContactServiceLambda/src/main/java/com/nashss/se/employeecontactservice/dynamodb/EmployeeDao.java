@@ -18,7 +18,7 @@ import javax.inject.Inject;
  */
 public class EmployeeDao {
 
-    private static final int PAGE_SIZE = 20;
+    private static final int PAGE_SIZE = 5;
     private final DynamoDBMapper dynamoDBMapper;
 
     /**
@@ -72,7 +72,8 @@ public class EmployeeDao {
                 .withKeyConditionExpression("employeeStatus = :employeeStatus")
                 .withExpressionAttributeValues(valueMap);
 
-        return dynamoDBMapper.query(Employee.class, queryExpression);
+        return dynamoDBMapper.queryPage(Employee.class, queryExpression).getResults();
+
     }
 
 }
