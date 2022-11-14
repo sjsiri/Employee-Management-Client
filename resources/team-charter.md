@@ -30,7 +30,9 @@ The following guide might be helpful as you work through your teams charter:
 - _Jack Siri_
 - _Josh Taylor_
 - _Jesse Bass_
-- _Shilpa Nair_ 
+- _Shilpa Nair_
+
+
 
 ### Psychological safety
 
@@ -88,7 +90,7 @@ The following guide might be helpful as you work through your teams charter:
 
 
 ## Team Member Roles and Responsibilities
-N/A 
+
 ## Acknowledgement
 
 **I agree to the terms and conditions of these team agreements:**
