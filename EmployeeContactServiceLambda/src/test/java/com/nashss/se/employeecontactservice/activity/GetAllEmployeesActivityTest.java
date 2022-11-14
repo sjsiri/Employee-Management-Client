@@ -4,6 +4,7 @@ import com.nashss.se.employeecontactservice.activity.requests.GetAllEmployeesReq
 import com.nashss.se.employeecontactservice.activity.results.GetAllEmployeesResult;
 import com.nashss.se.employeecontactservice.dynamodb.EmployeeDao;
 import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
+import com.nashss.se.employeecontactservice.models.EmployeeModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -56,6 +57,6 @@ public class GetAllEmployeesActivityTest {
         // THEN
         verify(employeeDao).getAllActiveEmployeesWithLimit(employeeId, true);
         assertNotNull(result.getEmployeeList());
-        assertEquals(employeeList, result.getEmployeeList());
+        assertEquals(List.of(new EmployeeModel(employee)), result.getEmployeeList());
     }
 }

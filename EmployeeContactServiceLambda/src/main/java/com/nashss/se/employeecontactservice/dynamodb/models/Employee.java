@@ -1,6 +1,6 @@
 package com.nashss.se.employeecontactservice.dynamodb.models;
 
-import com.nashss.se.employeecontactservice.converters.ZonedDateTimeConverter;
+import com.nashss.se.employeecontactservice.converters.LocalDateConverter;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
@@ -9,7 +9,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 
 import java.util.Objects;
 @DynamoDBTable(tableName = "Employees")
@@ -31,11 +31,11 @@ public class Employee {
 
     private String deptName;
 
-    private ZonedDateTime hireDate;
+    private LocalDate hireDate;
 
     private String phoneNumber;
 
-    private ZonedDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
     private String employeeStatus;
 
@@ -48,6 +48,7 @@ public class Employee {
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
+
     @DynamoDBAttribute(attributeName = "firstName")
     public String getFirstName() {
         return firstName;
@@ -56,6 +57,7 @@ public class Employee {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     @DynamoDBAttribute(attributeName = "lastName")
     public String getLastName() {
         return lastName;
@@ -64,6 +66,7 @@ public class Employee {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     @DynamoDBAttribute(attributeName = "jobTitle")
     public String getJobTitle() {
         return jobTitle;
@@ -72,6 +75,7 @@ public class Employee {
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
+
     @DynamoDBAttribute(attributeName = "email")
     public String getEmail() {
         return email;
@@ -99,15 +103,17 @@ public class Employee {
     public void setDeptName(String deptName) {
         this.deptName = deptName;
     }
+
     @DynamoDBAttribute(attributeName = "hireDate")
-    @DynamoDBTypeConverted(converter = ZonedDateTimeConverter.class)
-    public ZonedDateTime getHireDate() {
+    @DynamoDBTypeConverted(converter = LocalDateConverter.class)
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(ZonedDateTime hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
+
     @DynamoDBAttribute(attributeName = "phoneNumber")
     public String getPhoneNumber() {
         return phoneNumber;
@@ -118,14 +124,15 @@ public class Employee {
     }
 
     @DynamoDBAttribute(attributeName = "dateOfBirth")
-    @DynamoDBTypeConverted(converter = ZonedDateTimeConverter.class)
-    public ZonedDateTime getDateOfBirth() {
+    @DynamoDBTypeConverted(converter = LocalDateConverter.class)
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(ZonedDateTime dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
     @DynamoDBAttribute(attributeName = "employeeStatus")
     @DynamoDBIndexHashKey(globalSecondaryIndexName = EMPLOYEE_STATUS, attributeName = "employeeStatus")
     public String getEmployeeStatus() {
@@ -139,22 +146,37 @@ public class Employee {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Employee)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         Employee employee = (Employee) o;
-        return Objects.equals(employeeId, employee.employeeId) && Objects.equals(firstName, employee.firstName) &&
+        return Objects.equals(employeeId, employee.employeeId) &&
+                Objects.equals(firstName, employee.firstName) &&
                 Objects.equals(lastName, employee.lastName) &&
                 Objects.equals(jobTitle, employee.jobTitle) &&
-                Objects.equals(email, employee.email) && Objects.equals(deptId, employee.deptId) &&
+                Objects.equals(email, employee.email) &&
+                Objects.equals(deptId, employee.deptId) &&
+                Objects.equals(deptName, employee.deptName) &&
                 Objects.equals(hireDate, employee.hireDate) &&
-                Objects.equals(phoneNumber, employee.phoneNumber) && Objects.equals(dateOfBirth, employee.dateOfBirth);
+                Objects.equals(phoneNumber, employee.phoneNumber) &&
+                Objects.equals(dateOfBirth, employee.dateOfBirth) &&
+                Objects.equals(employeeStatus, employee.employeeStatus);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(employeeId, firstName, lastName, jobTitle,
-                email, deptId, hireDate, phoneNumber, dateOfBirth);
+        return Objects.hash(
+                employeeId,
+                firstName,
+                lastName,
+                jobTitle,
+                email,
+                deptId,
+                deptName,
+                hireDate,
+                phoneNumber,
+                dateOfBirth,
+                employeeStatus);
     }
 
     @Override
@@ -166,9 +188,11 @@ public class Employee {
                 ", jobTitle='" + jobTitle + '\'' +
                 ", email='" + email + '\'' +
                 ", deptId='" + deptId + '\'' +
-                ", hireDate='" + hireDate + '\'' +
+                ", deptName='" + deptName + '\'' +
+                ", hireDate=" + hireDate +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", employeeStatus='" + employeeStatus + '\'' +
                 '}';
     }
 }

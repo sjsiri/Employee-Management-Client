@@ -1,13 +1,15 @@
 package com.nashss.se.employeecontactservice.activity.results;
 
 import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
+import com.nashss.se.employeecontactservice.models.EmployeeModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GetAllEmployeesResult {
 
-    private final List<Employee> employeeList;
+    private final List<EmployeeModel> employeeList;
 
     /**
      * Instantiates a new GetAllEmployees object.
@@ -15,9 +17,10 @@ public class GetAllEmployeesResult {
      * @param employeeList to access the employee table.
      */
     public GetAllEmployeesResult(List<Employee> employeeList) {
-        this.employeeList = employeeList;
+        this.employeeList = employeeList.stream().map(EmployeeModel::new).collect(Collectors.toList());
     }
-    public List<Employee> getEmployeeList() {
+
+    public List<EmployeeModel> getEmployeeList() {
         return new ArrayList<>(employeeList);
     }
 
