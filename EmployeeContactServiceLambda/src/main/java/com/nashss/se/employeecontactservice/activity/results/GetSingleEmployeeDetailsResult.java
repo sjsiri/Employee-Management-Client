@@ -37,7 +37,7 @@ public class GetSingleEmployeeDetailsResult {
         private Employee singleEmployee;
 
         public Builder withSingleEmployee(Employee singleEmployee) {
-            this.singleEmployee = new Employee();
+            this.singleEmployee = singleEmployee;
             return this;
         }
         public GetSingleEmployeeDetailsResult build() {
