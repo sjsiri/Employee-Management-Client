@@ -44,25 +44,25 @@ public class CreateEmployeeActivity {
         log.info("Received Create Employee Request {}", request);
 
 
-        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getFirstName())) {
+        if (request.getFirstName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getFirstName())) {
             throw new InvalidAttributeValueException("First name \"" +
                     request.getFirstName() +
                     "\" contains invalid characters");
         }
 
-        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getLastName())) {
+        if (request.getLastName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getLastName())) {
             throw new InvalidAttributeValueException("Last name \"" +
                     request.getLastName() +
                     "\" contains invalid characters");
         }
 
-        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName())) {
+        if (request.getDeptName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName())) {
             throw new InvalidAttributeValueException("Department name \"" +
                     request.getDeptName() +
                     "\" contains invalid characters");
         }
 
-        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getJobTitle())) {
+        if (request.getJobTitle() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getJobTitle())) {
             throw new InvalidAttributeValueException("Job title \"" +
                     request.getJobTitle() +
                     "\" contains invalid characters");

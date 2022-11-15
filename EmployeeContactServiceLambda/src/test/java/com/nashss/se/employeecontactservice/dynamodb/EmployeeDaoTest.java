@@ -77,4 +77,16 @@ class EmployeeDaoTest {
         verify(mapper).queryPage(eq(Employee.class), any());
         verify(queryResultPage).getResults();
     }
+
+    @Test
+    void createEmployee_callsMapper() {
+        // GIVEN
+        Employee employeeToCreate = new Employee();
+
+        // WHEN
+        employeeDao.createEmployee(employeeToCreate);
+
+        // THEN
+        verify(mapper).save(employeeToCreate);
+    }
 }
