@@ -9,9 +9,8 @@ import DataStore from "../util/DataStore";
 class ViewEmployees extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'addEmployeesToPage', 'addEmployee'], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'displayEmployeesOnPage', 'addEmployee'], this);
         this.dataStore = new DataStore();
-        this.dataStore.addChangeListener(this.addEmployeesToPage);
         this.header = new Header(this.dataStore);
         console.log("viewEmployees constructor");
     }
@@ -20,36 +19,33 @@ class ViewEmployees extends BindingClass {
      * Once the client is loaded, get the employees list.
      */
     async clientLoaded() {
-        //const urlParams = new URLSearchParams(window.location.search);
-        //const playlistId = urlParams.get('id');
-        //document.getElementById('playlist-name').innerText = "Loading Playlist ...";
-        //const playlist = await this.client.getPlaylist(playlistId);
-        //this.dataStore.set('playlist', playlist);
         document.getElementById('employees').innerText = "(Loading employee list...)";
         const employees = await this.client.getAllEmployees();
         this.dataStore.set('employees', employees);
-        this.addEmployeesToPage();
+        console.log("In ClientLoaded method: Employees values: ",  employees);
+        this.displayEmployeesOnPage();
 
     }
 
     /**
      * Add the header to the page and load the EmployeeMgmtClientClient.
      */
-    mount() {
+    async mount() {
         document.getElementById('add-employee').addEventListener('click', this.addEmployee);
         this.header.addHeaderToPage();
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
-        this.clientLoaded();
+        await this.clientLoaded();
     }
 
  /**
      * When the employees are updated in the datastore, update the list of employees on the page.
      */
-    addEmployeesToPage() {
+    displayEmployeesOnPage() {
         const employees = this.dataStore.get('employees')
-        alert(employees);
-        if (employees == null) {
+        console.log("In DisplayEmployeesMethod: Employees values: ",  employees);
+
+        if (!employees) {
             return;
         }
 
@@ -98,7 +94,7 @@ class ViewEmployees extends BindingClass {
  */
 const main = async () => {
     const viewEmployees = new ViewEmployees();
-    viewEmployees.mount();
+    await viewEmployees.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);
