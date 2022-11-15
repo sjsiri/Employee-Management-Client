@@ -43,7 +43,31 @@ public class CreateEmployeeActivity {
     public CreateEmployeeResult handleRequest(CreateEmployeeRequest request) {
         log.info("Received Create Employee Request {}", request);
 
+        checkAttributes(request);
 
+        LocalDateConverter converter = new LocalDateConverter();
+
+        Employee employee = new Employee();
+        employee.setEmployeeId(EmployeeMgmtClientServiceUtils.generateEmployeeId());
+        employee.setFirstName(request.getFirstName());
+        employee.setLastName(request.getLastName());
+        employee.setJobTitle(request.getJobTitle());
+        employee.setEmail(request.getEmail());
+        employee.setDeptId(request.getDeptId());
+        employee.setDeptName(request.getDeptName());
+        employee.setHireDate(converter.unconvert(request.getHireDate()));
+        employee.setPhoneNumber(request.getPhoneNumber());
+        employee.setDateOfBirth(converter.unconvert(request.getDateOfBirth()));
+        employee.setEmployeeStatus(request.getEmployeeStatus());
+
+        employeeDao.createEmployee(employee);
+
+        return CreateEmployeeResult.builder()
+                .withEmployee(employee)
+                .build();
+    }
+
+    private void checkAttributes(CreateEmployeeRequest request) {
         if (request.getFirstName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getFirstName())) {
             throw new InvalidAttributeValueException("First name \"" +
                     request.getFirstName() +
@@ -67,26 +91,5 @@ public class CreateEmployeeActivity {
                     request.getJobTitle() +
                     "\" contains invalid characters");
         }
-
-        LocalDateConverter converter = new LocalDateConverter();
-
-        Employee employee = new Employee();
-        employee.setEmployeeId(EmployeeMgmtClientServiceUtils.generateEmployeeId());
-        employee.setFirstName(request.getFirstName());
-        employee.setLastName(request.getLastName());
-        employee.setJobTitle(request.getJobTitle());
-        employee.setEmail(request.getEmail());
-        employee.setDeptId(request.getDeptId());
-        employee.setDeptName(request.getDeptName());
-        employee.setHireDate(converter.unconvert(request.getHireDate()));
-        employee.setPhoneNumber(request.getPhoneNumber());
-        employee.setDateOfBirth(converter.unconvert(request.getDateOfBirth()));
-        employee.setEmployeeStatus(request.getEmployeeStatus());
-
-        employeeDao.createEmployee(employee);
-
-        return CreateEmployeeResult.builder()
-                .withEmployee(employee)
-                .build();
     }
 }
