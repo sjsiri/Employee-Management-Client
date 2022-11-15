@@ -104,6 +104,9 @@ class ViewEmployees extends BindingClass {
             if (employees.length < 5){
                 document.getElementById('next').disabled = true;
                 document.getElementById('next').style.background='grey';
+            } else {
+                document.getElementById('next').disabled = false;
+                document.getElementById('next').style.background='#F5881F';
             }
 
             if (employees[0].employeeId == firstEmpId) {
