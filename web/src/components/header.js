@@ -1,4 +1,4 @@
-import MusicPlaylistClient from '../api/musicPlaylistClient';
+import EmployeeMgmtClient from '../api/employeeMgmtClient';
 import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
 
@@ -27,7 +27,7 @@ export default class Header extends BindingClass {
     }
 
     loadData() {
-        this.client = new MusicPlaylistClient({ onReady: this.clientLoaded });
+        this.client = new EmployeeMgmtClient({ onReady: this.clientLoaded });
     }
 
     /**
@@ -36,7 +36,7 @@ export default class Header extends BindingClass {
     addHeaderToPage() {
         document.getElementById('header').innerHTML = `
             <div class="site-title">
-                <a class="header_home" href="index.html">Unit 5 Playlists</a>
+                <a class="header_home" href="index.html">Employee Management Client</a>
             </div>
             <div id="user">${this.dataStore.get('username')}</div>
         `;
