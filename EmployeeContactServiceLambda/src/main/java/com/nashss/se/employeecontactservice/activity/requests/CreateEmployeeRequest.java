@@ -1,7 +1,9 @@
 package com.nashss.se.employeecontactservice.activity.requests;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+@JsonDeserialize(builder = CreateEmployeeRequest.Builder.class)
 public class CreateEmployeeRequest {
 
     private final String firstName;

@@ -20,5 +20,9 @@ public interface ServiceComponent {
      */
     GetAllEmployeesActivity provideGetAllEmployeesActivity();
 
+    /**
+     * Provides the relevant activity.
+     * @return CreateEmployeeActivity
+     */
     CreateEmployeeActivity provideCreateEmployeeActivity();
 }

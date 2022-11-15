@@ -6,7 +6,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import org.apache.logging.log4j.core.lookup.SystemPropertiesLookup;
 
 import java.util.HashMap;
 import java.util.List;
@@ -77,6 +76,11 @@ public class EmployeeDao {
 
     }
 
+    /**
+     * Creates the provided employee in the Employees DynamoDB table.
+     *
+     * @param employeeToCreate the employee to be created in the table
+     */
     public void createEmployee(Employee employeeToCreate) {
         dynamoDBMapper.save(employeeToCreate);
     }

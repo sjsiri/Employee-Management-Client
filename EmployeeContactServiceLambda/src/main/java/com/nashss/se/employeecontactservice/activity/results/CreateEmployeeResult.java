@@ -14,6 +14,13 @@ public class CreateEmployeeResult {
         return employeeModel;
     }
 
+    @Override
+    public String toString() {
+        return "CreateEmployeeResult{" +
+                "employee=" + employeeModel +
+                '}';
+    }
+
     //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();

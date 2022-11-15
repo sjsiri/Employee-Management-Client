@@ -8,9 +8,11 @@ import java.util.regex.Pattern;
 public class EmployeeMgmtClientServiceUtils {
     private static final Pattern INVALID_CHARACTER_PATTERN = Pattern.compile("[\"'\\\\]");
 
-    private EmployeeMgmtClientServiceUtils() {
-    }
-
+    /**
+     * Static utility method to validate a String.
+     * @param stringToValidate the String to check
+     * @return a boolean representing the validity of the string
+     */
     public static boolean isValidString(String stringToValidate) {
         if (StringUtils.isBlank(stringToValidate)) {
             return false;
@@ -19,6 +21,10 @@ public class EmployeeMgmtClientServiceUtils {
         }
     }
 
+    /**
+     * Static utility method to generate a random, unique employeeID.
+     * @return a random 5 digit alphanumeric
+     */
     public static String generateEmployeeId() {
         return RandomStringUtils.randomAlphanumeric(5);
     }
