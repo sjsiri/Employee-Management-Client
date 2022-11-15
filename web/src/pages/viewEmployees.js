@@ -48,7 +48,7 @@ class ViewEmployees extends BindingClass {
      */
     addEmployeesToPage() {
         const employees = this.dataStore.get('employees')
-
+        alert(employees);
         if (employees == null) {
             return;
         }
