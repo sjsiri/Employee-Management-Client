@@ -16,7 +16,7 @@ public class GetAllEmployeesResult {
      *
      * @param employeeList to access the employee table.
      */
-    public GetAllEmployeesResult(List<Employee> employeeList) {
+    private GetAllEmployeesResult(List<Employee> employeeList) {
         this.employeeList = employeeList.stream().map(EmployeeModel::new).collect(Collectors.toList());
     }
 
@@ -30,18 +30,19 @@ public class GetAllEmployeesResult {
                 "employeeList=" + employeeList +
                 '}';
     }
-        //CHECKSTYLE:OFF:Builder
-        public static Builder builder() { return new Builder(); }
 
-        public static class Builder {
-            private List<Employee> employeeList;
+    //CHECKSTYLE:OFF:Builder
+    public static Builder builder() { return new Builder(); }
 
-            public Builder withEmployeeList(List<Employee> employeeList){
-                this.employeeList = new ArrayList<>(employeeList);
-                return this;
-            }
+    public static class Builder {
+        private List<Employee> employeeList;
 
-            public GetAllEmployeesResult build() { return new GetAllEmployeesResult(employeeList); }
+        public Builder withEmployeeList(List<Employee> employeeList){
+            this.employeeList = new ArrayList<>(employeeList);
+            return this;
         }
+
+        public GetAllEmployeesResult build() { return new GetAllEmployeesResult(employeeList); }
+    }
 }
 

@@ -6,6 +6,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import org.apache.logging.log4j.core.lookup.SystemPropertiesLookup;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +19,7 @@ import javax.inject.Inject;
  */
 public class EmployeeDao {
 
-    private static final int PAGE_SIZE = 5;
+    private static final int PAGE_SIZE = 20;
     private final DynamoDBMapper dynamoDBMapper;
 
     /**
@@ -76,4 +77,7 @@ public class EmployeeDao {
 
     }
 
+    public void createEmployee(Employee employeeToCreate) {
+        dynamoDBMapper.save(employeeToCreate);
+    }
 }
