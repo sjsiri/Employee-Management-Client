@@ -8,6 +8,7 @@ import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -19,7 +20,7 @@ public class GetAllEmployeesActivity {
     private final EmployeeDao employeeDao;
 
     /**
-     * Instantiates a new GetEmployeeActivity object.
+     * Instantiates a new GetAllEmployeesActivity object.
      *
      * @param employeeDao EmployeeDao to access the employee table.
      */
@@ -43,6 +44,9 @@ public class GetAllEmployeesActivity {
         String requestedId = getEmployeeRequest.getEmployeeId();
         Boolean forward = getEmployeeRequest.getForwardBoolean();
         List<Employee> employeeList = employeeDao.getAllActiveEmployeesWithLimit(requestedId, forward);
+        if (!forward) {
+            Collections.reverse(employeeList);
+        }
 
         return GetAllEmployeesResult.builder()
                 .withEmployeeList(employeeList)
