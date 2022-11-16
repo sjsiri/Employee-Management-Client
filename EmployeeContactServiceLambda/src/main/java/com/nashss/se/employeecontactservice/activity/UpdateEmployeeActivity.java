@@ -5,6 +5,7 @@ import com.nashss.se.employeecontactservice.activity.results.UpdateEmployeeResul
 import com.nashss.se.employeecontactservice.converters.LocalDateConverter;
 import com.nashss.se.employeecontactservice.dynamodb.EmployeeDao;
 import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
+import com.nashss.se.employeecontactservice.exceptions.InvalidAttributeChangeException;
 import com.nashss.se.employeecontactservice.exceptions.InvalidAttributeValueException;
 import com.nashss.se.employeecontactservice.metrics.MetricsConstants;
 import com.nashss.se.employeecontactservice.metrics.MetricsPublisher;
@@ -61,6 +62,11 @@ public class UpdateEmployeeActivity {
         log.info("Received UpdateEmployeeRequest {}", updateEmployeeRequest);
 
 
+        if (updateEmployeeRequest.getEmployeeId() != updateEmployeeRequest.getPathEmployeeId() &&
+                updateEmployeeRequest.getEmployeeId() != null) {
+            throw new InvalidAttributeChangeException("Employee's ID can't be changed");
+        }
+
         if (!EmployeeMgmtClientServiceUtils.isValidString(updateEmployeeRequest.getFirstName()) &&
                 updateEmployeeRequest.getFirstName() != null) {
             publishExceptionMetrics(true);
@@ -91,7 +97,7 @@ public class UpdateEmployeeActivity {
 
         LocalDateConverter converter = new LocalDateConverter();
 
-        Employee employee = employeeDao.getEmployee(updateEmployeeRequest.getEmployeeId());
+        Employee employee = employeeDao.getEmployee(updateEmployeeRequest.getPathEmployeeId());
         if (updateEmployeeRequest.getFirstName() != null) {
             employee.setFirstName(updateEmployeeRequest.getFirstName());
         }

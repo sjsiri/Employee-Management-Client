@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 public class UpdateEmployeeRequest {
 
     private String employeeId;
+
+    private String pathEmployeeId;
     private final String firstName;
 
     private final String lastName;
@@ -64,6 +66,14 @@ public class UpdateEmployeeRequest {
 
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
+    }
+
+    public String getPathEmployeeId() {
+        return pathEmployeeId;
+    }
+
+    public void setPathEmployeeId(String pathEmployeeId) {
+        this.pathEmployeeId = pathEmployeeId;
     }
 
     public String getFirstName() {

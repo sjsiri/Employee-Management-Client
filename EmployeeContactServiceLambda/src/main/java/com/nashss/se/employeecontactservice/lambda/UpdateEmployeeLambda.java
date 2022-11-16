@@ -19,7 +19,7 @@ public class UpdateEmployeeLambda
                           UpdateEmployeeRequest.builder()
                                 .withEmployeeId(path.get("employeeId"))
                                 .build());
-                updateEmployeeRequest.setEmployeeId(updateEmployeeRequest2.getEmployeeId());
+                updateEmployeeRequest.setPathEmployeeId(updateEmployeeRequest2.getEmployeeId());
                 return updateEmployeeRequest;
             },
             (request, serviceComponent) ->
