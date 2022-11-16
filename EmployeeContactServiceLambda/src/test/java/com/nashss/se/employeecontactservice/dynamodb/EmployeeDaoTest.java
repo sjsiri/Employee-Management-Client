@@ -84,7 +84,7 @@ class EmployeeDaoTest {
         Employee employeeToCreate = new Employee();
 
         // WHEN
-        employeeDao.createEmployee(employeeToCreate);
+        employeeDao.saveEmployee(employeeToCreate);
 
         // THEN
         verify(mapper).save(employeeToCreate);

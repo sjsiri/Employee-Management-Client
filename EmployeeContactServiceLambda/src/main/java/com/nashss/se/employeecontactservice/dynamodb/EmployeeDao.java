@@ -74,13 +74,12 @@ public class EmployeeDao {
         return dynamoDBMapper.queryPage(Employee.class, queryExpression).getResults();
 
     }
-
     /**
-     * Creates the provided employee in the Employees DynamoDB table.
-     *
-     * @param employeeToCreate the employee to be created in the table
+     * Saves (creates or updates) the given employee.
+     * @param employee The employee to save
      */
-    public void createEmployee(Employee employeeToCreate) {
-        dynamoDBMapper.save(employeeToCreate);
+    public void saveEmployee(Employee employee) {
+        this.dynamoDBMapper.save(employee);
     }
+
 }
