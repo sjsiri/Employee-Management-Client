@@ -37,7 +37,7 @@ class ViewEmployees extends BindingClass {
      * Add the header to the page and load the EmployeeMgmtClientClient.
      */
     async mount() {
-        document.getElementById('add-employee').addEventListener('click', this.addEmployee);
+        //document.getElementById('create-employee').addEventListener('click', this.createEmployee);
         document.getElementById('next').addEventListener('click', this.next);
         document.getElementById('previous').addEventListener('click', this.previous);
         this.header.addHeaderToPage();
