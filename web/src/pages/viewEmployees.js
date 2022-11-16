@@ -12,7 +12,7 @@ class ViewEmployees extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'displayEmployeesOnPage', 'generateTable', 'next', 'previous'  ], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'displayEmployeesOnPage', 'generateTable', 'next', 'previous', 'getEmployee' ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayEmployeesOnPage);
         this.header = new Header(this.dataStore);
@@ -33,31 +33,49 @@ class ViewEmployees extends BindingClass {
 
     }
 
+    async getEmployee(){
+        //const employeeDetail = await this.client.getEmployee(employeeId);
+        //this.dataStore.set('employeeDetail', employeeDetail);
+
+
+    }
+
     /**
      * Add the header to the page and load the EmployeeMgmtClientClient.
      */
     async mount() {
-        document.getElementById('add-employee').addEventListener('click', this.addEmployee);
         document.getElementById('next').addEventListener('click', this.next);
         document.getElementById('previous').addEventListener('click', this.previous);
+
         this.header.addHeaderToPage();
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
         await this.clientLoaded();
     }
 
-    generateTable(table, data) {
+    async generateTable(table, data) {
 
       for (let element of data) {
         let row = table.insertRow();
+
+        row.addEventListener('click', async evt => {
+                  console.log('The element that was clicked was ', element.employeeId);
+                  const singleEmployee = await this.client.getEmployee(element.employeeId);
+                  if (singleEmployee) {
+                    window.location.href = `/view_employee.html`;
+                  }
+                  });
+
 
         let cell = row.insertCell();
         let text = document.createTextNode(element.deptName);
         cell.appendChild(text);
 
+
         cell = row.insertCell();
         text = document.createTextNode(element.firstName);
         cell.appendChild(text);
+
 
         cell = row.insertCell();
         text = document.createTextNode(element.lastName);
@@ -72,8 +90,13 @@ class ViewEmployees extends BindingClass {
         a.title = element.email
         a.href = 'mailto:' + element.email;
         cell.appendChild(a);
-
       }
+
+      document.querySelectorAll('td').forEach(cell => {
+//          cell.addEventListener('click', evt => {
+//          console.log('The element that was clicked was ', evt.target);
+//          });
+      });
     }
 
  /**
@@ -81,6 +104,7 @@ class ViewEmployees extends BindingClass {
      */
     displayEmployeesOnPage() {
         const employees = this.dataStore.get('employees');
+
 
         if (!employees) {
             return;
@@ -97,7 +121,7 @@ class ViewEmployees extends BindingClass {
             this.generateTable(table, employees);
             document.getElementById('employees').innerText = "";
 
-            if (employees.length < 5){
+            if (employees.length < 20){
                 document.getElementById('next').disabled = true;
                 document.getElementById('next').style.background='grey';
             } else {
@@ -113,7 +137,7 @@ class ViewEmployees extends BindingClass {
 
      async next() {
          const employees = this.dataStore.get('employees');
-         const employeesNext = await this.client.getAllEmployees(employees[4].employeeId, true);
+         const employeesNext = await this.client.getAllEmployees(employees[19].employeeId, true);
          this.dataStore.set('employees', employeesNext);
 
          document.getElementById('previous').disabled = false;

@@ -57,8 +57,8 @@ export default class EmployeeMgmtClient extends BindingClass {
      */
     async getEmployee(id, errorCallback) {
         try {
-            const response = await this.client.get(`employees/${id}`);
-            return response.data.employee;
+            const response = await this.client.get(`employee/${id}`);
+            return response.data.singleEmployee;
         } catch (error) {
             this.handleError(error, errorCallback)
         }
