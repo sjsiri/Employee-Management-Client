@@ -60,10 +60,10 @@ class ViewEmployees extends BindingClass {
 
         row.addEventListener('click', async evt => {
                   console.log('The element that was clicked was ', element.employeeId);
-                  const singleEmployee = await this.client.getEmployee(element.employeeId);
-                  if (singleEmployee) {
-                    window.location.href = `/view_employee.html`;
-                  }
+                  //const singleEmployee = await this.client.getEmployee(element.employeeId);
+                  //if (singleEmployee) {
+                    window.location.href = `/view_employee.html?id=${element.employeeId}`;
+                  //}
                   });
 
 
