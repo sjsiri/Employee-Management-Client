@@ -60,7 +60,7 @@ public class CreateEmployeeActivity {
         employee.setDateOfBirth(converter.unconvert(request.getDateOfBirth()));
         employee.setEmployeeStatus(request.getEmployeeStatus());
 
-        employeeDao.createEmployee(employee);
+        employeeDao.saveEmployee(employee);
 
         return CreateEmployeeResult.builder()
                 .withEmployee(employee)
