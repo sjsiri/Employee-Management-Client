@@ -23,7 +23,7 @@ public class GetSingleEmployeeDetailsResult {
 
     @Override
     public String toString() {
-        return "GetSingleEmployeeDetailsRequest{" +
+        return "GetSingleEmployeeDetailsResult{" +
                 "employee='" + singleEmployee + '\'' +
                 '}';
     }
