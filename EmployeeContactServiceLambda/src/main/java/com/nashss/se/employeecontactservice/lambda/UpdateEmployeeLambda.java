@@ -16,7 +16,7 @@ public class UpdateEmployeeLambda
             () -> {
                 UpdateEmployeeRequest updateEmployeeRequest = input.fromBody(UpdateEmployeeRequest.class);
                 UpdateEmployeeRequest updateEmployeeRequest2 = input.fromPath(path ->
-                        UpdateEmployeeRequest.builder()
+                          UpdateEmployeeRequest.builder()
                                 .withEmployeeId(path.get("employeeId"))
                                 .build());
                 updateEmployeeRequest.setEmployeeId(updateEmployeeRequest2.getEmployeeId());

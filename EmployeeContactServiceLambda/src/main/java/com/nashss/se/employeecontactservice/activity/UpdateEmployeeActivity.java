@@ -60,6 +60,7 @@ public class UpdateEmployeeActivity {
     public UpdateEmployeeResult handleRequest(final UpdateEmployeeRequest updateEmployeeRequest) {
         log.info("Received UpdateEmployeeRequest {}", updateEmployeeRequest);
 
+
         if (!EmployeeMgmtClientServiceUtils.isValidString(updateEmployeeRequest.getFirstName()) &&
                 updateEmployeeRequest.getFirstName() != null) {
             publishExceptionMetrics(true);
@@ -91,19 +92,38 @@ public class UpdateEmployeeActivity {
         LocalDateConverter converter = new LocalDateConverter();
 
         Employee employee = employeeDao.getEmployee(updateEmployeeRequest.getEmployeeId());
+        if (updateEmployeeRequest.getFirstName() != null) {
+            employee.setFirstName(updateEmployeeRequest.getFirstName());
+        }
+        if (updateEmployeeRequest.getLastName() != null) {
+            employee.setLastName(updateEmployeeRequest.getLastName());
+        }
+        if (updateEmployeeRequest.getJobTitle() != null) {
+            employee.setJobTitle(updateEmployeeRequest.getJobTitle());
+        }
+        if (updateEmployeeRequest.getEmail() != null) {
+            employee.setEmail(updateEmployeeRequest.getEmail());
+        }
+        if (updateEmployeeRequest.getDeptId() != null) {
+            employee.setDeptId(updateEmployeeRequest.getDeptId());
+        }
+        if (updateEmployeeRequest.getDeptName() != null) {
+            employee.setDeptName(updateEmployeeRequest.getDeptName());
+        }
+        if (updateEmployeeRequest.getHireDate() != null) {
+            employee.setHireDate(converter.unconvert(updateEmployeeRequest.getHireDate()));
+        }
+        if (updateEmployeeRequest.getPhoneNumber() != null) {
+            employee.setPhoneNumber(updateEmployeeRequest.getPhoneNumber());
+        }
+        if (updateEmployeeRequest.getDateOfBirth() != null) {
+            employee.setDateOfBirth(converter.unconvert(updateEmployeeRequest.getDateOfBirth()));
+        }
+        if (updateEmployeeRequest.getEmployeeStatus() != null) {
+            employee.setEmployeeStatus(updateEmployeeRequest.getEmployeeStatus());
+        }
 
-        employee.setFirstName(updateEmployeeRequest.getFirstName());
-        employee.setLastName(updateEmployeeRequest.getLastName());
-        employee.setJobTitle(updateEmployeeRequest.getJobTitle());
-        employee.setEmail(updateEmployeeRequest.getEmail());
-        employee.setDeptId(updateEmployeeRequest.getDeptId());
-        employee.setDeptName(updateEmployeeRequest.getDeptName());
-        employee.setHireDate(converter.unconvert(updateEmployeeRequest.getHireDate()));
-        employee.setPhoneNumber(updateEmployeeRequest.getPhoneNumber());
-        employee.setDateOfBirth(converter.unconvert(updateEmployeeRequest.getDateOfBirth()));
-        employee.setEmployeeStatus(updateEmployeeRequest.getEmployeeStatus());
         employee = employeeDao.saveEmployee(employee);
-
         publishExceptionMetrics(false);
         return UpdateEmployeeResult.builder().withEmployeeModel(employee).build();
 

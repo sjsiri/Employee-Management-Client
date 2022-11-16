@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 public class UpdateEmployeeRequest {
 
     private String employeeId;
-
     private final String firstName;
 
     private final String lastName;
@@ -117,9 +116,9 @@ public class UpdateEmployeeRequest {
                 ", email='" + email + '\'' +
                 ", deptId='" + deptId + '\'' +
                 ", deptName='" + deptName + '\'' +
-                ", hireDate=" + hireDate +
+                ", hireDate='" + hireDate + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", employeeStatus='" + employeeStatus + '\'' +
                 '}';
     }
