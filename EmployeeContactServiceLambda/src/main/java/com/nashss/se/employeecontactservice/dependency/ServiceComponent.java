@@ -1,5 +1,6 @@
 package com.nashss.se.employeecontactservice.dependency;
 
+import com.nashss.se.employeecontactservice.activity.CreateEmployeeActivity;
 import com.nashss.se.employeecontactservice.activity.GetAllEmployeesActivity;
 
 import dagger.Component;
@@ -19,5 +20,9 @@ public interface ServiceComponent {
      */
     GetAllEmployeesActivity provideGetAllEmployeesActivity();
 
-
+    /**
+     * Provides the relevant activity.
+     * @return CreateEmployeeActivity
+     */
+    CreateEmployeeActivity provideCreateEmployeeActivity();
 }

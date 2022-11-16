@@ -18,7 +18,7 @@ import javax.inject.Inject;
  */
 public class EmployeeDao {
 
-    private static final int PAGE_SIZE = 5;
+    private static final int PAGE_SIZE = 20;
     private final DynamoDBMapper dynamoDBMapper;
 
     /**
@@ -76,4 +76,12 @@ public class EmployeeDao {
 
     }
 
+    /**
+     * Creates the provided employee in the Employees DynamoDB table.
+     *
+     * @param employeeToCreate the employee to be created in the table
+     */
+    public void createEmployee(Employee employeeToCreate) {
+        dynamoDBMapper.save(employeeToCreate);
+    }
 }

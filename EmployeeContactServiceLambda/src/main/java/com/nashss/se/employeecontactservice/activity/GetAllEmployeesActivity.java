@@ -20,7 +20,7 @@ public class GetAllEmployeesActivity {
     private final EmployeeDao employeeDao;
 
     /**
-     * Instantiates a new GetEmployeeActivity object.
+     * Instantiates a new GetAllEmployeesActivity object.
      *
      * @param employeeDao EmployeeDao to access the employee table.
      */
