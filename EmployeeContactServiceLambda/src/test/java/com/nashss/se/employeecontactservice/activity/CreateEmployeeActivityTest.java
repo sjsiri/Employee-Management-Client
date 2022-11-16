@@ -40,7 +40,7 @@ class CreateEmployeeActivityTest {
         createEmployeeActivity.handleRequest(request);
 
         // THEN
-        verify(employeeDao).createEmployee(any());
+        verify(employeeDao).saveEmployee(any());
     }
 
     @Test
