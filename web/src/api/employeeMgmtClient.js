@@ -91,7 +91,6 @@ export default class EmployeeMgmtClient extends BindingClass {
         deptName, hireDate, dateOfBirth, employeeStatus, errorCallback) {
         try {
             const response = await this.client.post(`employees`, {
-            //TODO: Add the post attributes per the API definition. Check with Jack
             firstName: firstName,
             lastName: lastName,
             jobTitle: jobTitle,
@@ -103,12 +102,11 @@ export default class EmployeeMgmtClient extends BindingClass {
             dateOfBirth: dateOfBirth,
             employeeStatus: employeeStatus
             });
-            return response.data.employee;
+            return response.data.employeeModel;
         } catch (error) {
             this.handleError(error, errorCallback)
         }
     }
-
 
 
     /**

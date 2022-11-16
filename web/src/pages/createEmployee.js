@@ -40,10 +40,10 @@ class CreateEmployee extends BindingClass {
         const hireDate = document.getElementById('hireDate').value;
         const dateOfBirth = document.getElementById('dateOfBirth').value;
         const employeeStatus = "Active";
+
         const employee = await this.client.createEmployee(firstName, lastName,
         jobTitle, email, phoneNumber, deptId, deptName, hireDate, dateOfBirth, employeeStatus);
         this.dataStore.set('employee', employee);
-        //redirectToViewEmployee();
     }
 
     /**
@@ -51,12 +51,11 @@ class CreateEmployee extends BindingClass {
      */
     redirectToViewEmployee() {
         const employee = this.dataStore.get('employee');
-        if (!employee) {
+        if (employee != null) {
             window.location.href = `/index.html`;
         }
-
     }
-
+}
 
 /**
  * Main method to run when the page contents have loaded.
