@@ -43,7 +43,6 @@ public class EmployeeDao {
         if (null == employee) {
             throw new EmployeeNotFoundException(String.format("Could not find Employee with ID '%s' ", employeeId)
             );
-
         }
         return employee;
     }

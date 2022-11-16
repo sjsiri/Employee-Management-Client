@@ -3,6 +3,8 @@ package com.nashss.se.employeecontactservice.dependency;
 import com.nashss.se.employeecontactservice.activity.CreateEmployeeActivity;
 import com.nashss.se.employeecontactservice.activity.GetAllEmployeesActivity;
 
+import com.nashss.se.employeecontactservice.activity.GetSingleEmployeeDetailsActivity;
+
 import dagger.Component;
 
 import javax.inject.Singleton;
@@ -19,6 +21,13 @@ public interface ServiceComponent {
      * @return GetAllEmployeesActivity
      */
     GetAllEmployeesActivity provideGetAllEmployeesActivity();
+
+    /**
+     * Provides the relevant activity.
+     * @return GetSingleEmployeeDetailsActivity
+     */
+    GetSingleEmployeeDetailsActivity provideGetSingleEmployeeDetailsActivity();
+
 
     /**
      * Provides the relevant activity.

@@ -159,7 +159,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessDynamoDBTablesRole.Arn
       CodeUri: EmployeeContactServiceLambda
-      Handler: com.nashss.se.employeecontactservice.lambda.GetEmployeeLambda::handleRequest
+      Handler: com.nashss.se.employeecontactservice.lambda.GetSingleEmployeeDetailsLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
