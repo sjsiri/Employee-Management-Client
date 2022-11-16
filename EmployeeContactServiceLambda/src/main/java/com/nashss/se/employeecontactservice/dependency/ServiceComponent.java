@@ -2,9 +2,8 @@ package com.nashss.se.employeecontactservice.dependency;
 
 import com.nashss.se.employeecontactservice.activity.CreateEmployeeActivity;
 import com.nashss.se.employeecontactservice.activity.GetAllEmployeesActivity;
-import com.nashss.se.employeecontactservice.activity.UpdateEmployeeActivity;
-
 import com.nashss.se.employeecontactservice.activity.GetSingleEmployeeDetailsActivity;
+import com.nashss.se.employeecontactservice.activity.UpdateEmployeeActivity;
 
 import dagger.Component;
 
