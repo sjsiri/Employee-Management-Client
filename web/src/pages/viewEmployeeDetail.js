@@ -49,14 +49,30 @@ class ViewEmployeeDetail extends BindingClass {
             return;
         }
 
-        document.getElementById('fname').value = employeeDetail.firstName;
-        document.getElementById('lname').value = employeeDetail.lastName;
-        document.getElementById('jobtitle').value = employeeDetail.jobTitle;
-//        document.getElementById('email').value = employeeDetail.email;
-//        document.getElementById('tel').value = employeeDetail.phoneNumber;
-//        document.getElementById('dept').value = employeeDetail.deptId;
-//        document.getElementById('dob').value = employeeDetail.dateOfBirth;
-//        document.getElementById('hireDate').value = employeeDetail.hireDate;
+        if (employeeDetail.firstName){
+            document.getElementById('fname').value = employeeDetail.firstName;
+        }
+        if (employeeDetail.lastName){
+            document.getElementById('lname').value = employeeDetail.lastName;
+        }
+        if (employeeDetail.jobTitle){
+            document.getElementById('jobtitle').value = employeeDetail.jobTitle;
+        }
+        if (employeeDetail.email){
+            document.getElementById('email').value = employeeDetail.email;
+        }
+        if (employeeDetail.phoneNumber){
+            document.getElementById('phone').value = employeeDetail.phoneNumber;
+        }
+        if (employeeDetail.deptId){
+            document.getElementById('dept').value = employeeDetail.deptId;
+        }
+        if (employeeDetail.dateOfBirth){
+            document.getElementById('dob').value = employeeDetail.dateOfBirth;
+        }
+        if (employeeDetail.hireDate){
+            document.getElementById('hireDate').value = employeeDetail.hireDate;
+        }
 
  }
 
