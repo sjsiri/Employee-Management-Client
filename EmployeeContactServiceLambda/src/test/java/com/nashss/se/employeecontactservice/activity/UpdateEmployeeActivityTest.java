@@ -51,7 +51,6 @@ public class UpdateEmployeeActivityTest {
 
 
         when(employeeDao.getEmployee(employeeId)).thenReturn(startingEmployee);
-        when(employeeDao.saveEmployee(startingEmployee)).thenReturn(startingEmployee);
 
         // WHEN
         UpdateEmployeeResult result = updateEmployeeActivity.handleRequest(request);
@@ -76,13 +75,13 @@ public class UpdateEmployeeActivityTest {
         startingEmployee.setFirstName("oldName");
 
         when(employeeDao.getEmployee(employeeId)).thenReturn(startingEmployee);
-        when(employeeDao.saveEmployee(startingEmployee)).thenReturn(startingEmployee);
 
         // WHEN
         UpdateEmployeeResult result = updateEmployeeActivity.handleRequest(request);
 
         // THEN
         assertEquals(expectedLastName, result.getEmployeeModel().getLastName());
+
     }
 
     @Test
@@ -102,7 +101,6 @@ public class UpdateEmployeeActivityTest {
         startingEmployee.setEmail("oldName@gmail.com");
 
         when(employeeDao.getEmployee(employeeId)).thenReturn(startingEmployee);
-        when(employeeDao.saveEmployee(startingEmployee)).thenReturn(startingEmployee);
 
         // WHEN
         UpdateEmployeeResult result = updateEmployeeActivity.handleRequest(request);
@@ -127,7 +125,6 @@ public class UpdateEmployeeActivityTest {
         startingEmployee.setJobTitle("janitor");
 
         when(employeeDao.getEmployee(employeeId)).thenReturn(startingEmployee);
-        when(employeeDao.saveEmployee(startingEmployee)).thenReturn(startingEmployee);
 
         // WHEN
         UpdateEmployeeResult result = updateEmployeeActivity.handleRequest(request);
@@ -153,7 +150,6 @@ public class UpdateEmployeeActivityTest {
         startingEmployee.setDeptId("1");
 
         when(employeeDao.getEmployee(employeeId)).thenReturn(startingEmployee);
-        when(employeeDao.saveEmployee(startingEmployee)).thenReturn(startingEmployee);
 
         // WHEN
         UpdateEmployeeResult result = updateEmployeeActivity.handleRequest(request);
@@ -178,7 +174,6 @@ public class UpdateEmployeeActivityTest {
         startingEmployee.setDeptName("Sand");
 
         when(employeeDao.getEmployee(employeeId)).thenReturn(startingEmployee);
-        when(employeeDao.saveEmployee(startingEmployee)).thenReturn(startingEmployee);
 
         // WHEN
         UpdateEmployeeResult result = updateEmployeeActivity.handleRequest(request);

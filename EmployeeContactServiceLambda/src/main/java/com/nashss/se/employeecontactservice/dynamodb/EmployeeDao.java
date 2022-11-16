@@ -78,18 +78,9 @@ public class EmployeeDao {
     /**
      * Saves (creates or updates) the given employee.
      * @param employee The employee to save
-     * @return The Employee object that was saved
      */
-    public Employee saveEmployee(Employee employee) {
+    public void saveEmployee(Employee employee) {
         this.dynamoDBMapper.save(employee);
-        return employee;
     }
-    /**
-     * Creates the provided employee in the Employees DynamoDB table.
-     *
-     * @param employeeToCreate the employee to be created in the table
-     */
-    public void createEmployee(Employee employeeToCreate) {
-        dynamoDBMapper.save(employeeToCreate);
-    }
+
 }

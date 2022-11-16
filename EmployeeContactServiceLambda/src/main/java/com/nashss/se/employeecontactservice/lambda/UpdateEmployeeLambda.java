@@ -6,6 +6,10 @@ import com.nashss.se.employeecontactservice.activity.results.UpdateEmployeeResul
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
+import java.util.Map;
+
+import static com.nashss.se.employeecontactservice.utils.NullUtils.ifNull;
+
 public class UpdateEmployeeLambda
         extends LambdaActivityRunner<UpdateEmployeeRequest, UpdateEmployeeResult>
         implements RequestHandler<LambdaRequest<UpdateEmployeeRequest>, LambdaResponse> {
@@ -15,11 +19,8 @@ public class UpdateEmployeeLambda
         return super.runActivity(
             () -> {
                 UpdateEmployeeRequest updateEmployeeRequest = input.fromBody(UpdateEmployeeRequest.class);
-                UpdateEmployeeRequest updateEmployeeRequest2 = input.fromPath(path ->
-                          UpdateEmployeeRequest.builder()
-                                .withEmployeeId(path.get("employeeId"))
-                                .build());
-                updateEmployeeRequest.setPathEmployeeId(updateEmployeeRequest2.getEmployeeId());
+                Map<String, String> path = ifNull(input.getPathParameters(), Map.of());
+                updateEmployeeRequest.setPathEmployeeId(path.get("employeeId"));
                 return updateEmployeeRequest;
             },
             (request, serviceComponent) ->

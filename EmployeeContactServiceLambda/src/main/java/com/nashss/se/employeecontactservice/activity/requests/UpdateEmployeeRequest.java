@@ -7,7 +7,10 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 public class UpdateEmployeeRequest {
 
     private String employeeId;
-
+    /**
+     * Uses the pathEmployee as our path and makes sure its the same
+     * EmployeeID that is trying to be changed.
+     */
     private String pathEmployeeId;
     private final String firstName;
 

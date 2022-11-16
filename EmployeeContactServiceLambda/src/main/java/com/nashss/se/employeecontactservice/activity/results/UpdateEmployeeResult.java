@@ -7,12 +7,7 @@ public class UpdateEmployeeResult {
 
     private final EmployeeModel employeeModel;
 
-    /**
-     * Takes in employeeModel.
-     *
-     * @param employeeModel to access the employeeModel.
-     */
-    public UpdateEmployeeResult(Employee employeeModel) {
+    private UpdateEmployeeResult(Employee employeeModel) {
         this.employeeModel = new EmployeeModel(employeeModel);
     }
 

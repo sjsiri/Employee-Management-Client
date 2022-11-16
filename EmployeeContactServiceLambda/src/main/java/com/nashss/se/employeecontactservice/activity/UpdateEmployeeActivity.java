@@ -62,8 +62,8 @@ public class UpdateEmployeeActivity {
         log.info("Received UpdateEmployeeRequest {}", updateEmployeeRequest);
 
 
-        if (updateEmployeeRequest.getEmployeeId() != updateEmployeeRequest.getPathEmployeeId() &&
-                updateEmployeeRequest.getEmployeeId() != null) {
+        if (updateEmployeeRequest.getEmployeeId() != null &&
+                !updateEmployeeRequest.getEmployeeId().equals(updateEmployeeRequest.getPathEmployeeId())) {
             throw new InvalidAttributeChangeException("Employee's ID can't be changed");
         }
 
@@ -78,21 +78,21 @@ public class UpdateEmployeeActivity {
                 updateEmployeeRequest.getLastName() != null) {
             publishExceptionMetrics(true);
             throw new InvalidAttributeValueException("Employee lastName [" +
-                    updateEmployeeRequest.getFirstName() + "] contains illegal characters");
+                    updateEmployeeRequest.getLastName() + "] contains illegal characters");
         }
 
         if (!EmployeeMgmtClientServiceUtils.isValidString(updateEmployeeRequest.getJobTitle()) &&
                 updateEmployeeRequest.getJobTitle() != null) {
             publishExceptionMetrics(true);
             throw new InvalidAttributeValueException("Employee jobTitle [" +
-                    updateEmployeeRequest.getFirstName() + "] contains illegal characters");
+                    updateEmployeeRequest.getJobTitle() + "] contains illegal characters");
         }
 
         if (!EmployeeMgmtClientServiceUtils.isValidString(updateEmployeeRequest.getDeptName()) &&
                 updateEmployeeRequest.getDeptName() != null) {
             publishExceptionMetrics(true);
             throw new InvalidAttributeValueException("Employee DeptName [" +
-                    updateEmployeeRequest.getFirstName() + "] contains illegal characters");
+                    updateEmployeeRequest.getDeptName() + "] contains illegal characters");
         }
 
         LocalDateConverter converter = new LocalDateConverter();
@@ -129,7 +129,7 @@ public class UpdateEmployeeActivity {
             employee.setEmployeeStatus(updateEmployeeRequest.getEmployeeStatus());
         }
 
-        employee = employeeDao.saveEmployee(employee);
+        employeeDao.saveEmployee(employee);
         publishExceptionMetrics(false);
         return UpdateEmployeeResult.builder().withEmployeeModel(employee).build();
 
