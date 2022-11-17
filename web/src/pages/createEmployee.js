@@ -11,7 +11,6 @@ class CreateEmployee extends BindingClass {
         super();
         this.bindClassMethods(['mount', 'submit', 'redirectToViewEmployee'], this);
         this.dataStore = new DataStore();
-        this.dataStore.addChangeListener(this.redirectToViewEmployee);
         this.header = new Header(this.dataStore);
     }
 
@@ -44,6 +43,7 @@ class CreateEmployee extends BindingClass {
         const employee = await this.client.createEmployee(firstName, lastName,
         jobTitle, email, phoneNumber, deptId, deptName, hireDate, dateOfBirth, employeeStatus);
         this.dataStore.set('employee', employee);
+        this.redirectToViewEmployee();
     }
 
     /**
