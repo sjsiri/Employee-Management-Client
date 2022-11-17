@@ -12,7 +12,7 @@ class ViewEmployees extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'displayEmployeesOnPage', 'generateTable', 'next', 'previous', 'getEmployee' ], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'displayEmployeesOnPage', 'generateTable', 'next', 'previous' ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayEmployeesOnPage);
         this.header = new Header(this.dataStore);
@@ -33,12 +33,6 @@ class ViewEmployees extends BindingClass {
 
     }
 
-    async getEmployee(){
-        //const employeeDetail = await this.client.getEmployee(employeeId);
-        //this.dataStore.set('employeeDetail', employeeDetail);
-
-
-    }
 
     /**
      * Add the header to the page and load the EmployeeMgmtClientClient.
@@ -60,10 +54,7 @@ class ViewEmployees extends BindingClass {
 
         row.addEventListener('click', async evt => {
                   console.log('The element that was clicked was ', element.employeeId);
-                  //const singleEmployee = await this.client.getEmployee(element.employeeId);
-                  //if (singleEmployee) {
                     window.location.href = `/view_employee.html?id=${element.employeeId}`;
-                  //}
                   });
 
 
@@ -92,11 +83,6 @@ class ViewEmployees extends BindingClass {
         cell.appendChild(a);
       }
 
-      document.querySelectorAll('td').forEach(cell => {
-//          cell.addEventListener('click', evt => {
-//          console.log('The element that was clicked was ', evt.target);
-//          });
-      });
     }
 
  /**

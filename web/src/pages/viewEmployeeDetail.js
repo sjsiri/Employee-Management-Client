@@ -65,7 +65,10 @@ class ViewEmployeeDetail extends BindingClass {
             document.getElementById('phone').value = employeeDetail.phoneNumber;
         }
         if (employeeDetail.deptId){
-            document.getElementById('dept').value = employeeDetail.deptId;
+            document.getElementById('deptId').value = employeeDetail.deptId;
+        }
+        if (employeeDetail.deptName){
+            document.getElementById('deptName').value = employeeDetail.deptName;
         }
         if (employeeDetail.dateOfBirth){
             document.getElementById('dob').value = employeeDetail.dateOfBirth;
@@ -73,9 +76,10 @@ class ViewEmployeeDetail extends BindingClass {
         if (employeeDetail.hireDate){
             document.getElementById('hireDate').value = employeeDetail.hireDate;
         }
-
+        if (employeeDetail.employeeStatus){
+            document.getElementById('employeeStatus').value = employeeDetail.employeeStatus;
+        }
  }
-
 
 }
 
