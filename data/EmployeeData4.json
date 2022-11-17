@@ -3,169 +3,16 @@
     {
       "PutRequest": {
         "Item": {
-          "employeeId": {"S":"mkYS4"},
-          "firstName": {"S":"Bennie"},
-          "lastName": {"S":"Reichert"},
-          "jobTitle": {"S":"Forward Retail Orchestrator"},
-          "email": {"S":"Bennie@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"(691) 643-1743"},
-          "dateOfBirth": {"S":"1986-11-22"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"RK8qh"},
-          "firstName": {"S":"Monet"},
-          "lastName": {"S":"Reichert"},
-          "jobTitle": {"S":"Dynamic Healthcare Planner"},
-          "email": {"S":"Monet@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"1-987-914-0028 x4040"},
-          "dateOfBirth": {"S":"2003-8-23"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"Wl3Wb"},
-          "firstName": {"S":"Mason"},
-          "lastName": {"S":"Connelly"},
-          "jobTitle": {"S":"Central Advertising Planner"},
-          "email": {"S":"Mason@placeholder.com"},
-          "deptId": {"S":"3"},
-          "deptName": {"S":"Development"},
-          "hireDate": {"S":"2022-11-17"},
-          "phoneNumber": {"S":"913-886-9784 x8631"},
-          "dateOfBirth": {"S":"1989-2-6"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"bSfZE"},
-          "firstName": {"S":"Waldo"},
-          "lastName": {"S":"Bode"},
-          "jobTitle": {"S":"Regional Farming Associate"},
-          "email": {"S":"Waldo@placeholder.com"},
-          "deptId": {"S":"5"},
-          "deptName": {"S":"Banking"},
-          "hireDate": {"S":"2022-11-17"},
-          "phoneNumber": {"S":"511.164.7518"},
-          "dateOfBirth": {"S":"1954-4-10"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"N4j5v"},
-          "firstName": {"S":"Keva"},
-          "lastName": {"S":"Bode"},
-          "jobTitle": {"S":"Human Hospitality Engineer"},
-          "email": {"S":"Keva@placeholder.com"},
-          "deptId": {"S":"5"},
-          "deptName": {"S":"Banking"},
-          "hireDate": {"S":"2022-11-17"},
-          "phoneNumber": {"S":"394.072.6854"},
-          "dateOfBirth": {"S":"2000-7-30"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"OrPLN"},
-          "firstName": {"S":"Machelle"},
-          "lastName": {"S":"Armstrong"},
-          "jobTitle": {"S":"National Designer"},
-          "email": {"S":"Machelle@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-15"},
-          "phoneNumber": {"S":"(772) 992-6517 x7391"},
-          "dateOfBirth": {"S":"1966-5-10"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"AGvMF"},
-          "firstName": {"S":"Genevie"},
-          "lastName": {"S":"Schimmel"},
-          "jobTitle": {"S":"Principal Marketing Developer"},
-          "email": {"S":"Genevie@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"(599) 890-5331 x92572"},
-          "dateOfBirth": {"S":"1964-5-25"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"5pRtQ"},
-          "firstName": {"S":"Marivel"},
-          "lastName": {"S":"Champlin"},
-          "jobTitle": {"S":"National Administration Consultant"},
-          "email": {"S":"Marivel@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-17"},
-          "phoneNumber": {"S":"222.726.4012 x117"},
-          "dateOfBirth": {"S":"1963-4-20"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"DC3Az"},
-          "firstName": {"S":"Gidget"},
-          "lastName": {"S":"Wiegand"},
-          "jobTitle": {"S":"Forward Healthcare Assistant"},
-          "email": {"S":"Gidget@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"(378) 642-0051"},
-          "dateOfBirth": {"S":"1999-12-8"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"psUn3"},
-          "firstName": {"S":"Stacee"},
-          "lastName": {"S":"Stroman"},
-          "jobTitle": {"S":"Dynamic Banking Representative"},
-          "email": {"S":"Stacee@placeholder.com"},
+          "employeeId": {"S":"MFVC9"},
+          "firstName": {"S":"Daron"},
+          "lastName": {"S":"Wehner"},
+          "jobTitle": {"S":"Advertising Developer"},
+          "email": {"S":"Daron@placeholder.com"},
           "deptId": {"S":"3"},
           "deptName": {"S":"Development"},
           "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"(348) 219-0158"},
-          "dateOfBirth": {"S":"1975-7-13"},
+          "phoneNumber": {"S":"3606640291"},
+          "dateOfBirth": {"S":"1978-09-19"},
           "employeeStatus": {"S":"Active"}
         }
       }
@@ -173,118 +20,16 @@
     {
       "PutRequest": {
         "Item": {
-          "employeeId": {"S":"KqMkC"},
-          "firstName": {"S":"Claude"},
-          "lastName": {"S":"Stokes"},
-          "jobTitle": {"S":"Senior Architect"},
-          "email": {"S":"Claude@placeholder.com"},
-          "deptId": {"S":"5"},
-          "deptName": {"S":"Banking"},
-          "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"1-868-613-7696"},
-          "dateOfBirth": {"S":"2001-7-26"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"em3Ej"},
-          "firstName": {"S":"Ambrose"},
-          "lastName": {"S":"Dach"},
-          "jobTitle": {"S":"Construction Orchestrator"},
-          "email": {"S":"Ambrose@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"376-636-7378 x677"},
-          "dateOfBirth": {"S":"1956-5-3"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"HHLKA"},
-          "firstName": {"S":"Timika"},
-          "lastName": {"S":"Dickens"},
-          "jobTitle": {"S":"Manufacturing Liaison"},
-          "email": {"S":"Timika@placeholder.com"},
-          "deptId": {"S":"2"},
-          "deptName": {"S":"Accounting"},
-          "hireDate": {"S":"2022-11-15"},
-          "phoneNumber": {"S":"1-384-008-5302"},
-          "dateOfBirth": {"S":"1999-8-23"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"2NIq2"},
-          "firstName": {"S":"Shakita"},
-          "lastName": {"S":"Ritchie"},
-          "jobTitle": {"S":"IT Technician"},
-          "email": {"S":"Shakita@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"589-942-7254 x681"},
-          "dateOfBirth": {"S":"2000-12-23"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"B49qs"},
-          "firstName": {"S":"Stewart"},
-          "lastName": {"S":"McCullough"},
-          "jobTitle": {"S":"Senior Design Designer"},
-          "email": {"S":"Stewart@placeholder.com"},
-          "deptId": {"S":"3"},
-          "deptName": {"S":"Development"},
-          "hireDate": {"S":"2022-11-15"},
-          "phoneNumber": {"S":"083.816.3107"},
-          "dateOfBirth": {"S":"1985-3-14"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"PWUtg"},
-          "firstName": {"S":"Elda"},
-          "lastName": {"S":"Friesen"},
-          "jobTitle": {"S":"Central Retail Architect"},
-          "email": {"S":"Elda@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-17"},
-          "phoneNumber": {"S":"1-143-724-8010"},
-          "dateOfBirth": {"S":"1983-9-25"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"pcvQD"},
-          "firstName": {"S":"Stewart"},
-          "lastName": {"S":"Glover"},
-          "jobTitle": {"S":"Consulting Facilitator"},
-          "email": {"S":"Stewart@placeholder.com"},
+          "employeeId": {"S":"3dHoM"},
+          "firstName": {"S":"Sudie"},
+          "lastName": {"S":"Hamill"},
+          "jobTitle": {"S":"Hospitality Consultant"},
+          "email": {"S":"Sudie@placeholder.com"},
           "deptId": {"S":"3"},
           "deptName": {"S":"Development"},
           "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"1-701-332-7675 x1331"},
-          "dateOfBirth": {"S":"1977-11-18"},
+          "phoneNumber": {"S":"4868401327"},
+          "dateOfBirth": {"S":"2003-06-06"},
           "employeeStatus": {"S":"Active"}
         }
       }
@@ -292,16 +37,16 @@
     {
       "PutRequest": {
         "Item": {
-          "employeeId": {"S":"IHMjF"},
-          "firstName": {"S":"Joshua"},
-          "lastName": {"S":"Bahringer"},
-          "jobTitle": {"S":"Direct Banking Supervisor"},
-          "email": {"S":"Joshua@placeholder.com"},
+          "employeeId": {"S":"ppgBE"},
+          "firstName": {"S":"August"},
+          "lastName": {"S":"Sauer"},
+          "jobTitle": {"S":"Marketing Director"},
+          "email": {"S":"August@placeholder.com"},
           "deptId": {"S":"4"},
           "deptName": {"S":"Gardening"},
           "hireDate": {"S":"2022-11-14"},
-          "phoneNumber": {"S":"391-923-5926"},
-          "dateOfBirth": {"S":"1955-2-6"},
+          "phoneNumber": {"S":"4957587045"},
+          "dateOfBirth": {"S":"1992-07-12"},
           "employeeStatus": {"S":"Active"}
         }
       }
@@ -309,16 +54,50 @@
     {
       "PutRequest": {
         "Item": {
-          "employeeId": {"S":"6Ilyu"},
-          "firstName": {"S":"Madonna"},
-          "lastName": {"S":"Stroman"},
-          "jobTitle": {"S":"Chief Orchestrator"},
-          "email": {"S":"Madonna@placeholder.com"},
+          "employeeId": {"S":"ZXIKu"},
+          "firstName": {"S":"Macy"},
+          "lastName": {"S":"Price"},
+          "jobTitle": {"S":"District IT Director"},
+          "email": {"S":"Macy@placeholder.com"},
+          "deptId": {"S":"4"},
+          "deptName": {"S":"Gardening"},
+          "hireDate": {"S":"2022-11-14"},
+          "phoneNumber": {"S":"1715014198"},
+          "dateOfBirth": {"S":"1960-01-27"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"1CBHh"},
+          "firstName": {"S":"Lena"},
+          "lastName": {"S":"Labadie"},
+          "jobTitle": {"S":"Design Producer"},
+          "email": {"S":"Lena@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
+          "hireDate": {"S":"2022-11-14"},
+          "phoneNumber": {"S":"1516746110"},
+          "dateOfBirth": {"S":"2001-02-03"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"HRp9B"},
+          "firstName": {"S":"Teri"},
+          "lastName": {"S":"Stoltenberg"},
+          "jobTitle": {"S":"Real-Estate Developer"},
+          "email": {"S":"Teri@placeholder.com"},
           "deptId": {"S":"5"},
           "deptName": {"S":"Banking"},
           "hireDate": {"S":"2022-11-17"},
-          "phoneNumber": {"S":"(222) 006-7390 x485"},
-          "dateOfBirth": {"S":"1996-1-28"},
+          "phoneNumber": {"S":"1650344379"},
+          "dateOfBirth": {"S":"1977-09-28"},
           "employeeStatus": {"S":"Active"}
         }
       }
@@ -326,16 +105,33 @@
     {
       "PutRequest": {
         "Item": {
-          "employeeId": {"S":"y18wt"},
-          "firstName": {"S":"Georgetta"},
-          "lastName": {"S":"Feest"},
-          "jobTitle": {"S":"Design Engineer"},
-          "email": {"S":"Georgetta@placeholder.com"},
+          "employeeId": {"S":"ZCq06"},
+          "firstName": {"S":"Maryland"},
+          "lastName": {"S":"Little"},
+          "jobTitle": {"S":"Global Representative"},
+          "email": {"S":"Maryland@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
+          "hireDate": {"S":"2022-11-14"},
+          "phoneNumber": {"S":"7527413445"},
+          "dateOfBirth": {"S":"1991-09-28"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"CYTli"},
+          "firstName": {"S":"Alberto"},
+          "lastName": {"S":"Kuhlman"},
+          "jobTitle": {"S":"Sales Developer"},
+          "email": {"S":"Alberto@placeholder.com"},
           "deptId": {"S":"4"},
           "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-17"},
-          "phoneNumber": {"S":"185-861-1635 x6165"},
-          "dateOfBirth": {"S":"1984-8-11"},
+          "hireDate": {"S":"2022-11-15"},
+          "phoneNumber": {"S":"1296577520"},
+          "dateOfBirth": {"S":"1955-01-26"},
           "employeeStatus": {"S":"Active"}
         }
       }
@@ -343,16 +139,16 @@
     {
       "PutRequest": {
         "Item": {
-          "employeeId": {"S":"TkVeo"},
-          "firstName": {"S":"Valentin"},
-          "lastName": {"S":"Reilly"},
-          "jobTitle": {"S":"Community-Services Coordinator"},
-          "email": {"S":"Valentin@placeholder.com"},
+          "employeeId": {"S":"WV3Xj"},
+          "firstName": {"S":"Edgardo"},
+          "lastName": {"S":"MacGyver"},
+          "jobTitle": {"S":"Administration Executive"},
+          "email": {"S":"Edgardo@placeholder.com"},
           "deptId": {"S":"3"},
           "deptName": {"S":"Development"},
           "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"362.960.6391 x7373"},
-          "dateOfBirth": {"S":"1965-10-1"},
+          "phoneNumber": {"S":"6705927235"},
+          "dateOfBirth": {"S":"1981-04-04"},
           "employeeStatus": {"S":"Active"}
         }
       }
@@ -360,33 +156,16 @@
     {
       "PutRequest": {
         "Item": {
-          "employeeId": {"S":"NpAH5"},
-          "firstName": {"S":"Dalila"},
-          "lastName": {"S":"Ward"},
-          "jobTitle": {"S":"District Architect"},
-          "email": {"S":"Dalila@placeholder.com"},
-          "deptId": {"S":"4"},
-          "deptName": {"S":"Gardening"},
-          "hireDate": {"S":"2022-11-15"},
-          "phoneNumber": {"S":"304-262-3704 x027"},
-          "dateOfBirth": {"S":"1971-6-8"},
-          "employeeStatus": {"S":"Active"}
-        }
-      }
-    },
-    {
-      "PutRequest": {
-        "Item": {
-          "employeeId": {"S":"JvrHV"},
-          "firstName": {"S":"Kiara"},
-          "lastName": {"S":"Batz"},
-          "jobTitle": {"S":"Human Sales Liaison"},
-          "email": {"S":"Kiara@placeholder.com"},
+          "employeeId": {"S":"K6hxp"},
+          "firstName": {"S":"Deandrea"},
+          "lastName": {"S":"Becker"},
+          "jobTitle": {"S":"Regional Legal Manager"},
+          "email": {"S":"Deandrea@placeholder.com"},
           "deptId": {"S":"5"},
           "deptName": {"S":"Banking"},
           "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"508.634.7157"},
-          "dateOfBirth": {"S":"1996-6-29"},
+          "phoneNumber": {"S":"3402508413"},
+          "dateOfBirth": {"S":"2003-03-25"},
           "employeeStatus": {"S":"Active"}
         }
       }
@@ -394,16 +173,50 @@
     {
       "PutRequest": {
         "Item": {
-          "employeeId": {"S":"TGH2C"},
-          "firstName": {"S":"Haywood"},
-          "lastName": {"S":"Gleichner"},
-          "jobTitle": {"S":"Hospitality Coordinator"},
-          "email": {"S":"Haywood@placeholder.com"},
+          "employeeId": {"S":"qjkPM"},
+          "firstName": {"S":"Joellen"},
+          "lastName": {"S":"Hickle"},
+          "jobTitle": {"S":"District Retail Director"},
+          "email": {"S":"Joellen@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"8083066431"},
+          "dateOfBirth": {"S":"1985-11-07"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"dKsEe"},
+          "firstName": {"S":"Jacinto"},
+          "lastName": {"S":"Kunze"},
+          "jobTitle": {"S":"Design Executive"},
+          "email": {"S":"Jacinto@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"1507011570"},
+          "dateOfBirth": {"S":"1958-07-14"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"J8QeX"},
+          "firstName": {"S":"Johnathon"},
+          "lastName": {"S":"Shanahan"},
+          "jobTitle": {"S":"Dynamic Agent"},
+          "email": {"S":"Johnathon@placeholder.com"},
           "deptId": {"S":"2"},
           "deptName": {"S":"Accounting"},
           "hireDate": {"S":"2022-11-15"},
-          "phoneNumber": {"S":"103.670.1433 x98223"},
-          "dateOfBirth": {"S":"1994-4-22"},
+          "phoneNumber": {"S":"4043713528"},
+          "dateOfBirth": {"S":"1985-04-20"},
           "employeeStatus": {"S":"Active"}
         }
       }
@@ -411,16 +224,203 @@
     {
       "PutRequest": {
         "Item": {
-          "employeeId": {"S":"DU67L"},
-          "firstName": {"S":"Phuong"},
-          "lastName": {"S":"Douglas"},
-          "jobTitle": {"S":"Advertising Director"},
-          "email": {"S":"Phuong@placeholder.com"},
+          "employeeId": {"S":"hPler"},
+          "firstName": {"S":"Pandora"},
+          "lastName": {"S":"Kris"},
+          "jobTitle": {"S":"Global Director"},
+          "email": {"S":"Pandora@placeholder.com"},
+          "deptId": {"S":"2"},
+          "deptName": {"S":"Accounting"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"3616594889"},
+          "dateOfBirth": {"S":"1961-05-19"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"kcoQX"},
+          "firstName": {"S":"Kris"},
+          "lastName": {"S":"Wisozk"},
+          "jobTitle": {"S":"Investor Farming Architect"},
+          "email": {"S":"Kris@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"3362255418"},
+          "dateOfBirth": {"S":"1965-06-05"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"xQ39F"},
+          "firstName": {"S":"Shaunda"},
+          "lastName": {"S":"White"},
+          "jobTitle": {"S":"Future Legal Orchestrator"},
+          "email": {"S":"Shaunda@placeholder.com"},
           "deptId": {"S":"4"},
           "deptName": {"S":"Gardening"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"4132136031"},
+          "dateOfBirth": {"S":"1958-07-24"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"hma3M"},
+          "firstName": {"S":"Wendi"},
+          "lastName": {"S":"Deckow"},
+          "jobTitle": {"S":"Sales Planner"},
+          "email": {"S":"Wendi@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-14"},
+          "phoneNumber": {"S":"4345038042"},
+          "dateOfBirth": {"S":"1978-03-09"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"TvX8x"},
+          "firstName": {"S":"Joya"},
+          "lastName": {"S":"Schuster"},
+          "jobTitle": {"S":"International Marketing Technician"},
+          "email": {"S":"Joya@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
+          "hireDate": {"S":"2022-11-15"},
+          "phoneNumber": {"S":"9411487939"},
+          "dateOfBirth": {"S":"1983-09-18"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"eQcsD"},
+          "firstName": {"S":"Eugenio"},
+          "lastName": {"S":"Kerluke"},
+          "jobTitle": {"S":"Construction Assistant"},
+          "email": {"S":"Eugenio@placeholder.com"},
+          "deptId": {"S":"4"},
+          "deptName": {"S":"Gardening"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"3312797210"},
+          "dateOfBirth": {"S":"1991-12-23"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"X120N"},
+          "firstName": {"S":"Major"},
+          "lastName": {"S":"Treutel"},
+          "jobTitle": {"S":"Senior Assistant"},
+          "email": {"S":"Major@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
           "hireDate": {"S":"2022-11-16"},
-          "phoneNumber": {"S":"(496) 411-5606"},
-          "dateOfBirth": {"S":"1985-3-15"},
+          "phoneNumber": {"S":"1401561437"},
+          "dateOfBirth": {"S":"1964-02-20"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"arqws"},
+          "firstName": {"S":"Jayna"},
+          "lastName": {"S":"Orn"},
+          "jobTitle": {"S":"Community-Services Technician"},
+          "email": {"S":"Jayna@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"3696641927"},
+          "dateOfBirth": {"S":"2003-06-22"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"rStlj"},
+          "firstName": {"S":"Wesley"},
+          "lastName": {"S":"Adams"},
+          "jobTitle": {"S":"Direct Real-Estate Officer"},
+          "email": {"S":"Wesley@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"9882478285"},
+          "dateOfBirth": {"S":"1994-08-16"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"jcU33"},
+          "firstName": {"S":"Delisa"},
+          "lastName": {"S":"Wunsch"},
+          "jobTitle": {"S":"Healthcare Strategist"},
+          "email": {"S":"Delisa@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-14"},
+          "phoneNumber": {"S":"5280454396"},
+          "dateOfBirth": {"S":"1969-09-26"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"cX8C1"},
+          "firstName": {"S":"Velma"},
+          "lastName": {"S":"Mann"},
+          "jobTitle": {"S":"Legal Strategist"},
+          "email": {"S":"Velma@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"7164321570"},
+          "dateOfBirth": {"S":"1991-11-19"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"116ki"},
+          "firstName": {"S":"Pat"},
+          "lastName": {"S":"Lemke"},
+          "jobTitle": {"S":"Regional Supervisor"},
+          "email": {"S":"Pat@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"7274800941"},
+          "dateOfBirth": {"S":"2002-05-17"},
           "employeeStatus": {"S":"Active"}
         }
       }
