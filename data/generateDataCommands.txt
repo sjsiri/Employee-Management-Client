@@ -1,0 +1,4 @@
+aws dynamodb batch-write-item --request-items file://data/EmployeeData.json
+aws dynamodb batch-write-item --request-items file://data/EmployeeData2.json
+aws dynamodb batch-write-item --request-items file://data/EmployeeData3.json
+aws dynamodb batch-write-item --request-items file://data/EmployeeData4.json
