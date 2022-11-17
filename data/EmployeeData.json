@@ -1,0 +1,429 @@
+{
+  "Employees": [
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"00001"},
+          "firstName": {"S":"Josh"},
+          "lastName": {"S":"Taylor"},
+          "jobTitle": {"S":"Founder"},
+          "email": {"S":"josh@placeholder.com"},
+          "deptId": {"S":"1"},
+          "deptName": {"S":"Board of Directors"},
+          "hireDate": {"S":"2022-11-09"},
+          "phoneNumber": {"S":"1112223333"},
+          "dateOfBirth": {"S":"2000-06-18"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"00002"},
+          "firstName": {"S":"Shilpa"},
+          "lastName": {"S":"Nair"},
+          "jobTitle": {"S":"Founder"},
+          "email": {"S":"shilpa@placeholder.com"},
+          "deptId": {"S":"1"},
+          "deptName": {"S":"Board of Directors"},
+          "hireDate": {"S":"2022-11-09"},
+          "phoneNumber": {"S":"1320487996"},
+          "dateOfBirth": {"S":"1990-01-01"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"00003"},
+          "firstName": {"S":"Jesse"},
+          "lastName": {"S":"Bass"},
+          "jobTitle": {"S":"Founder"},
+          "email": {"S":"jesse@placeholder.com"},
+          "deptId": {"S":"1"},
+          "deptName": {"S":"Board of Directors"},
+          "hireDate": {"S":"2022-11-09"},
+          "phoneNumber": {"S":"8876800851"},
+          "dateOfBirth": {"S":"1991-06-04"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"00004"},
+          "firstName": {"S":"Jack"},
+          "lastName": {"S":"Siri"},
+          "jobTitle": {"S":"Founder"},
+          "email": {"S":"jack@placeholder.com"},
+          "deptId": {"S":"1"},
+          "deptName": {"S":"Board of Directors"},
+          "hireDate": {"S":"2022-11-09"},
+          "phoneNumber": {"S":"4284567173"},
+          "dateOfBirth": {"S":"1994-08-05"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"00005"},
+          "firstName": {"S":"Sanjay"},
+          "lastName": {"S":"Tummalapalli"},
+          "jobTitle": {"S":"Founder"},
+          "email": {"S":"sanjay@placeholder.com"},
+          "deptId": {"S":"1"},
+          "deptName": {"S":"Board of Directors"},
+          "hireDate": {"S":"2022-11-09"},
+          "phoneNumber": {"S":"7631243230"},
+          "dateOfBirth": {"S":"1998-10-31"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"EUvlu"},
+          "firstName": {"S":"Dustin"},
+          "lastName": {"S":"Sauer"},
+          "jobTitle": {"S":"Global Strategist"},
+          "email": {"S":"Dustin@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"2588178666"},
+          "dateOfBirth": {"S":"1987-09-20"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"j02gV"},
+          "firstName": {"S":"Adina"},
+          "lastName": {"S":"Lind"},
+          "jobTitle": {"S":"Legacy Agent"},
+          "email": {"S":"Adina@placeholder.com"},
+          "deptId": {"S":"4"},
+          "deptName": {"S":"Gardening"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"9192030103"},
+          "dateOfBirth": {"S":"1969-07-04"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"uL9fc"},
+          "firstName": {"S":"Donnette"},
+          "lastName": {"S":"Schoen"},
+          "jobTitle": {"S":"Manufacturing Producer"},
+          "email": {"S":"Donnette@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"2458856240"},
+          "dateOfBirth": {"S":"1960-10-10"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"Mon1F"},
+          "firstName": {"S":"Wm"},
+          "lastName": {"S":"Daniel"},
+          "jobTitle": {"S":"Sales Orchestrator"},
+          "email": {"S":"Wm@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-15"},
+          "phoneNumber": {"S":"4752015182"},
+          "dateOfBirth": {"S":"1960-06-02"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"LED05"},
+          "firstName": {"S":"Romeo"},
+          "lastName": {"S":"Cassin"},
+          "jobTitle": {"S":"Principal Producer"},
+          "email": {"S":"Romeo@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"3604222412"},
+          "dateOfBirth": {"S":"1956-04-09"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"tKiC6"},
+          "firstName": {"S":"Mack"},
+          "lastName": {"S":"Windler"},
+          "jobTitle": {"S":"Direct Strategist"},
+          "email": {"S":"Mack@placeholder.com"},
+          "deptId": {"S":"4"},
+          "deptName": {"S":"Gardening"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"5442705888"},
+          "dateOfBirth": {"S":"2004-07-22"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"Bz86A"},
+          "firstName": {"S":"Javier"},
+          "lastName": {"S":"Sauer"},
+          "jobTitle": {"S":"Consulting Assistant"},
+          "email": {"S":"Javier@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-14"},
+          "phoneNumber": {"S":"7784258323"},
+          "dateOfBirth": {"S":"1963-11-16"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"1wquo"},
+          "firstName": {"S":"Lillia"},
+          "lastName": {"S":"Swaniawski"},
+          "jobTitle": {"S":"Central Coordinator"},
+          "email": {"S":"Lillia@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"1051362379"},
+          "dateOfBirth": {"S":"1982-10-21"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"xUEMd"},
+          "firstName": {"S":"Nita"},
+          "lastName": {"S":"Wolff"},
+          "jobTitle": {"S":"Regional Administrator"},
+          "email": {"S":"Nita@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"2238005850"},
+          "dateOfBirth": {"S":"1953-06-30"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"H4Y1I"},
+          "firstName": {"S":"Nga"},
+          "lastName": {"S":"Rempel"},
+          "jobTitle": {"S":"Internal Marketing Supervisor"},
+          "email": {"S":"Nga@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"4365538936"},
+          "dateOfBirth": {"S":"2000-11-03"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"kG6AH"},
+          "firstName": {"S":"Clayton"},
+          "lastName": {"S":"Beer"},
+          "jobTitle": {"S":"Legal Producer"},
+          "email": {"S":"Clayton@placeholder.com"},
+          "deptId": {"S":"4"},
+          "deptName": {"S":"Gardening"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"8032564165"},
+          "dateOfBirth": {"S":"1996-11-10"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"I1HZX"},
+          "firstName": {"S":"Lou"},
+          "lastName": {"S":"Orn"},
+          "jobTitle": {"S":"Regional Government Executive"},
+          "email": {"S":"Lou@placeholder.com"},
+          "deptId": {"S":"2"},
+          "deptName": {"S":"Accounting"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"4510595156"},
+          "dateOfBirth": {"S":"1957-12-24"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"M6cvc"},
+          "firstName": {"S":"Ricki"},
+          "lastName": {"S":"Jones"},
+          "jobTitle": {"S":"Real-Estate Administrator"},
+          "email": {"S":"Ricki@placeholder.com"},
+          "deptId": {"S":"2"},
+          "deptName": {"S":"Accounting"},
+          "hireDate": {"S":"2022-11-15"},
+          "phoneNumber": {"S":"6431355870"},
+          "dateOfBirth": {"S":"1950-10-17"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"PxbCj"},
+          "firstName": {"S":"Irwin"},
+          "lastName": {"S":"Feeney"},
+          "jobTitle": {"S":"National Advertising Architect"},
+          "email": {"S":"Irwin@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"3051780799"},
+          "dateOfBirth": {"S":"1958-02-03"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"h6oaE"},
+          "firstName": {"S":"Marry"},
+          "lastName": {"S":"Ziemann"},
+          "jobTitle": {"S":"Hospitality Executive"},
+          "email": {"S":"Marry@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
+          "hireDate": {"S":"2022-11-17"},
+          "phoneNumber": {"S":"7300328279"},
+          "dateOfBirth": {"S":"1977-12-10"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"qnqKq"},
+          "firstName": {"S":"Delmer"},
+          "lastName": {"S":"Koch"},
+          "jobTitle": {"S":"Investor Mining Consultant"},
+          "email": {"S":"Delmer@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-15"},
+          "phoneNumber": {"S":"5540617560"},
+          "dateOfBirth": {"S":"2004-05-04"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"OB0LT"},
+          "firstName": {"S":"Lindsay"},
+          "lastName": {"S":"McClure"},
+          "jobTitle": {"S":"National Legal Strategist"},
+          "email": {"S":"Lindsay@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-14"},
+          "phoneNumber": {"S":"7064605322"},
+          "dateOfBirth": {"S":"1953-07-31"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"tvbvm"},
+          "firstName": {"S":"Mellissa"},
+          "lastName": {"S":"Schuppe"},
+          "jobTitle": {"S":"Regional Director"},
+          "email": {"S":"Mellissa@placeholder.com"},
+          "deptId": {"S":"2"},
+          "deptName": {"S":"Accounting"},
+          "hireDate": {"S":"2022-11-15"},
+          "phoneNumber": {"S":"6847204677"},
+          "dateOfBirth": {"S":"1986-12-30"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"D3oQ9"},
+          "firstName": {"S":"Carl"},
+          "lastName": {"S":"Kiehn"},
+          "jobTitle": {"S":"Education Specialist"},
+          "email": {"S":"Carl@placeholder.com"},
+          "deptId": {"S":"5"},
+          "deptName": {"S":"Banking"},
+          "hireDate": {"S":"2022-11-15"},
+          "phoneNumber": {"S":"1757155297"},
+          "dateOfBirth": {"S":"1971-03-19"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "employeeId": {"S":"M852k"},
+          "firstName": {"S":"Kieth"},
+          "lastName": {"S":"Beahan"},
+          "jobTitle": {"S":"Future Consulting Planner"},
+          "email": {"S":"Kieth@placeholder.com"},
+          "deptId": {"S":"3"},
+          "deptName": {"S":"Development"},
+          "hireDate": {"S":"2022-11-16"},
+          "phoneNumber": {"S":"3702938180"},
+          "dateOfBirth": {"S":"1999-06-03"},
+          "employeeStatus": {"S":"Active"}
+        }
+      }
+    }
+  ]
+}
