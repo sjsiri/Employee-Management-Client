@@ -50,34 +50,34 @@ class ViewEmployeeDetail extends BindingClass {
         }
 
         if (employeeDetail.firstName){
-            document.getElementById('fname').value = employeeDetail.firstName;
+            document.getElementById('fname').innerHTML = employeeDetail.firstName;
         }
         if (employeeDetail.lastName){
-            document.getElementById('lname').value = employeeDetail.lastName;
+            document.getElementById('lname').innerHTML = employeeDetail.lastName;
         }
         if (employeeDetail.jobTitle){
-            document.getElementById('jobtitle').value = employeeDetail.jobTitle;
+            document.getElementById('jobtitle').innerHTML = employeeDetail.jobTitle;
         }
         if (employeeDetail.email){
-            document.getElementById('email').value = employeeDetail.email;
+            document.getElementById('email').innerHTML = employeeDetail.email;
         }
         if (employeeDetail.phoneNumber){
-            document.getElementById('phone').value = employeeDetail.phoneNumber;
+            document.getElementById('phone').innerHTML = employeeDetail.phoneNumber;
         }
         if (employeeDetail.deptId){
-            document.getElementById('deptId').value = employeeDetail.deptId;
+            document.getElementById('deptId').innerHTML = employeeDetail.deptId;
         }
         if (employeeDetail.deptName){
-            document.getElementById('deptName').value = employeeDetail.deptName;
+            document.getElementById('deptName').innerHTML = employeeDetail.deptName;
         }
         if (employeeDetail.dateOfBirth){
-            document.getElementById('dob').value = employeeDetail.dateOfBirth;
+            document.getElementById('dob').innerHTML = employeeDetail.dateOfBirth;
         }
         if (employeeDetail.hireDate){
-            document.getElementById('hireDate').value = employeeDetail.hireDate;
+            document.getElementById('hireDate').innerHTML = employeeDetail.hireDate;
         }
         if (employeeDetail.employeeStatus){
-            document.getElementById('employeeStatus').value = employeeDetail.employeeStatus;
+            document.getElementById('employeeStatus').innerHTML = employeeDetail.employeeStatus;
         }
  }
 

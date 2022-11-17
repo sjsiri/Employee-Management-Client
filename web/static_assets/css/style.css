@@ -32,6 +32,21 @@ button {
   font-weight: bold;
 }
 
+form label{
+  font-weight:bold;
+}
+
+.div-1{
+  font-weight:bold;
+  display: inline-block;
+  color: var(--tertiary-color);
+}
+
+.div-2{
+  font-weight:bold;
+  display: inline-block;
+}
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
