@@ -34,7 +34,7 @@ class ViewEmployeeDetail extends BindingClass {
      * Add the header to the page and load the EmployeeMgmtClientClient.
      */
     async mount() {
-        document.getElementById('update-employee').addEventListener('click', this.update);
+        document.getElementById('save-employee').addEventListener('click', this.update);
         this.header.addHeaderToPage();
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
@@ -113,8 +113,8 @@ class ViewEmployeeDetail extends BindingClass {
  * Main method to run when the page contents have loaded.
  */
 const main = async () => {
-    const viewEmployeeDetail = new ViewEmployeeDetail();
-    await viewEmployeeDetail.mount();
+    const updateEmployee = new ViewEmployeeDetail();
+    await updateEmployee.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);
