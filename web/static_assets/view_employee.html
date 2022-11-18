@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Employee Management Client</title>
-    <script type="text/javascript" src="assets/viewEmployee.js"></script>
+    <script type="text/javascript" src="assets/viewEmployeeDetail.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <header class="header" id="header"></header>
@@ -10,35 +10,46 @@
     <h2>View Employee</h2>
     <form class="card-content" id="view-employee-form">
         <p class="form-field">
-            <label>First Name</label>
-            <input type="text" required class="validated-field" id="fname" value="test" readonly>
+            <div class="div-1" >First Name: </div>
+            <div class="div-2"  id="fname" ></div>
         </p>
         <p class="form-field">
-            <label>Last Name</label>
-            <input type="text" id="lname" readonly>
+            <div class="div-1"> Last Name: </div>
+            <div class="div-2" id="lname" > </div>
         </p>
         <p class="form-field">
-            <label>Job Title</label>
-            <input type="text" id="jobtitle" readonly>
+            <div class="div-1" >Job Title: </div>
+            <div class="div-2" id="jobtitle" > </div>
         </p>
         <p class="form-field">
-            <label>Email</label>
-            <input type="email" id="email" readonly>
+            <div class="div-1">Email: </div>
+            <div class="div-2"  id="email" > </div>
         </p>
         <p class="form-field">
-            <label>Phone#</label>
-            <input type="tel" id="phone" readonly>
+            <div class="div-1">Phone#: </div>
+            <div class="div-2"  id="phone" ></div>
         </p>
         <p class="form-field">
-            <label>Department</label>
-            <input type="text" id="dept" readonly>
+            <div class="div-1">Department Id</div>
+            <div class="div-2"  id="deptId" ></div>
         </p>
         <p class="form-field">
-            <label>Date of Birth</label>
-            <input type="date" id="dob" readonly>
+            <div class="div-1">Department Name</div>
+            <div class="div-2" id="deptName" ></div>
+        </p>
+        <p class="form-field">
+            <div class="div-1">Birth Date: </div>
+            <div class="div-2" id="dob" ></div>
+        </p>
+        <p class="form-field">
+            <div class="div-1">Hire Date:</div>
+            <div class="div-2" id="hireDate" ></div>
+        </p>
+        <p class="form-field">
+            <div class="div-1">Status</div>
+            <div class="div-2" id="employeeStatus" ></div>
         </p>
     </form>
-    <button type="button" onclick="location.href='update_employee.html';" id="edit-employee">Update Employee</button>
-    <button type="button" onclick="location.href='index.html';" id="viewAllEmployees"> View All Employees</button>
+    <button type="button"  id="update-employee">Update Employee</button>
 </div>
 </html>

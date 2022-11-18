@@ -32,16 +32,39 @@ button {
   font-weight: bold;
 }
 
+form label{
+  font-weight:bold;
+}
+
+.div-1{
+  font-weight:bold;
+  display: inline-block;
+  color: var(--tertiary-color);
+}
+
+.div-2{
+  font-weight:bold;
+  display: inline-block;
+}
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-td, th {
+td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+}
+
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: var(--tertiary-color);
+  background-color: #ffffff;
 }
 
 tr:nth-child(even) {
