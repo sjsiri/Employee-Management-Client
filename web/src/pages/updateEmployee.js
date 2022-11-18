@@ -14,8 +14,6 @@ class ViewEmployeeDetail extends BindingClass {
         super();
         this.bindClassMethods(['clientLoaded', 'mount', 'displayEmpDetails', 'update', 'redirectToViewEmployee'], this);
         this.dataStore = new DataStore();
-        this.dataStore.addChangeListener(this.displayEmpDetails);
-        this.dataStore.addChangeListener(this.redirectToViewEmployee);
         this.header = new Header(this.dataStore);
     }
 
@@ -28,6 +26,7 @@ class ViewEmployeeDetail extends BindingClass {
         this.dataStore.set('employeeId', employeeId);
         const employeeDetail = await this.client.getEmployee(employeeId);
         this.dataStore.set('employeeDetail', employeeDetail);
+        this.displayEmpDetails();
     }
 
     /**
@@ -36,9 +35,6 @@ class ViewEmployeeDetail extends BindingClass {
     async mount() {
         document.getElementById('save-employee').addEventListener('click', this.update);
         const btn = document.getElementById('save-employee');
-        btn.addEventListener('click', function handleClick(){
-        btn.textContent = 'Saving Employee...';
-        })
         this.header.addHeaderToPage();
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
@@ -99,15 +95,16 @@ class ViewEmployeeDetail extends BindingClass {
         const phoneNumber = document.getElementById('phone').value;
         const dateOfBirth = document.getElementById('dob').value;
         const employeeStatus = document.getElementById('employeeStatus').value;
-
+        document.getElementById('save-employee').innerHTML = 'Saving Employe...';
         const employee = await this.client.updateEmployee(employeeId, firstName, lastName, jobTitle, email, deptId, deptName,
         hireDate, phoneNumber, dateOfBirth, employeeStatus);
         this.dataStore.set('employee', employee);
+        this.redirectToViewEmployee();
     }
 
     redirectToViewEmployee() {
         const employee = this.dataStore.get('employee');
-        if (employee != null) {
+        if (employee) {
             window.location.href = `/index.html`;
         }
     }
