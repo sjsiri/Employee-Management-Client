@@ -35,6 +35,10 @@ class ViewEmployeeDetail extends BindingClass {
      */
     async mount() {
         document.getElementById('save-employee').addEventListener('click', this.update);
+        const btn = document.getElementById('save-employee');
+        btn.addEventListener('click', function handleClick(){
+        btn.textContent = 'Saving Employee...';
+        })
         this.header.addHeaderToPage();
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
