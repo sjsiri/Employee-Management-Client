@@ -34,7 +34,6 @@ class ViewEmployeeDetail extends BindingClass {
      */
     async mount() {
         document.getElementById('save-employee').addEventListener('click', this.update);
-        const btn = document.getElementById('save-employee');
         this.header.addHeaderToPage();
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
@@ -82,7 +81,8 @@ class ViewEmployeeDetail extends BindingClass {
              if (employeeDetail.employeeStatus){
                  document.getElementById('employeeStatus').value = employeeDetail.employeeStatus;
              }
-}
+    }
+
     async update() {
         const employeeId = this.dataStore.get('employeeId');
         const firstName = document.getElementById('fname').value;
@@ -96,9 +96,10 @@ class ViewEmployeeDetail extends BindingClass {
         const dateOfBirth = document.getElementById('dob').value;
         const employeeStatus = document.getElementById('employeeStatus').value;
         document.getElementById('save-employee').innerHTML = 'Saving Employe...';
-        const employee = await this.client.updateEmployee(employeeId, firstName, lastName, jobTitle, email, deptId, deptName,
-        hireDate, phoneNumber, dateOfBirth, employeeStatus);
-        this.dataStore.set('employee', employee);
+        const employee = {employeeId: employeeId, firstName: firstName, lastName: lastName, jobTitle: jobTitle, email: email, deptId: deptId,
+                           deptName: deptName, hireDate: hireDate, dateOfBirth: dateOfBirth, employeeStatus: employeeStatus};
+        const employeeUpdated = await this.client.updateEmployee(employee);
+        this.dataStore.set('employee', employeeUpdated);
         this.redirectToViewEmployee();
     }
 

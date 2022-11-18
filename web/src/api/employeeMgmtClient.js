@@ -108,20 +108,19 @@ export default class EmployeeMgmtClient extends BindingClass {
         }
     }
 
-    async updateEmployee(employeeId, firstName, lastName, jobTitle, email, deptId,
-      deptName, hireDate, phoneNumber, dateOfBirth, employeeStatus, errorCallback) {
+    async updateEmployee(employee, errorCallback) {
          try {
-             const response = await this.client.put(`employees/${employeeId}`, {
-                 firstName: firstName,
-                 lastName: lastName,
-                 jobTitle: jobTitle,
-                 email: email,
-                 deptId: deptId,
-                 deptName: deptName,
-                 hireDate: hireDate,
-                 phoneNumber: phoneNumber,
-                 dateOfBirth: dateOfBirth,
-                 employeeStatus: employeeStatus
+             const response = await this.client.put(`employees/${employee.employeeId}`, {
+                 firstName: employee.firstName,
+                 lastName: employee.lastName,
+                 jobTitle: employee.jobTitle,
+                 email: employee.email,
+                 deptId: employee.deptId,
+                 deptName: employee.deptName,
+                 hireDate: employee.hireDate,
+                 phoneNumber: employee.phoneNumber,
+                 dateOfBirth: employee.dateOfBirth,
+                 employeeStatus: employee.employeeStatus
              });
              return response.data.employeeModel;
          } catch (error) {
