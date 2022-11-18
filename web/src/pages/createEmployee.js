@@ -51,7 +51,7 @@ class CreateEmployee extends BindingClass {
      */
     redirectToViewEmployee() {
         const employee = this.dataStore.get('employee');
-        if (employee != null) {
+        if (employee) {
             window.location.href = `/index.html`;
         }
     }
