@@ -7,11 +7,11 @@
 </head>
 <header class="header" id="header"></header>
 <div class="card">
-    <h2>Update Employee</h2>
-    <form class="card-content" id="update-employee-form">
+    <h2>View Employee</h2>
+    <form class="card-content" id="view-employee-form">
         <p class="form-field">
             <label>First Name</label>
-            <input type="text" required class="validated-field" id="fname" value="test">
+            <input type="text" required class="validated-field" id="fname">
         </p>
         <p class="form-field">
             <label>Last Name</label>
@@ -30,14 +30,26 @@
             <input type="tel" id="phone">
         </p>
         <p class="form-field">
-            <label>Department</label>
-            <input type="text" id="dept">
+            <label>Department ID</label>
+            <input type="text" id="deptId">
+        </p>
+        <p class="form-field">
+            <label>Department Name</label>
+            <input type="text" id="deptName">
         </p>
         <p class="form-field">
             <label>Date of Birth</label>
-            <input type="date" id="dob" >
+            <input type="date" id="dob">
+        </p>
+        <p class="form-field">
+            <label>Hire Date</label>
+            <input type="date" id="hireDate">
+        </p>
+        <p class="form-field">
+            <label>Status</label>
+            <input type="text" id="employeeStatus">
         </p>
     </form>
-    <button type="button" id="edit-employee">Update Employee</button>
+    <button type="button"  id="update-employee">Update Employee</button>
 </div>
 </html>
