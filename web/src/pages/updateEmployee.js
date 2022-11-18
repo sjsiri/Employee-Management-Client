@@ -95,9 +95,20 @@ class ViewEmployeeDetail extends BindingClass {
         const phoneNumber = document.getElementById('phone').value;
         const dateOfBirth = document.getElementById('dob').value;
         const employeeStatus = document.getElementById('employeeStatus').value;
-        document.getElementById('save-employee').innerHTML = 'Saving Employe...';
-        const employee = {employeeId: employeeId, firstName: firstName, lastName: lastName, jobTitle: jobTitle, email: email, deptId: deptId,
-                           deptName: deptName, hireDate: hireDate, dateOfBirth: dateOfBirth, employeeStatus: employeeStatus};
+        document.getElementById('save-employee').innerHTML = 'Saving Employee...';
+
+        const employee = {
+            employeeId,
+            firstName,
+            lastName,
+            jobTitle,
+            email,
+            deptId,
+            deptName,
+            hireDate,
+            dateOfBirth,
+            employeeStatus};
+
         const employeeUpdated = await this.client.updateEmployee(employee);
         this.dataStore.set('employee', employeeUpdated);
         this.redirectToViewEmployee();
