@@ -87,15 +87,22 @@ export default class EmployeeMgmtClient extends BindingClass {
      * @param errorCallback (Optional) A function to execute if the call fails.
      * @returns The playlist that has been created.
      */
-    async createEmployee(fname, lname, jobtitle, email, phone, dept, dob, errorCallback) {
+    async createEmployee(firstName, lastName, jobTitle, email, phoneNumber, deptId,
+        deptName, hireDate, dateOfBirth, employeeStatus, errorCallback) {
         try {
             const response = await this.client.post(`employees`, {
-            //TODO: Add the post attributes per the API definition. Check with Jack
-                name: name,
-                customerId: customerId,
-                tags: tags
+            firstName: firstName,
+            lastName: lastName,
+            jobTitle: jobTitle,
+            email: email,
+            deptId: deptId,
+            deptName: deptName,
+            hireDate: hireDate,
+            phoneNumber: phoneNumber,
+            dateOfBirth: dateOfBirth,
+            employeeStatus: employeeStatus
             });
-            return response.data.employee;
+            return response.data.employeeModel;
         } catch (error) {
             this.handleError(error, errorCallback)
         }
@@ -121,7 +128,6 @@ export default class EmployeeMgmtClient extends BindingClass {
              this.handleError(error, errorCallback)
          }
      }
-
 
     /**
      * Helper method to log the error and run any error functions.
