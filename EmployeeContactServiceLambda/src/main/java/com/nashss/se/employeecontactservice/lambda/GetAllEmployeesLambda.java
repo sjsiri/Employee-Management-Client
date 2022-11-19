@@ -11,13 +11,11 @@ public class GetAllEmployeesLambda extends LambdaActivityRunner<GetAllEmployeesR
 
     @Override
     public LambdaResponse handleRequest(LambdaRequest<GetAllEmployeesRequest> input, Context context) {
-        return super.runActivity(
-            () -> input.fromPath(path ->
+        return super.runActivity(() -> input.fromPath(path ->
                     GetAllEmployeesRequest.builder()
                             .withEmployeeId(path.get("employeeId"))
                             .withforwardBoolean(Boolean.parseBoolean(path.get("forward")))
-                            .build()),
-            (request, serviceComponent) ->
+                            .build()), (request, serviceComponent) ->
                     serviceComponent.provideGetAllEmployeesActivity().handleRequest(request)
         );
     }
