@@ -1,5 +1,6 @@
 package com.nashss.se.employeecontactservice.dependency;
 
+import com.nashss.se.employeecontactservice.activity.CreateDepartmentActivity;
 import com.nashss.se.employeecontactservice.activity.CreateEmployeeActivity;
 import com.nashss.se.employeecontactservice.activity.GetAllEmployeesActivity;
 import com.nashss.se.employeecontactservice.activity.GetSingleEmployeeDetailsActivity;
@@ -40,4 +41,10 @@ public interface ServiceComponent {
      * @return CreateEmployeeActivity
      */
     CreateEmployeeActivity provideCreateEmployeeActivity();
+
+    /**
+     * Provides the relevant activity.
+     * @return CreateDepartmentActivity
+     */
+    CreateDepartmentActivity provideCreateDepartmentActivity();
 }
