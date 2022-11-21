@@ -278,3 +278,21 @@ Resources:
               KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"
+
+  DepartmentsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "DeptId"
+          AttributeType: "N"
+        - AttributeName: "DeptName"
+          AttributeType: "S"
+        - AttributeName: "Status"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "DeptId"
+          KeyType: "HASH"
+      BillingMode: "PAY_PER_REQUEST"
+      TableName: "Departments"
+      Projection:
+       ProjectionType: "ALL"
