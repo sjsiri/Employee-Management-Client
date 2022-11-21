@@ -285,14 +285,8 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "deptId"
           AttributeType: "N"
-        - AttributeName: "deptName"
-          AttributeType: "S"
-        - AttributeName: "departmentStatus"
-          AttributeType: "S"
       KeySchema:
         - AttributeName: "deptId"
           KeyType: "HASH"
       BillingMode: "PAY_PER_REQUEST"
       TableName: "Departments"
-      Projection:
-        ProjectionType: "ALL"
