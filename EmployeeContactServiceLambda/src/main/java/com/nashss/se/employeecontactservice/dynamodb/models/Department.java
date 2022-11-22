@@ -2,14 +2,12 @@ package com.nashss.se.employeecontactservice.dynamodb.models;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 import java.util.Objects;
 
 @DynamoDBTable(tableName = "Departments")
 public class Department {
-    public static final String DEPARTMENT_STATUS = "DeptStatusIndex";
 
     private String deptId;
     private String deptName;
@@ -35,7 +33,8 @@ public class Department {
         this.deptName = deptName;
     }
 
-    @DynamoDBRangeKey(attributeName = "deptStatus")
+    @DynamoDBAttribute(attributeName = "deptStatus")
+
     public String getDeptStatus() {
         return deptStatus;
     }

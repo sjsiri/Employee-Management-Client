@@ -54,30 +54,10 @@ public class DepartmentDao {
      * @param deptStartKey the Department ID
      * @return the stored Departments, or null if none was found.
      */
-    //CHECKSTYLE:OFF:Builder
     public List<Department> getAllActiveDepartmentsWithLimit(String deptStartKey) {
-//        Map<String, AttributeValue> startKeyMap = new HashMap<>();
-//        startKeyMap.put("deptStatus", new AttributeValue().withS("Active"));
-//        startKeyMap.put("deptId", new AttributeValue().withS(deptStartKey));
-//
-//        Map<String, AttributeValue> valueMap = new HashMap<>();
-//        valueMap.put(":deptStatus", new AttributeValue().withS("Active"));
-
-//        DynamoDBQueryExpression<Department> queryExpression = new DynamoDBQueryExpression<Department>()
-//                .withIndexName(Department.DEPARTMENT_STATUS)
-//                .withLimit(PAGE_SIZE)
-//                .withConsistentRead(false)
-//                .withExclusiveStartKey(startKeyMap)
-//                .withKeyConditionExpression("deptStatus = :deptStatus")
-//                .withExpressionAttributeValues(valueMap);
-
-        Map<String, AttributeValue> startKeyMap = new HashMap<>();
-        startKeyMap.put("deptId", new AttributeValue().withS(deptStartKey));
 
         Map<String, AttributeValue> valueMap = new HashMap<>();
         valueMap.put(":deptStatus", new AttributeValue().withS("Active"));
-        //valueMap.put(":deptId", new AttributeValue().withS(deptStartKey));
-
 
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
                 .withFilterExpression("deptStatus = :deptStatus")

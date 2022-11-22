@@ -11,11 +11,9 @@ class ViewEmployees extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'generateTable', 'loadDeptDropDown', 'next', 'previous' ], this);
+        this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'generateTable',  'next', 'previous' ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayEmployeesOnPage);
-        this.dataStore.addChangeListener(this.loadDeptDropDown);
-
         this.header = new Header(this.dataStore);
     }
 
@@ -91,21 +89,6 @@ class ViewEmployees extends BindingClass {
 
     }
 
-   async loadDeptDropDown() {
-
-        const deptListData = this.dataStore.get('departments');
-        const deptsDropDown = document.getElementById('depts');
-
-        for (let key in deptListData) {
-          let option = document.createElement("option");
-          option.setAttribute('value', key.deptName);
-
-          let optionText = document.createTextNode(key);
-          option.appendChild(optionText);
-
-          deptsDropDown.appendChild(option);
-        }
-    }
  /**
      * When the employees are updated in the datastore, update the list of employees on the page.
      */

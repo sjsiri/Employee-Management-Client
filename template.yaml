@@ -324,8 +324,6 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "deptId"
           AttributeType: "S"
-        - AttributeName: "deptStatus"
-          AttributeType: "S"
       KeySchema:
         - AttributeName: "deptId"
           KeyType: "HASH"
