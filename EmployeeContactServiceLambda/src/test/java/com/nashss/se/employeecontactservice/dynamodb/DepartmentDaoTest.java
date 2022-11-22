@@ -2,17 +2,11 @@ package com.nashss.se.employeecontactservice.dynamodb;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
-import com.amazonaws.services.dynamodbv2.datamodeling.QueryResultPage;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
-import com.nashss.se.employeecontactservice.exceptions.EmployeeNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -59,7 +53,7 @@ class DepartmentDaoTest {
 
         // THEN
         verify(mapper).scan(eq(Department.class), any());
-        verify(paginatedScanList);
+        
     }
 
 }
