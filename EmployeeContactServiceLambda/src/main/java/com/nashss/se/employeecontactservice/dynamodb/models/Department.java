@@ -1,5 +1,6 @@
 package com.nashss.se.employeecontactservice.dynamodb.models;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
@@ -22,7 +23,7 @@ public class Department {
     public void setDeptId(String deptId) {
         this.deptId = deptId;
     }
-    @DynamoDBHashKey(attributeName = "deptName")
+    @DynamoDBAttribute(attributeName = "deptName")
     public String getDeptName() {
         return deptName;
     }
@@ -30,7 +31,7 @@ public class Department {
     public void setDeptName(String deptName) {
         this.deptName = deptName;
     }
-    @DynamoDBHashKey(attributeName = "deptStatus")
+    @DynamoDBAttribute(attributeName = "deptStatus")
     public String getDeptStatus() {
         return deptStatus;
     }
