@@ -7,9 +7,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import java.util.Objects;
 @DynamoDBTable(tableName = "Departments")
 public class Department {
-
-    public static final String DEPARTMENT_STATUS = "DepartmentStatusIndex";
-
     private String deptId;
 
     private String deptName;

@@ -1,9 +1,10 @@
 package com.nashss.se.employeecontactservice.activity.requests;
 
+import com.amazonaws.internal.config.Builder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonDeserialize(builder = CreateDepartmentRequest.Builder.class)
+@JsonDeserialize(builder = Builder.class)
 public class CreateDepartmentRequest {
 
     private String deptId;
@@ -34,8 +35,8 @@ public class CreateDepartmentRequest {
     }
 
     //CHECKSTYLE:OFF:Builder
-    public static CreateDepartmentRequest.Builder builder() {
-        return new CreateDepartmentRequest.Builder();
+    public static Builder builder() {
+        return new Builder();
     }
     @JsonPOJOBuilder
     public static class Builder {
@@ -45,16 +46,16 @@ public class CreateDepartmentRequest {
 
         private String deptStatus;
 
-        public CreateDepartmentRequest.Builder withDeptId(String deptId) {
+        public Builder withDeptId(String deptId) {
             this.deptId = deptId;
             return this;
         }
 
-        public CreateDepartmentRequest.Builder withDeptName(String deptName) {
+        public Builder withDeptName(String deptName) {
             this.deptName = deptName;
             return this;
         }
-        public CreateDepartmentRequest.Builder withDeptStatus(String deptStatus) {
+        public Builder withDeptStatus(String deptStatus) {
             this.deptStatus = deptStatus;
             return this;
         }

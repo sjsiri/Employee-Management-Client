@@ -20,7 +20,7 @@ public class CreateDepartmentActivity {
     /**
      * Instantiates a new CreateDepartmentActivity object.
      *
-     * @param departmentDao EmployeeDao to access the employee table.
+     * @param departmentDao DepartmentDao to access the department table.
      */
     @Inject
     public CreateDepartmentActivity(DepartmentDao departmentDao) {
@@ -36,8 +36,8 @@ public class CreateDepartmentActivity {
      * If deptId and/or departmentName are invalid strings,
      * this should throw an InvalidAttributeValueException.
      *
-     * @param request request object containing the employee's information
-     * @return getDepartmentResult result object containing the API defined {@link Department}
+     * @param request request object containing the department's information
+     * @return CreateDepartmentResult result object containing the API defined {@link Department}
      */
     public CreateDepartmentResult handleRequest(CreateDepartmentRequest request) {
         log.info("Received Create Department Request {}", request);

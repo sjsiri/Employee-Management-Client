@@ -1,27 +1,22 @@
 package com.nashss.se.employeecontactservice.activity.results;
 
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-import com.nashss.se.employeecontactservice.models.DepartmentModel;
 
 public class CreateDepartmentResult {
-    private final DepartmentModel departmentModel;
+    private final Department department;
     /**
      * Constructs results.
      *
-     * @param department the department.
+     * @param department the department to be created.
      */
     public CreateDepartmentResult(Department department) {
-        this.departmentModel = new DepartmentModel(department);
-    }
-
-    public DepartmentModel getDepartmentModel() {
-        return departmentModel;
+        this.department = department;
     }
 
     @Override
     public String toString() {
         return "CreateDepartmentResult{" +
-                "departmentModel=" + departmentModel +
+                "departmentModel=" + department +
                 '}';
     }
 
