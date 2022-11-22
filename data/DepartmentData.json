@@ -1,0 +1,40 @@
+{
+  "Departments": [
+    {
+      "PutRequest": {
+        "Item": {
+          "deptId": {"S":"abc001"},
+          "deptName": {"S":"Department of Wizards"},
+          "deptStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "deptId": {"S":"abc002"},
+          "deptName": {"S":"Department of Mischief"},
+          "deptStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "deptId": {"S":"abc003"},
+          "deptName": {"S":"Department of Muggles"},
+          "deptStatus": {"S":"Active"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "deptId": {"S":"abc004"},
+          "deptName": {"S":"Department of Magic"},
+          "deptStatus": {"S":"Active"}
+        }
+      }
+    }
+  ]
+}

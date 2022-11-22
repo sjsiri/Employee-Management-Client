@@ -6,13 +6,12 @@ import DataStore from "../util/DataStore";
 /**
  * Logic needed for the view playlist page of the website.
  */
-//Global variable to track the very first employee Id retrieved and the first page.
 
 class ViewEmployees extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'displayEmployeesOnPage', 'generateTable', 'next', 'previous' ], this);
+        this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'generateTable',  'next', 'previous' ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayEmployeesOnPage);
         this.header = new Header(this.dataStore);
@@ -30,6 +29,11 @@ class ViewEmployees extends BindingClass {
         const employees = await this.client.getAllEmployees(0, true);
         this.dataStore.set('employees', employees);
         this.dataStore.set('firstEmpId', employees[0].employeeId);
+
+        //Get all depts API
+        const departments = await this.client.getAllDepartments();
+        console.log(departments);
+        this.dataStore.set('departments', departments);
 
     }
 
@@ -88,9 +92,8 @@ class ViewEmployees extends BindingClass {
  /**
      * When the employees are updated in the datastore, update the list of employees on the page.
      */
-    displayEmployeesOnPage() {
+    async displayEmployeesOnPage() {
         const employees = this.dataStore.get('employees');
-
 
         if (!employees) {
             return;
@@ -119,6 +122,7 @@ class ViewEmployees extends BindingClass {
                 document.getElementById('previous').disabled = true;
                 document.getElementById('previous').style.background='grey';
             }
+
  }
 
      async next() {
