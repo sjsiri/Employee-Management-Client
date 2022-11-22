@@ -13,7 +13,7 @@ public class GetAllDepartmentsLambda extends LambdaActivityRunner<GetAllDepartme
     public LambdaResponse handleRequest(LambdaRequest<GetAllDepartmentsRequest> input, Context context) {
         return super.runActivity(() -> input.fromPath(path ->
                         GetAllDepartmentsRequest.builder()
-                                .withDeptId(Integer.valueOf(path.get("deptId")))
+                                .withDeptId(path.get("deptId"))
                                 .build()), (request, serviceComponent) ->
                         serviceComponent.provideGetAllDepartmentsActivity().handleRequest(request)
         );

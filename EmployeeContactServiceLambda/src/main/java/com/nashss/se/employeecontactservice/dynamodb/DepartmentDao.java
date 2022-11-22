@@ -1,11 +1,11 @@
 package com.nashss.se.employeecontactservice.dynamodb;
+
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
 import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
-
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class DepartmentDao {
      * @return the stored Employee, or null if none was found.
      */
 
-    public Department getDepartment(Integer deptId) {
+    public Department getDepartment(String deptId) {
         Department department = dynamoDBMapper.load(Department.class, deptId);
         if (null == department) {
             throw new DepartmentNotFoundException(String.format("Could not find Department with ID '%s' ", deptId)
@@ -54,20 +54,36 @@ public class DepartmentDao {
      * @param deptStartKey the Department ID
      * @return the stored Departments, or null if none was found.
      */
+    //CHECKSTYLE:OFF:Builder
+    public List<Department> getAllActiveDepartmentsWithLimit(String deptStartKey) {
+//        Map<String, AttributeValue> startKeyMap = new HashMap<>();
+//        startKeyMap.put("deptStatus", new AttributeValue().withS("Active"));
+//        startKeyMap.put("deptId", new AttributeValue().withS(deptStartKey));
+//
+//        Map<String, AttributeValue> valueMap = new HashMap<>();
+//        valueMap.put(":deptStatus", new AttributeValue().withS("Active"));
 
-    public List<Department> getAllActiveDepartmentsWithLimit(Integer deptStartKey) {
+//        DynamoDBQueryExpression<Department> queryExpression = new DynamoDBQueryExpression<Department>()
+//                .withIndexName(Department.DEPARTMENT_STATUS)
+//                .withLimit(PAGE_SIZE)
+//                .withConsistentRead(false)
+//                .withExclusiveStartKey(startKeyMap)
+//                .withKeyConditionExpression("deptStatus = :deptStatus")
+//                .withExpressionAttributeValues(valueMap);
+
         Map<String, AttributeValue> startKeyMap = new HashMap<>();
-        startKeyMap.put("deptId", new AttributeValue().withN(String.valueOf(deptStartKey)));
+        startKeyMap.put("deptId", new AttributeValue().withS(deptStartKey));
 
         Map<String, AttributeValue> valueMap = new HashMap<>();
         valueMap.put(":deptStatus", new AttributeValue().withS("Active"));
-        DynamoDBQueryExpression<Department> queryExpression = new DynamoDBQueryExpression<Department>()
-                .withLimit(PAGE_SIZE)
-                .withExclusiveStartKey(startKeyMap)
-                .withKeyConditionExpression("deptStatus = :deptStatus")
+        //valueMap.put(":deptId", new AttributeValue().withS(deptStartKey));
+
+
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
+                .withFilterExpression("deptStatus = :deptStatus")
                 .withExpressionAttributeValues(valueMap);
 
-        return dynamoDBMapper.queryPage(Department.class, queryExpression).getResults();
+        return dynamoDBMapper.scan(Department.class, scanExpression);
 
     }
     /**

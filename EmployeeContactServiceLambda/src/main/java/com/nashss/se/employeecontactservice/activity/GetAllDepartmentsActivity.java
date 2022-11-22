@@ -40,7 +40,7 @@ public class GetAllDepartmentsActivity {
      */
     public GetAllDepartmentsResult handleRequest(final GetAllDepartmentsRequest getAllDepartmentsRequest) {
         log.info("Received getAllDepartmentsRequest {}", getAllDepartmentsRequest);
-        Integer requestedId = getAllDepartmentsRequest.getDeptId();
+        String requestedId = getAllDepartmentsRequest.getDeptId();
         List<Department> deptList = departmentDao.getAllActiveDepartmentsWithLimit(requestedId);
 
         return GetAllDepartmentsResult.builder()

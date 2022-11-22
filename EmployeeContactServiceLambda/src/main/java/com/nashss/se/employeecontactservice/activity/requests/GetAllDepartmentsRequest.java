@@ -1,18 +1,21 @@
 package com.nashss.se.employeecontactservice.activity.requests;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(builder = GetAllDepartmentsRequest.Builder.class)
 public class GetAllDepartmentsRequest {
 
-    private final Integer deptId;
+    private final String deptId;
     private final String deptName;
     private final String deptStatus;
 
-    private GetAllDepartmentsRequest(Integer deptId, String deptName, String deptStatus) {
+    private GetAllDepartmentsRequest(String deptId, String deptName, String deptStatus) {
         this.deptId = deptId;
         this.deptName = deptName;
         this.deptStatus = deptStatus;
     }
 
-    public Integer getDeptId() {
+    public String getDeptId() {
         return deptId;
     }
 
@@ -36,11 +39,11 @@ public class GetAllDepartmentsRequest {
     }
 
     public static class Builder {
-        private Integer deptId;
+        private String deptId;
         private String deptName;
         private String deptStatus;
 
-        public Builder withDeptId(Integer deptId) {
+        public Builder withDeptId(String deptId) {
             this.deptId = deptId;
             return this;
         }

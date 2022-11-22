@@ -251,7 +251,7 @@ Resources:
         EmployeeManagementClient:
           Type: Api
           Properties:
-            Path: /departments/{deptId}
+            Path: /departments
             Method: get
 
   CreateDepartmentLambda:
@@ -323,7 +323,9 @@ Resources:
     Properties:
       AttributeDefinitions:
         - AttributeName: "deptId"
-          AttributeType: "N"
+          AttributeType: "S"
+        - AttributeName: "deptStatus"
+          AttributeType: "S"
       KeySchema:
         - AttributeName: "deptId"
           KeyType: "HASH"

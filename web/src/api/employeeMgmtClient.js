@@ -13,7 +13,7 @@ export default class EmployeeMgmtClient extends BindingClass {
 
     constructor(props = {}){
         super();
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'getEmployee', 'getAllEmployees', 'createEmployee'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'getEmployee', 'getAllEmployees', 'createEmployee', 'getAllDepartments'];
         this.bindClassMethods(methodsToBind, this);
         this.props = props;
 
@@ -78,6 +78,20 @@ export default class EmployeeMgmtClient extends BindingClass {
             this.handleError(error, errorCallback)
         }
     }
+
+        /**
+         * Get all the departments on the list.
+         * @param errorCallback (Optional) A function to execute if the call fails.
+         * @returns The list of departments.
+         */
+     async getAllDepartments(errorCallback) {
+            try {
+                const response = await this.client.get(`departments`);
+                return response.data.deptList;
+            } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+      }
 
     /**
      * Create a new employee contact.
