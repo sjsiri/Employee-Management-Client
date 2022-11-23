@@ -4,7 +4,7 @@ import com.amazonaws.internal.config.Builder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonDeserialize(builder = Builder.class)
+@JsonDeserialize(builder = CreateDepartmentRequest.Builder.class)
 public class CreateDepartmentRequest {
 
     private String deptId;

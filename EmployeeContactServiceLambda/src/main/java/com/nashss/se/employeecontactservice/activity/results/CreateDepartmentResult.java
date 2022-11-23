@@ -13,6 +13,11 @@ public class CreateDepartmentResult {
         this.department = department;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+
     @Override
     public String toString() {
         return "CreateDepartmentResult{" +
