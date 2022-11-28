@@ -68,6 +68,13 @@ public class CreateEmployeeActivity {
                 .build();
     }
 
+    /**
+     * Checks the important attributes of a CreateEmployeeRequest for validity.
+     * <p>
+     * This includes required fields and String validation for email.
+     * </p>
+     * @param request the CreateEmployeeRequest to check
+     */
     private void checkAttributes(CreateEmployeeRequest request) {
         if (request.getFirstName() == null) {
             throw new MissingRequiredFieldException("firstName is a required field.");
@@ -106,6 +113,12 @@ public class CreateEmployeeActivity {
         if (request.getJobTitle() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getJobTitle())) {
             throw new InvalidAttributeValueException("Job title \"" +
                     request.getJobTitle() +
+                    "\" contains invalid characters");
+        }
+
+        if (!EmployeeMgmtClientServiceUtils.isValidEmail(request.getEmail())) {
+            throw new InvalidAttributeValueException("Email \"" +
+                    request.getEmail() +
                     "\" contains invalid characters");
         }
     }
