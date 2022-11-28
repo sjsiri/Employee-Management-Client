@@ -50,7 +50,8 @@ async loadDeptDropDown() {
 
        for (let key of departments) {
           let option = document.createElement("option");
-          option.setAttribute('value', key.deptName);
+          option.setAttribute('value', key.deptId);
+          option.setAttribute('innerHTML', key.deptName);
           let optionText = document.createTextNode(key.deptName);
           option.appendChild(optionText);
           deptsDropDown.appendChild(option);
@@ -83,12 +84,6 @@ async loadDeptDropDown() {
              if (employeeDetail.phoneNumber){
                  document.getElementById('phone').value = employeeDetail.phoneNumber;
              }
-//             if (employeeDetail.deptId){
-//                 document.getElementById('deptId').value = employeeDetail.deptId;
-//             }
-//             if (employeeDetail.deptName){
-//                 document.getElementById('deptName').value = employeeDetail.deptName;
-//             }
              if (employeeDetail.dateOfBirth){
                  document.getElementById('dob').value = employeeDetail.dateOfBirth;
              }
@@ -101,13 +96,15 @@ async loadDeptDropDown() {
     }
 
     async update() {
+
+        const dept = document.getElementById('depts');
         const employeeId = this.dataStore.get('employeeId');
         const firstName = document.getElementById('fname').value;
         const lastName = document.getElementById('lname').value;
         const jobTitle = document.getElementById('jobtitle').value;
         const email = document.getElementById('email').value;
-        //const deptId = document.getElementById('depts').value;
-        const deptName = document.getElementById('depts').value;
+        const deptId = document.getElementById('depts').value;
+        const deptName = dept.options[dept.selectedIndex].innerHTML;
         const hireDate = document.getElementById('hireDate').value;
         const phoneNumber = document.getElementById('phone').value;
         const dateOfBirth = document.getElementById('dob').value;
@@ -120,7 +117,7 @@ async loadDeptDropDown() {
             lastName,
             jobTitle,
             email,
-            //deptId,
+            deptId,
             deptName,
             hireDate,
             dateOfBirth,
