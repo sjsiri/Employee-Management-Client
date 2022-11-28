@@ -1,5 +1,0 @@
-{
-  "path": "/playlists",
-  "httpMethod": "POST",
-  "body": "{ \"name\": \"my list\", \"customerId\": \"nunya-business\", \"tags\": [ \"good\", \"bad\", \"ugly\" ] }"
-}
