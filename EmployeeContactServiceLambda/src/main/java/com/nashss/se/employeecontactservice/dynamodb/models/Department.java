@@ -12,6 +12,16 @@ public class Department {
     private String deptName;
 
     private String deptStatus;
+
+@DynamoDBTable(tableName = "Departments")
+public class Department {
+
+    private String deptId;
+    private String deptName;
+
+    private String deptStatus;
+
+
     @DynamoDBHashKey(attributeName = "deptId")
     public String getDeptId() {
         return deptId;
@@ -20,6 +30,8 @@ public class Department {
     public void setDeptId(String deptId) {
         this.deptId = deptId;
     }
+
+
     @DynamoDBAttribute(attributeName = "deptName")
     public String getDeptName() {
         return deptName;
@@ -28,7 +40,11 @@ public class Department {
     public void setDeptName(String deptName) {
         this.deptName = deptName;
     }
+
     @DynamoDBAttribute(attributeName = "deptStatus")
+
+    @DynamoDBAttribute(attributeName = "deptStatus")
+
     public String getDeptStatus() {
         return deptStatus;
     }
@@ -47,8 +63,10 @@ public class Department {
         }
         Department that = (Department) o;
         return Objects.equals(deptId, that.deptId) &&
+
                 Objects.equals(deptName, that.deptName) &&
                 Objects.equals(deptStatus, that.deptStatus);
+                Objects.equals(deptName, that.deptName) && Objects.equals(deptStatus, that.deptStatus);
     }
 
     @Override

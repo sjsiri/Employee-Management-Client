@@ -33,4 +33,3 @@ public class DepartmentNotFoundException extends RuntimeException {
         super(message, cause);
     }
 }
-

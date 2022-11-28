@@ -274,6 +274,26 @@ Resources:
             Path: /departments
             Method: post
 
+
+  UpdateDepartmentLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Role: !GetAtt AccessDynamoDBTablesRole.Arn
+      CodeUri: EmployeeContactServiceLambda
+      Handler: com.nashss.se.employeecontactservice.lambda.UpdateDepartmentLambda::handleRequest
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+      Events:
+        EmployeeManagementClient:
+          Type: Api
+          Properties:
+            Path: /departments/{deptId}
+            Method: put
   #-----------------------------------------------------------------
 
   EmployeesTable:
