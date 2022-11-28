@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 
 import org.mockito.Mock;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -24,20 +26,25 @@ class CreateEmployeeActivityTest {
     EmployeeDao employeeDao;
 
     CreateEmployeeActivity createEmployeeActivity;
+    CreateEmployeeRequest validRequest;
 
     @BeforeEach
     void setup() {
         openMocks(this);
         createEmployeeActivity = new CreateEmployeeActivity(employeeDao);
+        validRequest = CreateEmployeeRequest.builder()
+                .withFirstName("Josh")
+                .withLastName("Taylor")
+                .withEmail("j@mail.com")
+                .withDateOfBirth("2000-01-01")
+                .build();
     }
 
     @Test
     void handleRequest_validAttributes_callsCreateEmployee() {
-        // GIVEN
-        CreateEmployeeRequest request = CreateEmployeeRequest.builder().withFirstName("Josh").build();
 
         // WHEN
-        createEmployeeActivity.handleRequest(request);
+        createEmployeeActivity.handleRequest(validRequest);
 
         // THEN
         verify(employeeDao).saveEmployee(any());
@@ -45,26 +52,30 @@ class CreateEmployeeActivityTest {
 
     @Test
     void handleRequest_validAttributes_returnsResult() {
-        // GIVEN
-        CreateEmployeeRequest request = CreateEmployeeRequest.builder().withFirstName("Josh").build();
 
         // WHEN
-        CreateEmployeeResult result = createEmployeeActivity.handleRequest(request);
-
-        // THEN
+        CreateEmployeeResult result = createEmployeeActivity.handleRequest(validRequest);
         Employee employee = new Employee();
         employee.setFirstName("Josh");
+        employee.setLastName("Taylor");
+        employee.setDateOfBirth(LocalDate.of(2000, 01, 01));
+        employee.setEmail("j@mail.com");
         employee.setEmployeeId(result.getEmployeeModel().getEmployeeId());
-        assertEquals(result.getEmployeeModel(), new EmployeeModel(employee));
+
+        // THEN
+        assertEquals(new EmployeeModel(employee), result.getEmployeeModel());
     }
 
     @Test
     void handleRequest_invalidFirstName_throwsException() {
         // GIVEN
-        CreateEmployeeRequest request = CreateEmployeeRequest.
-                builder().
-                withFirstName("\'apostrophe").
-                build();
+        CreateEmployeeRequest request = CreateEmployeeRequest
+                .builder()
+                .withFirstName("$cashMoney")
+                .withLastName("good")
+                .withDateOfBirth("2022-01-01")
+                .withEmail("cash@money.com")
+                .build();
 
         // WHEN + THEN
         assertThrows(InvalidAttributeValueException.class, () -> createEmployeeActivity.handleRequest(request));
@@ -73,10 +84,13 @@ class CreateEmployeeActivityTest {
     @Test
     void handleRequest_invalidLastName_throwsException() {
         // GIVEN
-        CreateEmployeeRequest request = CreateEmployeeRequest.
-                builder().
-                withLastName("\'apostrophe").
-                build();
+        CreateEmployeeRequest request = CreateEmployeeRequest
+                .builder()
+                .withFirstName("cashMoney")
+                .withLastName("good$$")
+                .withDateOfBirth("2022-01-01")
+                .withEmail("cash@money.com")
+                .build();
 
         // WHEN + THEN
         assertThrows(InvalidAttributeValueException.class, () -> createEmployeeActivity.handleRequest(request));
@@ -85,10 +99,14 @@ class CreateEmployeeActivityTest {
     @Test
     void handleRequest_invalidDeptName_throwsException() {
         // GIVEN
-        CreateEmployeeRequest request = CreateEmployeeRequest.
-                builder().
-                withDeptName("\'apostrophe").
-                build();
+        CreateEmployeeRequest request = CreateEmployeeRequest
+                .builder()
+                .withFirstName("cashMoney")
+                .withLastName("good")
+                .withDateOfBirth("2022-01-01")
+                .withEmail("cash@money.com")
+                .withDeptName("100")
+                .build();
 
         // WHEN + THEN
         assertThrows(InvalidAttributeValueException.class, () -> createEmployeeActivity.handleRequest(request));
@@ -97,10 +115,14 @@ class CreateEmployeeActivityTest {
     @Test
     void handleRequest_invalidJobTitle_throwsException() {
         // GIVEN
-        CreateEmployeeRequest request = CreateEmployeeRequest.
-                builder().
-                withJobTitle("\'apostrophe").
-                build();
+        CreateEmployeeRequest request = CreateEmployeeRequest
+                .builder()
+                .withFirstName("cashMoney")
+                .withLastName("good")
+                .withDateOfBirth("2022-01-01")
+                .withEmail("cash@money.com")
+                .withJobTitle("c@shM0ney")
+                .build();
 
         // WHEN + THEN
         assertThrows(InvalidAttributeValueException.class, () -> createEmployeeActivity.handleRequest(request));

@@ -122,7 +122,8 @@ public class CreateEmployeeActivity {
                     "\" contains invalid characters");
         }
 
-        if (!(request.getEmployeeStatus().equals("Active") || request.getEmployeeStatus().equals("Inactive"))) {
+        if (request.getEmployeeStatus() != null &&
+                !(request.getEmployeeStatus().equals("Active") || request.getEmployeeStatus().equals("Inactive"))) {
             throw new InvalidAttributeValueException("Status should only be \"Active\" or \"Inactive\"");
         }
     }
