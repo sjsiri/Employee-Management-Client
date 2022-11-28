@@ -13,7 +13,7 @@ export default class EmployeeMgmtClient extends BindingClass {
 
     constructor(props = {}){
         super();
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'getEmployee', 'getAllEmployees', 'createEmployee', 'getAllDepartments'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'getEmployee', 'getAllEmployees', 'createEmployee', 'getAllDepartments', 'getAllEmployeesByDept'];
         this.bindClassMethods(methodsToBind, this);
         this.props = props;
 
@@ -73,6 +73,20 @@ export default class EmployeeMgmtClient extends BindingClass {
         try {
             const response = await this.client.get(`employees/${startEmployee}/${navDirection}`);
             console.log("In GetAllEmployees method. Response value:", response);
+            return response.data.employeeList;
+        } catch (error) {
+            this.handleError(error, errorCallback)
+        }
+    }
+    /**
+     * Get all the employees on the list by department id filter.
+     * @param errorCallback (Optional) A function to execute if the call fails.
+     * @returns The list of employees.
+     */
+    async getAllEmployeesByDept(startEmployee, navDirection , deptId, errorCallback) {
+        try {
+            const response = await this.client.get(`employees/${startEmployee}/${navDirection}?deptId=${deptId}`);
+            console.log("In GetAllEmployeesByDept method. Response value:", response);
             return response.data.employeeList;
         } catch (error) {
             this.handleError(error, errorCallback)

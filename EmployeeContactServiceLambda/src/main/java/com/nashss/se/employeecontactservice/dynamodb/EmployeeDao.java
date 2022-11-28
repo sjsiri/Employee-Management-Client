@@ -69,13 +69,13 @@ public class EmployeeDao {
             valueMap.put(":deptId", new AttributeValue().withS(deptId));
             queryExpression = new DynamoDBQueryExpression<Employee>()
                     .withIndexName(Employee.EMPLOYEE_STATUS)
-                    .withLimit(PAGE_SIZE)
                     .withScanIndexForward(forward)
                     .withConsistentRead(false)
                     .withExclusiveStartKey(startKeyMap)
                     .withKeyConditionExpression("employeeStatus = :employeeStatus")
                     .withFilterExpression("deptId = :deptId")
                     .withExpressionAttributeValues(valueMap);
+
         } else {
             queryExpression = new DynamoDBQueryExpression<Employee>()
                     .withIndexName(Employee.EMPLOYEE_STATUS)

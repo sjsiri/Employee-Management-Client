@@ -11,7 +11,7 @@ class ViewEmployees extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'loadDeptDropDown' , 'generateTable',  'next', 'previous' ], this);
+        this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'loadDeptDropDown' , 'generateTable',  'next', 'previous', 'deptChange' ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayEmployeesOnPage);
         this.header = new Header(this.dataStore);
@@ -39,6 +39,7 @@ class ViewEmployees extends BindingClass {
     async mount() {
         document.getElementById('next').addEventListener('click', this.next);
         document.getElementById('previous').addEventListener('click', this.previous);
+        document.getElementById('depts').addEventListener('change', this.deptChange);
 
         this.header.addHeaderToPage();
         this.header.loadData();
@@ -48,23 +49,36 @@ class ViewEmployees extends BindingClass {
 
    async loadDeptDropDown() {
        //Get all depts API
+       document.getElementById('dept_loading').innerText = "(Loading department list...)";
        const departments = await this.client.getAllDepartments();
+       departments.push(
+            {
+               "deptId": "ALL",
+               "deptName": "ALL",
+               "deptStatus": "Active"
+            }
+       );
+
+       this.dataStore.set('departments', departments);
        console.log(departments);
        const deptsDropDown = document.getElementById('depts');
-       deptsDropDown.innerText = "(Loading departments list...)";
 
        for (let key of departments) {
           let option = document.createElement("option");
-          option.setAttribute('value', key.deptName);
+          option.setAttribute('value', key.deptId);
+          option.setAttribute('innerHTML', key.deptName);
           let optionText = document.createTextNode(key.deptName);
           option.appendChild(optionText);
           deptsDropDown.appendChild(option);
         }
+        document.getElementById('dept_loading').innerText = "";
+        deptsDropDown.value = "ALL";
+
     }
 
     async generateTable(table, data) {
 
-
+      if (data.length != 0) {
       for (let element of data) {
         let row = table.insertRow();
 
@@ -98,6 +112,7 @@ class ViewEmployees extends BindingClass {
         a.href = 'mailto:' + element.email;
         cell.appendChild(a);
       }
+      }
 
     }
 
@@ -110,6 +125,7 @@ class ViewEmployees extends BindingClass {
         if (!employees) {
             return;
         }
+
             let table = document.querySelector("table");
 
             //Flush the table first
@@ -130,11 +146,13 @@ class ViewEmployees extends BindingClass {
                 document.getElementById('next').style.background='#F5881F';
             }
 
-            if (employees[0].employeeId ==  this.dataStore.get('firstEmpId')) {
+            if ( employees.length != 0 && employees[0].employeeId ==  this.dataStore.get('firstEmpId')) {
                 document.getElementById('previous').disabled = true;
                 document.getElementById('previous').style.background='grey';
             }
-
+            if (employees.length === 0) {
+                document.getElementById('employees').innerText = "(No employees found...)";
+            }
  }
 
      async next() {
@@ -153,6 +171,19 @@ class ViewEmployees extends BindingClass {
          const employeesPrev = await this.client.getAllEmployees(employees[0].employeeId, false);
          this.dataStore.set('employees', employeesPrev);
      }
+
+      async deptChange() {
+
+         const dept = document.getElementById('depts');
+
+         const deptId = document.getElementById('depts').value;
+         const deptName = dept.options[dept.selectedIndex].innerHTML;
+
+         console.log("Department ID is: ", deptId);
+         console.log("Department Name is: ", deptName);
+         const employeesInDept = await this.client.getAllEmployeesByDept(0, true, deptId);
+         this.dataStore.set('employees', employeesInDept);
+      }
 
 }
 
