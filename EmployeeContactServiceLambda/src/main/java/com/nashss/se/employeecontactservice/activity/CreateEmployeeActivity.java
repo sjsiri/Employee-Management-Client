@@ -121,5 +121,9 @@ public class CreateEmployeeActivity {
                     request.getEmail() +
                     "\" contains invalid characters");
         }
+
+        if (!(request.getEmployeeStatus().equals("Active") || request.getEmployeeStatus().equals("Inactive"))) {
+            throw new InvalidAttributeValueException("Status should only be \"Active\" or \"Inactive\"");
+        }
     }
 }

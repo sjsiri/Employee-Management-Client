@@ -6,7 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.regex.Pattern;
 
 public class EmployeeMgmtClientServiceUtils {
-    private static final Pattern INVALID_CHARACTER_PATTERN = Pattern.compile("[\"'\\\\]");
+    private static final Pattern INVALID_CHARACTER_PATTERN =
+            Pattern.compile("[^a-zA-Z\\s-'.]");
     private static final Pattern EMAIL_CHARACTER_PATTERN =
             Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
 
