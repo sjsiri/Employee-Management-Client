@@ -14,7 +14,6 @@ class ViewEmployees extends BindingClass {
         this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'loadDeptDropDown' , 'generateTable',  'next', 'previous' ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayEmployeesOnPage);
-        //this.dataStore.addChangeListener(this.loadDeptDropDown);
         this.header = new Header(this.dataStore);
     }
 
@@ -31,9 +30,6 @@ class ViewEmployees extends BindingClass {
         this.dataStore.set('employees', employees);
         this.dataStore.set('firstEmpId', employees[0].employeeId);
         this.loadDeptDropDown();
-
-
-
     }
 
 
