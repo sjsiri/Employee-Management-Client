@@ -2,7 +2,6 @@ package com.nashss.se.employeecontactservice.dynamodb;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.QueryResultPage;
 import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
 import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
@@ -17,14 +16,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
-
 public class DepartmentDaoTest {
-    @Mock
-    DynamoDBMapper mapper;
-
-    DepartmentDao deptDao;
-
-class DepartmentDaoTest {
 
     @Mock
     PaginatedScanList<Department> paginatedScanList;
@@ -32,7 +24,7 @@ class DepartmentDaoTest {
     @Mock
     DynamoDBMapper mapper;
 
-    DepartmentDao departmentDao;
+    DepartmentDao deptDao;
 
 
     @BeforeEach
@@ -52,9 +44,8 @@ class DepartmentDaoTest {
         // THEN
         verify(mapper).save(departmentToCreate);
     }
-}
-        departmentDao = new DepartmentDao(mapper);
-    }
+
+
 
     @Test
     void getDepartment_deptNotFound_throwsDepartmentNotFoundException() {
@@ -63,7 +54,7 @@ class DepartmentDaoTest {
         when(mapper.load(Department.class, nonexistentDeptId)).thenReturn(null);
 
         // WHEN + THEN
-        assertThrows(DepartmentNotFoundException.class, () -> departmentDao.getDepartment(nonexistentDeptId));
+        assertThrows(DepartmentNotFoundException.class, () -> deptDao.getDepartment(nonexistentDeptId));
     }
 
 
@@ -74,7 +65,7 @@ class DepartmentDaoTest {
 
         // WHEN
         when(mapper.scan(eq(Department.class), any())).thenReturn(paginatedScanList);
-        departmentDao.getAllActiveDepartmentsWithLimit(deptId);
+        deptDao.getAllActiveDepartmentsWithLimit(deptId);
 
         // THEN
         verify(mapper).scan(eq(Department.class), any());

@@ -1,10 +1,5 @@
 package com.nashss.se.employeecontactservice.dynamodb;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-
-import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
@@ -21,12 +16,6 @@ import javax.inject.Inject;
  * Accesses data for a department using {@link Department} to represent the model in DynamoDB.
  */
 
-public class DepartmentDao {
-
-    private static final int PAGE_SIZE = 20;
-
- * Accesses data for a playlist using {@link Employee} to represent the model in DynamoDB.
- */
 public class DepartmentDao {
 
     private static final int PAGE_SIZE = 100;
@@ -53,10 +42,10 @@ public class DepartmentDao {
 
 
     /**
-     * Returns the {@link Employee} corresponding to the specified id.
+     * Returns the {@link Department} corresponding to the specified id.
      *
-     * @param deptId the Employee ID
-     * @return the stored Employee, or null if none was found.
+     * @param deptId the Department ID
+     * @return the stored Department, or null if none was found.
      */
 
     public Department getDepartment(String deptId) {
@@ -85,13 +74,6 @@ public class DepartmentDao {
 
         return dynamoDBMapper.scan(Department.class, scanExpression);
 
-    }
-    /**
-     * Saves (creates or updates) the given department.
-     * @param department The department to save
-     */
-    public void saveDepartment(Department department) {
-        this.dynamoDBMapper.save(department);
     }
 
 }

@@ -7,14 +7,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import java.util.Objects;
 @DynamoDBTable(tableName = "Departments")
 public class Department {
-    private String deptId;
-
-    private String deptName;
-
-    private String deptStatus;
-
-@DynamoDBTable(tableName = "Departments")
-public class Department {
 
     private String deptId;
     private String deptName;
@@ -42,9 +34,6 @@ public class Department {
     }
 
     @DynamoDBAttribute(attributeName = "deptStatus")
-
-    @DynamoDBAttribute(attributeName = "deptStatus")
-
     public String getDeptStatus() {
         return deptStatus;
     }
@@ -63,10 +52,8 @@ public class Department {
         }
         Department that = (Department) o;
         return Objects.equals(deptId, that.deptId) &&
-
                 Objects.equals(deptName, that.deptName) &&
                 Objects.equals(deptStatus, that.deptStatus);
-                Objects.equals(deptName, that.deptName) && Objects.equals(deptStatus, that.deptStatus);
     }
 
     @Override

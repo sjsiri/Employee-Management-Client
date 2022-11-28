@@ -36,7 +36,6 @@ public interface ServiceComponent {
      */
     GetSingleEmployeeDetailsActivity provideGetSingleEmployeeDetailsActivity();
 
-
     /**
      * Provides the relevant activity.
      * @return CreateEmployeeActivity
@@ -49,7 +48,7 @@ public interface ServiceComponent {
      */
     CreateDepartmentActivity provideCreateDepartmentActivity();
     
-     /**
+    /**
      * Provides the relevant activity.
      * @return GetAllDepartmentsActivity
      */
