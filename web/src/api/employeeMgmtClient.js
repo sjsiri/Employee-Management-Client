@@ -95,27 +95,13 @@ export default class EmployeeMgmtClient extends BindingClass {
 
     /**
      * Create a new employee contact.
-     * @param name The name of the playlist to create.
-     * @param customerId The user who is the owner of the playlist.
-     * @param tags Metadata tags to associate with a playlist.
+     * @param payload object with employee data
      * @param errorCallback (Optional) A function to execute if the call fails.
      * @returns The playlist that has been created.
      */
-    async createEmployee(firstName, lastName, jobTitle, email, phoneNumber, deptId,
-        deptName, hireDate, dateOfBirth, employeeStatus, errorCallback) {
+    async createEmployee(payload, errorCallback) {
         try {
-            const response = await this.client.post(`employees`, {
-            firstName: firstName,
-            lastName: lastName,
-            jobTitle: jobTitle,
-            email: email,
-            deptId: deptId,
-            deptName: deptName,
-            hireDate: hireDate,
-            phoneNumber: phoneNumber,
-            dateOfBirth: dateOfBirth,
-            employeeStatus: employeeStatus
-            });
+            const response = await this.client.post(`employees`, payload);
             return response.data.employeeModel;
         } catch (error) {
             this.handleError(error, errorCallback)

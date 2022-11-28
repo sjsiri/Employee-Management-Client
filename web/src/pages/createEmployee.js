@@ -31,17 +31,28 @@ class CreateEmployee extends BindingClass {
     async submit() {
         const firstName = document.getElementById('firstName').value;
         const lastName = document.getElementById('lastName').value;
-        const jobTitle = document.getElementById('jobTitle').value;
         const email = document.getElementById('email').value;
-        const phoneNumber = document.getElementById('phoneNumber').value;
-        const deptId = document.getElementById('deptId').value;
-        const deptName = document.getElementById('deptName').value;
-        const hireDate = document.getElementById('hireDate').value;
         const dateOfBirth = document.getElementById('dateOfBirth').value;
-        const employeeStatus = "Active";
+        const employeeStatus = document.getElementById('employeeStatus').value;
 
-        const employee = await this.client.createEmployee(firstName, lastName,
-        jobTitle, email, phoneNumber, deptId, deptName, hireDate, dateOfBirth, employeeStatus);
+        let payload = {firstName: firstName, lastName: lastName, email: email, dateOfBirth: dateOfBirth, employeeStatus: employeeStatus}
+
+        if (document.getElementById('jobTitle').value) {
+            payload.jobTitle = document.getElementById('jobTitle').value;
+        }
+        if (document.getElementById('phoneNumber').value) {
+            payload.phoneNumber = document.getElementById('phoneNumber').value;
+        }
+        if (document.getElementById('deptId').value) {
+            payload.deptId = document.getElementById('deptId').value;
+        }
+        if (document.getElementById('deptName').value) {
+            payload.deptName = document.getElementById('deptName').value;
+        }
+        if (document.getElementById('hireDate').value) {
+            payload.hireDate = document.getElementById('hireDate').value;
+        }
+        const employee = await this.client.createEmployee(payload);
         this.dataStore.set('employee', employee);
         this.redirectToViewEmployee();
     }

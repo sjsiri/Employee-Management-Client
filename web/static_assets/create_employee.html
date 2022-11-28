@@ -46,8 +46,11 @@
             <input type="date" id="dateOfBirth" required>
         </p>
         <p class="form-field">
-            <label>Employee Status</label>
-            <input type="text" required class="validated-field" id="employeeStatus" value="Active" readonly>
+            <label class="required">Employee Status</label>
+            <select required id="employeeStatus" name="employeeStatus">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
         </p>
     </form>
     <button type="button" id="save-employee">Save Employee</button>
