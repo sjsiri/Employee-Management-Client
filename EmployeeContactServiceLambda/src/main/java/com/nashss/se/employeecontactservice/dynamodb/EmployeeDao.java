@@ -57,22 +57,35 @@ public class EmployeeDao {
      */
 
     public List<Employee> getAllActiveEmployeesWithLimit(String employeeStartKey, Boolean forward, String deptId) {
+        DynamoDBQueryExpression<Employee> queryExpression;
         Map<String, AttributeValue> startKeyMap = new HashMap<>();
         startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
         startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
 
         Map<String, AttributeValue> valueMap = new HashMap<>();
         valueMap.put(":employeeStatus", new AttributeValue().withS("Active"));
-        valueMap.put(":deptId", new AttributeValue().withS(deptId));
-        DynamoDBQueryExpression<Employee> queryExpression = new DynamoDBQueryExpression<Employee>()
-                .withIndexName(Employee.EMPLOYEE_STATUS)
-                .withLimit(PAGE_SIZE)
-                .withScanIndexForward(forward)
-                .withConsistentRead(false)
-                .withExclusiveStartKey(startKeyMap)
-                .withKeyConditionExpression("employeeStatus = :employeeStatus")
-                .withFilterExpression("deptId = :deptId")
-                .withExpressionAttributeValues(valueMap);
+
+        if (!deptId.equals("null")) {
+            valueMap.put(":deptId", new AttributeValue().withS(deptId));
+            queryExpression = new DynamoDBQueryExpression<Employee>()
+                    .withIndexName(Employee.EMPLOYEE_STATUS)
+                    .withLimit(PAGE_SIZE)
+                    .withScanIndexForward(forward)
+                    .withConsistentRead(false)
+                    .withExclusiveStartKey(startKeyMap)
+                    .withKeyConditionExpression("employeeStatus = :employeeStatus")
+                    .withFilterExpression("deptId = :deptId")
+                    .withExpressionAttributeValues(valueMap);
+        } else {
+            queryExpression = new DynamoDBQueryExpression<Employee>()
+                    .withIndexName(Employee.EMPLOYEE_STATUS)
+                    .withLimit(PAGE_SIZE)
+                    .withScanIndexForward(forward)
+                    .withConsistentRead(false)
+                    .withExclusiveStartKey(startKeyMap)
+                    .withKeyConditionExpression("employeeStatus = :employeeStatus")
+                    .withExpressionAttributeValues(valueMap);
+        }
 
         return dynamoDBMapper.queryPage(Employee.class, queryExpression).getResults();
 

@@ -51,6 +51,7 @@ class ViewEmployees extends BindingClass {
        const departments = await this.client.getAllDepartments();
        console.log(departments);
        const deptsDropDown = document.getElementById('depts');
+       deptsDropDown.innerText = "(Loading departments list...)";
 
        for (let key of departments) {
           let option = document.createElement("option");
