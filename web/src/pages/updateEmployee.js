@@ -12,7 +12,7 @@ class ViewEmployeeDetail extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'displayEmpDetails', 'update', 'redirectToViewEmployee'], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'displayEmpDetails', 'update', 'loadDeptDropDown', 'redirectToViewEmployee'], this);
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
     }
@@ -27,6 +27,7 @@ class ViewEmployeeDetail extends BindingClass {
         const employeeDetail = await this.client.getEmployee(employeeId);
         this.dataStore.set('employeeDetail', employeeDetail);
         this.displayEmpDetails();
+        this.loadDeptDropDown();
     }
 
     /**
@@ -38,6 +39,22 @@ class ViewEmployeeDetail extends BindingClass {
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
         await this.clientLoaded();
+
+    }
+
+async loadDeptDropDown() {
+       //Get all depts API
+       const departments = await this.client.getAllDepartments();
+       console.log(departments);
+       const deptsDropDown = document.getElementById('depts');
+
+       for (let key of departments) {
+          let option = document.createElement("option");
+          option.setAttribute('value', key.deptName);
+          let optionText = document.createTextNode(key.deptName);
+          option.appendChild(optionText);
+          deptsDropDown.appendChild(option);
+        }
     }
 
 
@@ -66,12 +83,12 @@ class ViewEmployeeDetail extends BindingClass {
              if (employeeDetail.phoneNumber){
                  document.getElementById('phone').value = employeeDetail.phoneNumber;
              }
-             if (employeeDetail.deptId){
-                 document.getElementById('deptId').value = employeeDetail.deptId;
-             }
-             if (employeeDetail.deptName){
-                 document.getElementById('deptName').value = employeeDetail.deptName;
-             }
+//             if (employeeDetail.deptId){
+//                 document.getElementById('deptId').value = employeeDetail.deptId;
+//             }
+//             if (employeeDetail.deptName){
+//                 document.getElementById('deptName').value = employeeDetail.deptName;
+//             }
              if (employeeDetail.dateOfBirth){
                  document.getElementById('dob').value = employeeDetail.dateOfBirth;
              }
@@ -89,8 +106,8 @@ class ViewEmployeeDetail extends BindingClass {
         const lastName = document.getElementById('lname').value;
         const jobTitle = document.getElementById('jobtitle').value;
         const email = document.getElementById('email').value;
-        const deptId = document.getElementById('deptId').value;
-        const deptName = document.getElementById('deptName').value;
+        //const deptId = document.getElementById('depts').value;
+        const deptName = document.getElementById('depts').value;
         const hireDate = document.getElementById('hireDate').value;
         const phoneNumber = document.getElementById('phone').value;
         const dateOfBirth = document.getElementById('dob').value;
@@ -103,7 +120,7 @@ class ViewEmployeeDetail extends BindingClass {
             lastName,
             jobTitle,
             email,
-            deptId,
+            //deptId,
             deptName,
             hireDate,
             dateOfBirth,

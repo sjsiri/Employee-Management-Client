@@ -11,7 +11,7 @@ class ViewEmployees extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'loadDeptDropDown' , 'generateTable',  'next', 'previous' ], this);
+        this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'loadDeptDropDown', 'generateTable',  'next', 'previous' ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayEmployeesOnPage);
         this.header = new Header(this.dataStore);
