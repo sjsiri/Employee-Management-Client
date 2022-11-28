@@ -29,7 +29,7 @@ class ViewEmployees extends BindingClass {
         const employees = await this.client.getAllEmployees(0, true);
         this.dataStore.set('employees', employees);
         this.dataStore.set('firstEmpId', employees[0].employeeId);
-        this.loadDeptDropDown();
+        await this.loadDeptDropDown();
     }
 
 

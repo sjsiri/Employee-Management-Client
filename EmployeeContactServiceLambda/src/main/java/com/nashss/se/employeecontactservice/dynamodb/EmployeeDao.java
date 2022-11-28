@@ -58,25 +58,35 @@ public class EmployeeDao {
 
     public List<Employee> getAllActiveEmployeesWithLimit(String employeeStartKey, Boolean forward, String deptId) {
         DynamoDBQueryExpression<Employee> queryExpression;
-        Map<String, AttributeValue> startKeyMap = new HashMap<>();
-        startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
-        startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
 
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":employeeStatus", new AttributeValue().withS("Active"));
 
         if (!deptId.equals("null")) {
+            Map<String, AttributeValue> startKeyMap = new HashMap<>();
+            startKeyMap.put("deptId", new AttributeValue().withS(deptId));
+            startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
+
+            Map<String, AttributeValue> valueMap = new HashMap<>();
+            valueMap.put(":employeeStatus", new AttributeValue().withS("Active"));
             valueMap.put(":deptId", new AttributeValue().withS(deptId));
+
             queryExpression = new DynamoDBQueryExpression<Employee>()
-                    .withIndexName(Employee.EMPLOYEE_STATUS)
+                    .withIndexName(Employee.DEPARTMENT_GSI)
                     .withScanIndexForward(forward)
+                    .withLimit(PAGE_SIZE)
                     .withConsistentRead(false)
                     .withExclusiveStartKey(startKeyMap)
-                    .withKeyConditionExpression("employeeStatus = :employeeStatus")
-                    .withFilterExpression("deptId = :deptId")
+                    .withKeyConditionExpression("deptId = :deptId")
+                    .withFilterExpression("employeeStatus = :employeeStatus")
                     .withExpressionAttributeValues(valueMap);
 
         } else {
+            Map<String, AttributeValue> startKeyMap = new HashMap<>();
+            startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
+            startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
+
+            Map<String, AttributeValue> valueMap = new HashMap<>();
+            valueMap.put(":employeeStatus", new AttributeValue().withS("Active"));
+
             queryExpression = new DynamoDBQueryExpression<Employee>()
                     .withIndexName(Employee.EMPLOYEE_STATUS)
                     .withLimit(PAGE_SIZE)
