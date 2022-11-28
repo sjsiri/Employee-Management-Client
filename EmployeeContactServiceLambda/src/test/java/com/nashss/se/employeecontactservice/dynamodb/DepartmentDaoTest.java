@@ -69,7 +69,7 @@ public class DepartmentDaoTest {
 
         // THEN
         verify(mapper).scan(eq(Department.class), any());
-        
+
     }
 
 }

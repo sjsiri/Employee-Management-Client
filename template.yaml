@@ -152,7 +152,7 @@ Resources:
                       - !Ref 'AWS::Region'
                       - ':'
                       - !Ref 'AWS::AccountId'
-                      - ':table/departments'
+                      - ':table/Departments'
 
   GetEmployeeLambda:
     Type: AWS::Serverless::Function
