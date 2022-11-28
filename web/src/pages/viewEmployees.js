@@ -30,6 +30,7 @@ class ViewEmployees extends BindingClass {
         this.dataStore.set('employees', employees);
         this.dataStore.set('firstEmpId', employees[0].employeeId);
 
+
         //Get all depts API
         const departments = await this.client.getAllDepartments();
         console.log(departments);
@@ -52,6 +53,7 @@ class ViewEmployees extends BindingClass {
     }
 
     async loadDeptDropDown() {
+
        //Get all depts API
        const departments = await this.client.getAllDepartments();
        console.log(departments);
@@ -67,6 +69,7 @@ class ViewEmployees extends BindingClass {
     }
 
     async generateTable(table, data) {
+
 
       for (let element of data) {
         let row = table.insertRow();
