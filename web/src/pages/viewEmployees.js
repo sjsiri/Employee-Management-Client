@@ -11,7 +11,7 @@ class ViewEmployees extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'generateTable',  'next', 'previous' ], this);
+        this.bindClassMethods(['clientLoaded', 'mount',  'displayEmployeesOnPage', 'loadDeptDropDown', 'generateTable',  'next', 'previous' ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayEmployeesOnPage);
         this.header = new Header(this.dataStore);
@@ -34,7 +34,7 @@ class ViewEmployees extends BindingClass {
         const departments = await this.client.getAllDepartments();
         console.log(departments);
         this.dataStore.set('departments', departments);
-
+        this.loadDeptDropDown();
     }
 
 
@@ -49,6 +49,21 @@ class ViewEmployees extends BindingClass {
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
         await this.clientLoaded();
+    }
+
+    async loadDeptDropDown() {
+       //Get all depts API
+       const departments = await this.client.getAllDepartments();
+       console.log(departments);
+       const deptsDropDown = document.getElementById('depts');
+
+       for (let key of departments) {
+          let option = document.createElement("option");
+          option.setAttribute('value', key.deptName);
+          let optionText = document.createTextNode(key.deptName);
+          option.appendChild(optionText);
+          deptsDropDown.appendChild(option);
+        }
     }
 
     async generateTable(table, data) {
