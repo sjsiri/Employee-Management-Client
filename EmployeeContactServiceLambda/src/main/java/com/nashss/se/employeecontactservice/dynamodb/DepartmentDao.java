@@ -1,7 +1,5 @@
 package com.nashss.se.employeecontactservice.dynamodb;
-
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
@@ -15,8 +13,9 @@ import java.util.Map;
 import javax.inject.Inject;
 
 /**
- * Accesses data for a playlist using {@link Employee} to represent the model in DynamoDB.
+ * Accesses data for a department using {@link Department} to represent the model in DynamoDB.
  */
+
 public class DepartmentDao {
 
     private static final int PAGE_SIZE = 100;
@@ -27,16 +26,26 @@ public class DepartmentDao {
      *
      * @param dynamoDBMapper the {@link DynamoDBMapper} used to interact with the department table
      */
+
     @Inject
     public DepartmentDao(DynamoDBMapper dynamoDBMapper) {
         this.dynamoDBMapper = dynamoDBMapper;
     }
 
     /**
-     * Returns the {@link Employee} corresponding to the specified id.
+     * Saves (creates or updates) the given department.
+     * @param dept The department to save
+     */
+    public void saveDepartment(Department dept) {
+        this.dynamoDBMapper.save(dept);
+    }
+
+
+    /**
+     * Returns the {@link Department} corresponding to the specified id.
      *
-     * @param deptId the Employee ID
-     * @return the stored Employee, or null if none was found.
+     * @param deptId the Department ID
+     * @return the stored Department, or null if none was found.
      */
 
     public Department getDepartment(String deptId) {
@@ -65,13 +74,6 @@ public class DepartmentDao {
 
         return dynamoDBMapper.scan(Department.class, scanExpression);
 
-    }
-    /**
-     * Saves (creates or updates) the given department.
-     * @param department The department to save
-     */
-    public void saveDepartment(Department department) {
-        this.dynamoDBMapper.save(department);
     }
 
 }
