@@ -27,7 +27,7 @@ class ViewEmployeeDetail extends BindingClass {
         const employeeDetail = await this.client.getEmployee(employeeId);
         this.dataStore.set('employeeDetail', employeeDetail);
         await this.loadDeptDropDown();
-        await this.displayEmpDetails();
+        this.displayEmpDetails();
     }
 
     /**
@@ -92,14 +92,10 @@ async loadDeptDropDown() {
              }
              if (employeeDetail.deptName){
                  const dept = document.getElementById('depts');
-              
-                 document.getElementById('depts').value = employeeDetail.deptId;
-                 dept.options[dept.selected].innerHTML = employeeDetail.deptName;
-             }
 
-//             if (employeeDetail.employeeStatus){
-//                 document.getElementById('employeeStatus').value = employeeDetail.employeeStatus;
-//             }
+                 document.getElementById('depts').value = employeeDetail.deptId;
+             }
+         
     }
 
     async update() {
