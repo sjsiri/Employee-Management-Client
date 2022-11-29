@@ -274,6 +274,7 @@ Resources:
             Path: /departments
             Method: post
 
+
   UpdateDepartmentLambda:
     Type: AWS::Serverless::Function
     Properties:
