@@ -61,11 +61,12 @@ class CreateEmployee extends BindingClass {
         const email = document.getElementById('email').value;
         const phoneNumber = document.getElementById('phoneNumber').value;
         const dept = document.getElementById('depts');
-        const deptId = document.getElementById('depts').value.set(readOnly);
+        const deptId = document.getElementById('depts').value;
         const deptName = dept.options[dept.selectedIndex].innerHTML;
         const hireDate = document.getElementById('hireDate').value;
         const dateOfBirth = document.getElementById('dateOfBirth').value;
         const employeeStatus = "Active";
+        document.getElementById('save-employee').innerHTML = 'Saving Employee...'
         const employee = await this.client.createEmployee(firstName, lastName,
         jobTitle, email, phoneNumber, deptId, deptName, hireDate, dateOfBirth, employeeStatus);
         this.dataStore.set('employee', employee);
