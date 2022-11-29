@@ -30,7 +30,6 @@ class ViewEmployees extends BindingClass {
         this.dataStore.set('employees', employees);
         this.dataStore.set('veryFirstEmpId', employees[0].employeeId);
         this.dataStore.set('firstEmpId', employees[0].employeeId);
-        await this.loadDeptDropDown();
     }
 
 
@@ -48,7 +47,8 @@ class ViewEmployees extends BindingClass {
         await this.clientLoaded();
     }
 
-   async loadDeptDropDown() {
+    async loadDeptDropDown() {
+
        //Get all depts API
        document.getElementById('dept_loading').innerText = "(Loading department list...)";
        const departments = await this.client.getAllDepartments();
@@ -140,14 +140,6 @@ class ViewEmployees extends BindingClass {
             //Generate table data with the new set of employees
             this.generateTable(table, employees);
             document.getElementById('employees').innerText = "";
-
-//            if (employees.length < 20){
-//                document.getElementById('next').disabled = true;
-//                document.getElementById('next').style.background='grey';
-//            } else {
-//                document.getElementById('next').disabled = false;
-//                document.getElementById('next').style.background='#F5881F';
-//            }
 
             if (employees.length === 0) {
                 document.getElementById('employees').innerText = "(No employees found...)";

@@ -98,6 +98,7 @@ export default class EmployeeMgmtClient extends BindingClass {
          * @param errorCallback (Optional) A function to execute if the call fails.
          * @returns The list of departments.
          */
+
      async getAllDepartments(errorCallback) {
             try {
                 const response = await this.client.get(`departments`);
