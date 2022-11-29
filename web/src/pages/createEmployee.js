@@ -29,9 +29,18 @@ class CreateEmployee extends BindingClass {
      * Employee.
      */
     async submit() {
+        const nameRegex = new RegExp('[^a-zA-Z\\s-\'.]');
+        const emailRegex = new RegExp('^[a-zA-Z0-9_!#$%&\'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$');
+        const phoneRegex = new RegExp('\\D');
+
         const firstName = document.getElementById('firstName').value;
         const lastName = document.getElementById('lastName').value;
+        const jobTitle = document.getElementById('jobTitle').value;
         const email = document.getElementById('email').value;
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const deptId = document.getElementById('deptId').value;
+        const deptName = document.getElementById('deptName').value;
+        const hireDate = document.getElementById('hireDate').value;
         const dateOfBirth = document.getElementById('dateOfBirth').value;
         const employeeStatus = document.getElementById('employeeStatus').value;
 
@@ -39,8 +48,14 @@ class CreateEmployee extends BindingClass {
             alert("Please fill in all required fields");
             return;
         }
-
-        const emailRegex = new RegExp('^[a-zA-Z0-9_!#$%&\'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$');
+        if (nameRegex.test(firstName)) {
+            alert("The first name you entered has invalid characters");
+            return;
+        }
+        if (nameRegex.test(lastName)) {
+            alert ("The last name you entered has invalid characters");
+            return;
+        }
         if (!emailRegex.test(email)) {
             alert("The email you entered is invalid");
             return;
@@ -48,20 +63,28 @@ class CreateEmployee extends BindingClass {
 
         let payload = {firstName: firstName, lastName: lastName, email: email, dateOfBirth: dateOfBirth, employeeStatus: employeeStatus}
 
-        if (document.getElementById('jobTitle').value) {
-            payload.jobTitle = document.getElementById('jobTitle').value;
+        if (jobTitle) {
+            if (nameRegex.test(jobTitle)) {
+                alert("The job title you entered has invalid characters");
+                return;
+            }
+            payload.jobTitle = jobTitle;
         }
-        if (document.getElementById('phoneNumber').value) {
-            payload.phoneNumber = document.getElementById('phoneNumber').value;
+        if (phoneNumber) {
+            if (phoneRegex.test(phoneNumber)) {
+                alert("The phone number you entered is invalid. Please use only digits");
+                return;
+            }
+            payload.phoneNumber = phoneNumber;
         }
-        if (document.getElementById('deptId').value) {
-            payload.deptId = document.getElementById('deptId').value;
+        if (deptId) {
+            payload.deptId = deptId;
         }
-        if (document.getElementById('deptName').value) {
-            payload.deptName = document.getElementById('deptName').value;
+        if (deptName) {
+            payload.deptName = deptName;
         }
-        if (document.getElementById('hireDate').value) {
-            payload.hireDate = document.getElementById('hireDate').value;
+        if (hireDate) {
+            payload.hireDate = hireDate;
         }
         const employee = await this.client.createEmployee(payload);
         this.dataStore.set('employee', employee);
