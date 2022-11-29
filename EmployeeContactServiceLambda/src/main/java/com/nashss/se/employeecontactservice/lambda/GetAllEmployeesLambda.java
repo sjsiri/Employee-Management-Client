@@ -6,7 +6,7 @@ import com.nashss.se.employeecontactservice.activity.results.GetAllEmployeesResu
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-import java.util.Map;
+import java.util.HashMap;
 
 import static com.nashss.se.employeecontactservice.utils.NullUtils.ifNull;
 
@@ -19,9 +19,13 @@ public class GetAllEmployeesLambda extends LambdaActivityRunner<GetAllEmployeesR
                     input.fromPath(path ->
                             GetAllEmployeesRequest.builder()
                                     .withEmployeeId(path.get("employeeId"))
-                                    .withDeptId(String.valueOf(
-                                            (ifNull(input.getQueryStringParameters(), Map.of()))
-                                                    .get("deptId")))
+                                    .withDeptId(
+                                            (ifNull(input.getQueryStringParameters(), new HashMap<String, String>() {
+                                                {
+                                                    put("deptId", "");
+                                                }
+                                            })
+                                            ).get("deptId"))
                                     .withForwardBoolean(Boolean.parseBoolean(path.get("forward")))
                                     .build()), (request, serviceComponent) ->
                     serviceComponent.provideGetAllEmployeesActivity().handleRequest(request)

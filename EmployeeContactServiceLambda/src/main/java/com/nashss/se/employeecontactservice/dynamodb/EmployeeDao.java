@@ -71,7 +71,7 @@ public class EmployeeDao {
                 .withConsistentRead(false);
 
         //If Department ID is passed as a query parameter, fetch employees in the department ID
-        if (!deptId.equals("null")) {
+        if (!deptId.equals("")) {
             startKeyMap.put("deptId", new AttributeValue().withS(deptId));
             startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
             valueMap.put(":deptId", new AttributeValue().withS(deptId));
