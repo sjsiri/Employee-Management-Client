@@ -48,22 +48,21 @@ public class EmployeeDao {
     }
 
     /**
-     * Returns the list of {@link Employee} starting at the supplied ID.
+     * Returns the list of {@link Employee} starting at the last name + ID.
      *
      * @param employeeStartKey the Employee ID
      * @param forward boolean if true the page will go to the next if false it will go to previous.
      * @return the stored Employees, or null if none was found.
      */
-
     public List<Employee> getAllActiveEmployeesWithLimit(String employeeStartKey, Boolean forward) {
         Map<String, AttributeValue> startKeyMap = new HashMap<>();
         startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
-        startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
+        startKeyMap.put("lastNameEmployeeId", new AttributeValue().withS(employeeStartKey));
 
         Map<String, AttributeValue> valueMap = new HashMap<>();
         valueMap.put(":employeeStatus", new AttributeValue().withS("Active"));
         DynamoDBQueryExpression<Employee> queryExpression = new DynamoDBQueryExpression<Employee>()
-                .withIndexName(Employee.EMPLOYEE_STATUS)
+                .withIndexName(Employee.LASTNAME_STATUS)
                 .withLimit(PAGE_SIZE)
                 .withScanIndexForward(forward)
                 .withConsistentRead(false)

@@ -304,17 +304,19 @@ Resources:
           AttributeType: "S"
         - AttributeName: "employeeStatus"
           AttributeType: "S"
+        - AttributeName: "lastNameEmployeeId"
+          AttributeType: "S"
       KeySchema:
         - AttributeName: "employeeId"
           KeyType: "HASH"
       BillingMode: "PAY_PER_REQUEST"
       TableName: "Employees"
       GlobalSecondaryIndexes:
-        - IndexName: "EmployeeStatusIndex"
+        - IndexName: "LastNameIdStatusIndex"
           KeySchema:
             - AttributeName: "employeeStatus"
               KeyType: "HASH"
-            - AttributeName: "employeeId"
+            - AttributeName: "lastNameEmployeeId"
               KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"

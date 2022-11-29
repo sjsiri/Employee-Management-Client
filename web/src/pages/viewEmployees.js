@@ -138,7 +138,7 @@ class ViewEmployees extends BindingClass {
 
      async next() {
          const employees = this.dataStore.get('employees');
-         const employeesNext = await this.client.getAllEmployees(employees[19].employeeId, true);
+         const employeesNext = await this.client.getAllEmployees(employees[19].lastNameEmployeeId, true);
          this.dataStore.set('employees', employeesNext);
 
          document.getElementById('previous').disabled = false;
@@ -149,7 +149,7 @@ class ViewEmployees extends BindingClass {
 
      async previous() {
          const employees = this.dataStore.get('employees');
-         const employeesPrev = await this.client.getAllEmployees(employees[0].employeeId, false);
+         const employeesPrev = await this.client.getAllEmployees(employees[0].lastNameEmployeeId, false);
          this.dataStore.set('employees', employeesPrev);
      }
 

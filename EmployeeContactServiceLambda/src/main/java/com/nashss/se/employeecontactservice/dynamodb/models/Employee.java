@@ -15,7 +15,7 @@ import java.util.Objects;
 @DynamoDBTable(tableName = "Employees")
 public class Employee {
 
-    public static final String EMPLOYEE_STATUS = "EmployeeStatusIndex";
+    public static final String LASTNAME_STATUS = "LastNameIdStatusIndex";
 
     private String employeeId;
 
@@ -39,8 +39,9 @@ public class Employee {
 
     private String employeeStatus;
 
+    private String lastNameEmployeeId;
+
     @DynamoDBHashKey(attributeName = "employeeId")
-    @DynamoDBIndexRangeKey(globalSecondaryIndexName = EMPLOYEE_STATUS)
     public String getEmployeeId() {
         return employeeId;
     }
@@ -134,12 +135,20 @@ public class Employee {
     }
 
     @DynamoDBAttribute(attributeName = "employeeStatus")
-    @DynamoDBIndexHashKey(globalSecondaryIndexName = EMPLOYEE_STATUS, attributeName = "employeeStatus")
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = LASTNAME_STATUS, attributeName = "employeeStatus")
     public String getEmployeeStatus() {
         return employeeStatus; }
 
     public void setEmployeeStatus(String employeeStatus) {
         this.employeeStatus = employeeStatus; }
+
+    public String getLastNameEmployeeId() {
+        return lastNameEmployeeId;
+    }
+
+    public void setLastNameEmployeeId(String lastNameEmployeeId) {
+        this.lastNameEmployeeId = lastNameEmployeeId;
+    }
 
     @Override
     public boolean equals(Object o) {

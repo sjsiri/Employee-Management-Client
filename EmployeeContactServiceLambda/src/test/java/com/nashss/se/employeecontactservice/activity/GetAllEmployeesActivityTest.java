@@ -37,7 +37,7 @@ public class GetAllEmployeesActivityTest {
         Boolean forward = true;
         GetAllEmployeesRequest request =
                 GetAllEmployeesRequest.builder()
-                .withEmployeeId(employeeId)
+                .withLastNameEmployeeId(employeeId)
                 .withforwardBoolean(forward)
                 .build();
 

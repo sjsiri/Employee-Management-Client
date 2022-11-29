@@ -2,17 +2,17 @@ package com.nashss.se.employeecontactservice.activity.requests;
 
 public class GetAllEmployeesRequest {
 
-    private final String employeeId;
+    private final String lastNameEmployeeId;
 
     private Boolean forwardBoolean;
 
-    private GetAllEmployeesRequest(String employeeId, Boolean forwardBoolean) {
-        this.employeeId = employeeId;
+    private GetAllEmployeesRequest(String lastNameEmployeeId, Boolean forwardBoolean) {
+        this.lastNameEmployeeId = lastNameEmployeeId;
         this.forwardBoolean = forwardBoolean;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public String getLastNameEmployeeId() {
+        return lastNameEmployeeId;
     }
 
     public Boolean getForwardBoolean() {
@@ -22,7 +22,7 @@ public class GetAllEmployeesRequest {
     @Override
     public String toString() {
         return "GetAllEmployeesRequest{" +
-                "employeeId='" + employeeId + '\'' +
+                "lastNameEmployeeId='" + lastNameEmployeeId + '\'' +
                 '}';
     }
     //CHECKSTYLE:OFF:Builder
@@ -31,12 +31,12 @@ public class GetAllEmployeesRequest {
     }
 
     public static class Builder {
-        private String employeeId;
+        private String lastNameEmployeeId;
 
         private Boolean forwardBoolean;
 
-        public Builder withEmployeeId(String employeeId) {
-            this.employeeId = employeeId;
+        public Builder withLastNameEmployeeId(String lastNameEmployeeId) {
+            this.lastNameEmployeeId = lastNameEmployeeId;
             return this;
         }
 
@@ -45,7 +45,7 @@ public class GetAllEmployeesRequest {
             return this;
         }
         public GetAllEmployeesRequest build() {
-            return new GetAllEmployeesRequest(employeeId, forwardBoolean);
+            return new GetAllEmployeesRequest(lastNameEmployeeId, forwardBoolean);
         }
     }
 }
