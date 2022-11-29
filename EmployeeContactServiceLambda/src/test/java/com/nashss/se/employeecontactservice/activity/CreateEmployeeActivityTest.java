@@ -127,4 +127,18 @@ class CreateEmployeeActivityTest {
         // WHEN + THEN
         assertThrows(InvalidAttributeValueException.class, () -> createEmployeeActivity.handleRequest(request));
     }
+
+    @Test
+    void handleRequest_invalidEmail_throwsException() {
+        // GIVEN
+        CreateEmployeeRequest request = CreateEmployeeRequest.builder()
+                .withFirstName("Josh")
+                .withLastName("Taylor")
+                .withEmail("fasd")
+                .withDateOfBirth("2000-01-01")
+                .build();
+
+        // WHEN + THEN
+        assertThrows(InvalidAttributeValueException.class, () -> createEmployeeActivity.handleRequest(request));
+    }
 }
