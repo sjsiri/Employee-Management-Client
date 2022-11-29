@@ -68,16 +68,4 @@ public class CreateDepartmentActivityTest {
         assertThrows(InvalidAttributeValueException.class, () -> createDepartmentActivity.handleRequest(request));
     }
 
-    @Test
-    void handleRequest_invalidDepartmentId_throwsException() {
-        // GIVEN
-        CreateDepartmentRequest request = CreateDepartmentRequest.
-                builder().
-                withDeptId("\'apostrophe").
-                build();
-
-        // WHEN + THEN
-        assertThrows(InvalidAttributeValueException.class, () -> createDepartmentActivity.handleRequest(request));
-    }
-
 }
