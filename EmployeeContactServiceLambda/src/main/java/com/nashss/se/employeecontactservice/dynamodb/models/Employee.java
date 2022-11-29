@@ -142,6 +142,8 @@ public class Employee {
     public void setEmployeeStatus(String employeeStatus) {
         this.employeeStatus = employeeStatus; }
 
+    @DynamoDBAttribute(attributeName = "lastNameEmployeeId")
+    @DynamoDBIndexRangeKey(globalSecondaryIndexName = LASTNAME_STATUS, attributeName = "lastNameEmployeeId")
     public String getLastNameEmployeeId() {
         return lastNameEmployeeId;
     }
