@@ -20,11 +20,7 @@ public class GetAllEmployeesLambda extends LambdaActivityRunner<GetAllEmployeesR
                             GetAllEmployeesRequest.builder()
                                     .withEmployeeId(path.get("employeeId"))
                                     .withDeptId(
-                                            (ifNull(input.getQueryStringParameters(), new HashMap<String, String>() {
-                                                {
-                                                    put("deptId", "");
-                                                }
-                                            })
+                                            (ifNull(input.getQueryStringParameters(), new HashMap<String, String>())
                                             ).get("deptId"))
                                     .withForwardBoolean(Boolean.parseBoolean(path.get("forward")))
                                     .build()), (request, serviceComponent) ->

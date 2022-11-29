@@ -28,6 +28,7 @@ class ViewEmployees extends BindingClass {
         //Get all employees API
         const employees = await this.client.getAllEmployees(0, true);
         this.dataStore.set('employees', employees);
+        this.dataStore.set('veryFirstEmpId', employees[0].employeeId);
         this.dataStore.set('firstEmpId', employees[0].employeeId);
         await this.loadDeptDropDown();
     }
@@ -140,19 +141,19 @@ class ViewEmployees extends BindingClass {
             this.generateTable(table, employees);
             document.getElementById('employees').innerText = "";
 
-            if (employees.length < 20){
-                document.getElementById('next').disabled = true;
-                document.getElementById('next').style.background='grey';
-            } else {
-                document.getElementById('next').disabled = false;
-                document.getElementById('next').style.background='#F5881F';
-            }
+//            if (employees.length < 20){
+//                document.getElementById('next').disabled = true;
+//                document.getElementById('next').style.background='grey';
+//            } else {
+//                document.getElementById('next').disabled = false;
+//                document.getElementById('next').style.background='#F5881F';
+//            }
 
             if (employees.length === 0) {
                 document.getElementById('employees').innerText = "(No employees found...)";
-            } else if (employees[0].employeeId ==  this.dataStore.get('firstEmpId')) {
-                document.getElementById('previous').disabled = true;
-                document.getElementById('previous').style.background='grey';
+            } else if (employees[0].employeeId ==  this.dataStore.get('veryFirstEmpId')) {
+                //document.getElementById('previous').disabled = true;
+                //document.getElementById('previous').style.background='grey';
             }
 
  }
@@ -166,15 +167,34 @@ class ViewEmployees extends BindingClass {
 
          if (deptId == 'ALL'){
             const employeesNext = await this.client.getAllEmployees(employees[19].employeeId, true);
-            this.dataStore.set('employees', employeesNext);
+            if (employeesNext.length !=0){
+                document.getElementById('previous').disabled = false;
+                document.getElementById('previous').style.background='#F5881F';
+                this.dataStore.set('employees', employeesNext);
+            }
+             if (employeesNext.length < 20) {
+                //this.dataStore.set('employees', undefined);
+                document.getElementById('next').disabled = true;
+                document.getElementById('next').style.background='grey';
+            }
+
          } else {
+
             const employeesInDept = await this.client.getAllEmployeesByDept(employees[19].employeeId, true, deptId);
-            this.dataStore.set('employees', employeesInDept);
+            if (employeesInDept.length !=0){
+               document.getElementById('previous').disabled = false;
+               document.getElementById('previous').style.background='#F5881F';
+               this.dataStore.set('employees', employeesInDept);
+            }
+             if (employeesInDept.length < 20)  {
+               document.getElementById('next').disabled = true;
+               document.getElementById('next').style.background='grey';
+            }
+
          }
 
          this.dataStore.set('firstEmpId', employees[0].employeeId);
-         document.getElementById('previous').disabled = false;
-         document.getElementById('previous').style.background='#F5881F';
+
 
      }
 
@@ -189,14 +209,31 @@ class ViewEmployees extends BindingClass {
          if (deptId == 'ALL'){
             const employeesPrev = await this.client.getAllEmployees(employees[0].employeeId, false);
             this.dataStore.set('employees', employeesPrev);
+            if (employeesPrev.length != 0 && employeesPrev[0].employeeId ==  this.dataStore.get('veryFirstEmpId')){
+                document.getElementById('previous').disabled = true;
+                document.getElementById('previous').style.background='grey';
+            }
+
          } else {
             const employeesInDept = await this.client.getAllEmployeesByDept(employees[0].employeeId, false, deptId);
             this.dataStore.set('employees', employeesInDept);
+            if (employeesInDept.length != 0 && employeesInDept[0].employeeId ==  this.dataStore.get('veryFirstEmpIdOfDept')){
+                document.getElementById('previous').disabled = true;
+                document.getElementById('previous').style.background='grey';
+            }
          }
+         document.getElementById('next').disabled = false;
+         document.getElementById('next').style.background='#F5881F';
          this.dataStore.set('firstEmpId', employees[0].employeeId);
      }
 
       async deptChange() {
+         //Disable prev button on initial load
+         document.getElementById('previous').disabled = true;
+         document.getElementById('previous').style.background='grey';
+
+         document.getElementById('next').disabled = false;
+         document.getElementById('next').style.background='#F5881F';
 
          const dept = document.getElementById('depts');
 
@@ -209,10 +246,22 @@ class ViewEmployees extends BindingClass {
          if (deptId == 'ALL'){
             const employees = await this.client.getAllEmployees(0, true, deptId);
             this.dataStore.set('employees', employees);
+            this.dataStore.set('veryFirstEmpIdOfDept', employees[0].employeeId);
+            if (employees.length < 20) {
+                document.getElementById('next').disabled = true;
+                document.getElementById('next').style.background='grey';
+            }
          } else {
             const employeesInDept = await this.client.getAllEmployeesByDept(0, true, deptId);
             this.dataStore.set('employees', employeesInDept);
+            this.dataStore.set('veryFirstEmpIdOfDept', employeesInDept[0].employeeId);
+             if (employeesInDept.length < 20) {
+                 document.getElementById('next').disabled = true;
+                 document.getElementById('next').style.background='grey';
+             }
          }
+
+
 
       }
 
