@@ -61,7 +61,7 @@ class CreateEmployee extends BindingClass {
         const email = document.getElementById('email').value;
         const phoneNumber = document.getElementById('phoneNumber').value;
         const dept = document.getElementById('depts');
-        const deptId = document.getElementById('depts').value;
+        const deptId = document.getElementById('depts').value.set(readOnly);
         const deptName = dept.options[dept.selectedIndex].innerHTML;
         const hireDate = document.getElementById('hireDate').value;
         const dateOfBirth = document.getElementById('dateOfBirth').value;
