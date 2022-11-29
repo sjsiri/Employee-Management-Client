@@ -122,9 +122,12 @@ class ViewEmployees extends BindingClass {
     async displayEmployeesOnPage() {
         const employees = this.dataStore.get('employees');
 
+
         if (!employees) {
             return;
+
         }
+
             let table = document.querySelector("table");
 
             //Flush the table first
@@ -137,11 +140,19 @@ class ViewEmployees extends BindingClass {
             this.generateTable(table, employees);
             document.getElementById('employees').innerText = "";
 
+            if (employees.length < 20){
+                document.getElementById('next').disabled = true;
+                document.getElementById('next').style.background='grey';
+            } else {
+                document.getElementById('next').disabled = false;
+                document.getElementById('next').style.background='#F5881F';
+            }
+
             if (employees.length === 0) {
                 document.getElementById('employees').innerText = "(No employees found...)";
             } else if (employees[0].employeeId ==  this.dataStore.get('firstEmpId')) {
-                //document.getElementById('previous').disabled = true;
-                //document.getElementById('previous').style.background='grey';
+                document.getElementById('previous').disabled = true;
+                document.getElementById('previous').style.background='grey';
             }
 
  }
@@ -155,27 +166,16 @@ class ViewEmployees extends BindingClass {
 
          if (deptId == 'ALL'){
             const employeesNext = await this.client.getAllEmployees(employees[19].employeeId, true);
-                if (employeesNext.length != 0) {
-                    this.dataStore.set('employees', employeesNext);
-                    document.getElementById('previous').disabled = false;
-                    document.getElementById('previous').style.background='#F5881F';
-                } else {
-                    document.getElementById('next').disabled = true;
-                    document.getElementById('next').style.background='grey';
-                }
-
+            this.dataStore.set('employees', employeesNext);
          } else {
             const employeesInDept = await this.client.getAllEmployeesByDept(employees[19].employeeId, true, deptId);
-            if (employeesInDept.length != 0) {
-                this.dataStore.set('employees', employeesInDept);
-                document.getElementById('previous').disabled = false;
-                document.getElementById('previous').style.background='#F5881F';
-            } else {
-                document.getElementById('next').disabled = true;
-                document.getElementById('next').style.background='grey';
-              }
+            this.dataStore.set('employees', employeesInDept);
          }
+
          this.dataStore.set('firstEmpId', employees[0].employeeId);
+         document.getElementById('previous').disabled = false;
+         document.getElementById('previous').style.background='#F5881F';
+
      }
 
 
