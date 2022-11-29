@@ -9,23 +9,49 @@ import DataStore from '../util/DataStore';
 class CreateEmployee extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'submit', 'redirectToViewEmployee'], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'loadDeptDropDown', 'submit', 'redirectToViewEmployee'], this);
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
     }
 
+    async clientLoaded() {
+            this.loadDeptDropDown();
+        }
+
+
     /**
-     * Add the header to the page and load the MusicEmployeeClient.
+     * Add the header to the page and load the EmployeeMgmtClient.
      */
-    mount() {
+    async mount() {
         document.getElementById('save-employee').addEventListener('click', this.submit);
         this.header.addHeaderToPage();
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
+        await this.clientLoaded();
     }
 
     /**
-     * Method to run when the create Employee submit button is pressed. Call the MusicEmployeeService to create the
+    * Add loadDeptDropDown in order to select department
+    */
+
+    async loadDeptDropDown() {
+           //Get all depts API
+           const departments = await this.client.getAllDepartments();
+           console.log(departments);
+           const deptsDropDown = document.getElementById('depts');
+
+           for (let key of departments) {
+              let option = document.createElement("option");
+              option.setAttribute('value', key.deptId);
+              option.setAttribute('innerHTML', key.deptName);
+              let optionText = document.createTextNode(key.deptName);
+              option.appendChild(optionText);
+              deptsDropDown.appendChild(option);
+            }
+        }
+
+    /**
+     * Method to run when the create Employee submit button is pressed. Call the EmployeeMgmtClient to create the
      * Employee.
      */
     async submit() {
@@ -34,12 +60,12 @@ class CreateEmployee extends BindingClass {
         const jobTitle = document.getElementById('jobTitle').value;
         const email = document.getElementById('email').value;
         const phoneNumber = document.getElementById('phoneNumber').value;
-        const deptId = document.getElementById('deptId').value;
-        const deptName = document.getElementById('deptName').value;
+        const dept = document.getElementById('depts');
+        const deptId = document.getElementById('depts').value;
+        const deptName = dept.options[dept.selectedIndex].innerHTML;
         const hireDate = document.getElementById('hireDate').value;
         const dateOfBirth = document.getElementById('dateOfBirth').value;
         const employeeStatus = "Active";
-
         const employee = await this.client.createEmployee(firstName, lastName,
         jobTitle, email, phoneNumber, deptId, deptName, hireDate, dateOfBirth, employeeStatus);
         this.dataStore.set('employee', employee);
