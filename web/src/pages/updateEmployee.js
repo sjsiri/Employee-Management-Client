@@ -47,7 +47,6 @@ async loadDeptDropDown() {
        const departments = await this.client.getAllDepartments();
        console.log(departments);
        const deptsDropDown = document.getElementById('depts');
-
        for (let key of departments) {
           let option = document.createElement("option");
           option.setAttribute('value', key.deptId);
@@ -57,6 +56,7 @@ async loadDeptDropDown() {
           deptsDropDown.appendChild(option);
         }
     }
+
 
 
  /**
@@ -90,9 +90,15 @@ async loadDeptDropDown() {
              if (employeeDetail.hireDate){
                  document.getElementById('hireDate').value = employeeDetail.hireDate;
              }
-             if (employeeDetail.employeeStatus){
-                 document.getElementById('employeeStatus').value = employeeDetail.employeeStatus;
+             if (employeeDetail.deptName){
+                 const dept = document.getElementById('depts');
+//                 dept.options[dept.selected].innerHTML = employeeDetail.deptName;
+                 document.getElementById(dept.value = employeeDetail.deptName);
              }
+
+//             if (employeeDetail.employeeStatus){
+//                 document.getElementById('employeeStatus').value = employeeDetail.employeeStatus;
+//             }
     }
 
     async update() {
@@ -108,7 +114,7 @@ async loadDeptDropDown() {
         const hireDate = document.getElementById('hireDate').value;
         const phoneNumber = document.getElementById('phone').value;
         const dateOfBirth = document.getElementById('dob').value;
-        const employeeStatus = document.getElementById('employeeStatus').value;
+        const employeeStatus = empStatusBox.options[empStatusBox.selectedIndex].innerHTML;
         document.getElementById('save-employee').innerHTML = 'Saving Employee...';
 
         const employee = {
