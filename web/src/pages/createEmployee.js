@@ -35,6 +35,17 @@ class CreateEmployee extends BindingClass {
         const dateOfBirth = document.getElementById('dateOfBirth').value;
         const employeeStatus = document.getElementById('employeeStatus').value;
 
+        if (!firstName || !lastName || !email || !dateOfBirth || !employeeStatus) {
+            alert("Please fill in all required fields");
+            return;
+        }
+
+        const emailRegex = new RegExp('^[a-zA-Z0-9_!#$%&\'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$');
+        if (!emailRegex.test(email)) {
+            alert("The email you entered is invalid");
+            return;
+        }
+
         let payload = {firstName: firstName, lastName: lastName, email: email, dateOfBirth: dateOfBirth, employeeStatus: employeeStatus}
 
         if (document.getElementById('jobTitle').value) {
