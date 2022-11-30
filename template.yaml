@@ -304,8 +304,6 @@ Resources:
           AttributeType: "S"
         - AttributeName: "employeeStatus"
           AttributeType: "S"
-        - AttributeName: "lastNameEmployeeId"
-          AttributeType: "S"
         - AttributeName: "deptId"
           AttributeType: "S"
       KeySchema:
@@ -319,14 +317,6 @@ Resources:
             - AttributeName: "employeeStatus"
               KeyType: "HASH"
             - AttributeName: "employeeId"
-              KeyType: "RANGE"
-          Projection:
-            ProjectionType: "ALL"
-        - IndexName: "LastNameIdStatusIndex"
-          KeySchema:
-            - AttributeName: "employeeStatus"
-              KeyType: "HASH"
-            - AttributeName: "lastNameEmployeeId"
               KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"
