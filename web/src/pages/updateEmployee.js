@@ -35,12 +35,20 @@ class ViewEmployeeDetail extends BindingClass {
      */
     async mount() {
         document.getElementById('save-employee').addEventListener('click', this.update);
+        document.getElementById('depts').addEventListener('change', this.deptChange);
         this.header.addHeaderToPage();
         this.header.loadData();
         this.client = new EmployeeMgmtClient();
         await this.clientLoaded();
 
     }
+
+deptChange() {
+    const dept = document.getElementById('depts');
+    const deptId = document.getElementById('depts').value;
+    const deptName = dept.options[dept.selectedIndex].innerHTML;
+    document.getElementById('deptId').value = deptId;
+}
 
 async loadDeptDropDown() {
        //Get all depts API
