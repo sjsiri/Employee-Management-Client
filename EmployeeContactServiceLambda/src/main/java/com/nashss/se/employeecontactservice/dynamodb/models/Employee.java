@@ -17,7 +17,7 @@ public class Employee {
 
     public static final String LASTNAME_STATUS = "LastNameIdStatusIndex";
     public static final String EMPLOYEE_STATUS = "EmployeeStatusIndex";
-    public static final String DEPARTMENT_GSI = "DepartmentIdIndex";
+    public static final String DEPARTMENT_GSI = "DepartmentLastNameIdIndex";
 
     private String employeeId;
 
@@ -44,7 +44,7 @@ public class Employee {
     private String lastNameEmployeeId;
 
     @DynamoDBHashKey(attributeName = "employeeId")
-    @DynamoDBIndexRangeKey(globalSecondaryIndexNames  = {EMPLOYEE_STATUS, DEPARTMENT_GSI})
+    @DynamoDBIndexRangeKey(globalSecondaryIndexName  = EMPLOYEE_STATUS)
     public String getEmployeeId() {
         return employeeId;
     }
@@ -138,8 +138,7 @@ public class Employee {
     }
 
     @DynamoDBAttribute(attributeName = "employeeStatus")
-    @DynamoDBIndexHashKey(globalSecondaryIndexNames =
-            {EMPLOYEE_STATUS, LASTNAME_STATUS}, attributeName = "employeeStatus")
+    @DynamoDBIndexHashKey(globalSecondaryIndexNames = {EMPLOYEE_STATUS, LASTNAME_STATUS})
     public String getEmployeeStatus() {
         return employeeStatus;
     }
@@ -149,7 +148,7 @@ public class Employee {
     }
 
     @DynamoDBAttribute(attributeName = "lastNameEmployeeId")
-    @DynamoDBIndexRangeKey(globalSecondaryIndexName = LASTNAME_STATUS, attributeName = "lastNameEmployeeId")
+    @DynamoDBIndexRangeKey(globalSecondaryIndexNames = {LASTNAME_STATUS, DEPARTMENT_GSI})
     public String getLastNameEmployeeId() {
         return lastNameEmployeeId;
     }

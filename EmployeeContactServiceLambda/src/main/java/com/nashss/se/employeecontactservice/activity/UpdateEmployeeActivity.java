@@ -71,7 +71,7 @@ public class UpdateEmployeeActivity {
         }
         if (updateEmployeeRequest.getLastName() != null) {
             employee.setLastName(updateEmployeeRequest.getLastName());
-            employee.setLastNameEmployeeId(updateEmployeeRequest.getLastName() + "#" + employee.getEmployeeId());
+            employee.setLastNameEmployeeId(updateEmployeeRequest.getLastName() + "_" + employee.getEmployeeId());
         }
         if (updateEmployeeRequest.getJobTitle() != null) {
             employee.setJobTitle(updateEmployeeRequest.getJobTitle());

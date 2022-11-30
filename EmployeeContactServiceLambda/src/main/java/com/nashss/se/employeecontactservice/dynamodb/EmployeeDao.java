@@ -71,7 +71,6 @@ public class EmployeeDao {
         //If Department ID is passed as a query parameter, fetch employees in the department ID
         if (deptId != null) {
             startKeyMap.put("deptId", new AttributeValue().withS(deptId));
-            startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
             valueMap.put(":deptId", new AttributeValue().withS(deptId));
 
             queryExpression.setIndexName(Employee.DEPARTMENT_GSI);
@@ -81,12 +80,15 @@ public class EmployeeDao {
         } else {
             //If Department ID is NOT passed as a query parameter, fetch all employees
             startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
-            startKeyMap.put("lastNameEmployeeId", new AttributeValue().withS(employeeStartKey));
-            startKeyMap.put("employeeId", new AttributeValue().withS("0"));
 
             queryExpression.setIndexName(Employee.LASTNAME_STATUS);
             queryExpression.setKeyConditionExpression("employeeStatus = :employeeStatus");
         }
+
+        startKeyMap.put("lastNameEmployeeId", new AttributeValue().withS(employeeStartKey));
+        String employeeId = (employeeStartKey.length() < 7) ? "0" :
+                employeeStartKey.substring(employeeStartKey.length() - 5);
+        startKeyMap.put("employeeId", new AttributeValue().withS(employeeId));
 
         return dynamoDBMapper.queryPage(Employee.class, queryExpression).getResults();
 
