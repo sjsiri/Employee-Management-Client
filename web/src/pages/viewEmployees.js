@@ -80,41 +80,40 @@ class ViewEmployees extends BindingClass {
     async generateTable(table, data) {
 
       if (data.length != 0) {
-      for (let element of data) {
-        let row = table.insertRow();
+          for (let element of data) {
+            let row = table.insertRow();
 
-        row.addEventListener('click', async evt => {
-                  console.log('The element that was clicked was ', element.employeeId);
-                    window.location.href = `/view_employee.html?id=${element.employeeId}`;
-                  });
-
-
-        let cell = row.insertCell();
-        let text = document.createTextNode(element.deptName);
-        cell.appendChild(text);
+            row.addEventListener('click', async evt => {
+                      console.log('The element that was clicked was ', element.employeeId);
+                        window.location.href = `/view_employee.html?id=${element.employeeId}`;
+                      });
 
 
-        cell = row.insertCell();
-        text = document.createTextNode(element.firstName);
-        cell.appendChild(text);
+            let cell = row.insertCell();
+            let text = document.createTextNode(element.deptName);
+            cell.appendChild(text);
 
 
-        cell = row.insertCell();
-        text = document.createTextNode(element.lastName);
-        cell.appendChild(text);
+            cell = row.insertCell();
+            text = document.createTextNode(element.firstName);
+            cell.appendChild(text);
 
-        cell = row.insertCell();
-        // Create anchor element.
-        var a = document.createElement('a');
-        text = document.createTextNode(element.email);
-        // Append the text node to anchor element.
-        a.appendChild(text);
-        a.title = element.email
-        a.href = 'mailto:' + element.email;
-        cell.appendChild(a);
+
+            cell = row.insertCell();
+            text = document.createTextNode(element.lastName);
+            cell.appendChild(text);
+
+            cell = row.insertCell();
+            // Create anchor element.
+            var a = document.createElement('a');
+            text = document.createTextNode(element.email);
+            // Append the text node to anchor element.
+            a.appendChild(text);
+            a.title = element.email
+            a.href = 'mailto:' + element.email;
+            cell.appendChild(a);
+          }
       }
-      }
-
     }
 
  /**
@@ -123,39 +122,25 @@ class ViewEmployees extends BindingClass {
     async displayEmployeesOnPage() {
         const employees = this.dataStore.get('employees');
 
-
         if (!employees) {
             return;
-
         }
 
-            let table = document.querySelector("table");
+        let table = document.querySelector("table");
 
-            //Flush the table first
-            var tableHeaderRowCount = 1;
-            var rowCount = table.rows.length;
-            for (var i = tableHeaderRowCount; i < rowCount; i++) {
-                table.deleteRow(tableHeaderRowCount);
-            }
-            //Generate table data with the new set of employees
-            this.generateTable(table, employees);
-            document.getElementById('employees').innerText = "";
+        //Flush the table first
+        var tableHeaderRowCount = 1;
+        var rowCount = table.rows.length;
+        for (var i = tableHeaderRowCount; i < rowCount; i++) {
+            table.deleteRow(tableHeaderRowCount);
+        }
+        //Generate table data with the new set of employees
+        this.generateTable(table, employees);
+        document.getElementById('employees').innerText = "";
 
-//            if (employees.length < 20){
-//                document.getElementById('next').disabled = true;
-//                document.getElementById('next').style.background='grey';
-//            } else {
-//                document.getElementById('next').disabled = false;
-//                document.getElementById('next').style.background='#F5881F';
-//            }
-
-            if (employees.length === 0) {
-                document.getElementById('employees').innerText = "(No employees found...)";
-            } else if (employees[0].employeeId ==  this.dataStore.get('veryFirstEmpId')) {
-                //document.getElementById('previous').disabled = true;
-                //document.getElementById('previous').style.background='grey';
-            }
-
+        if (employees.length === 0) {
+            document.getElementById('employees').innerText = "(No employees found...)";
+        }
  }
 
      async next() {
@@ -173,7 +158,6 @@ class ViewEmployees extends BindingClass {
                 this.dataStore.set('employees', employeesNext);
             }
              if (employeesNext.length < 20) {
-                //this.dataStore.set('employees', undefined);
                 document.getElementById('next').disabled = true;
                 document.getElementById('next').style.background='grey';
             }
@@ -194,7 +178,6 @@ class ViewEmployees extends BindingClass {
          }
 
          this.dataStore.set('firstEmpId', employees[0].employeeId);
-
 
      }
 
@@ -260,11 +243,7 @@ class ViewEmployees extends BindingClass {
                  document.getElementById('next').style.background='grey';
              }
          }
-
-
-
       }
-
 }
 
 /**
