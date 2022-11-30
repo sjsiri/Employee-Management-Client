@@ -41,6 +41,7 @@ class CreateEmployee extends BindingClass {
         const deptId = document.getElementById('deptId').value;
         const deptName = document.getElementById('deptName').value;
         const hireDate = document.getElementById('hireDate').value;
+        console.log(hireDate);
         const dateOfBirth = document.getElementById('dateOfBirth').value;
         const employeeStatus = document.getElementById('employeeStatus').value;
 
@@ -58,6 +59,10 @@ class CreateEmployee extends BindingClass {
         }
         if (!emailRegex.test(email)) {
             alert("The email you entered is invalid");
+            return;
+        }
+        if ((dateOfBirth.substring(0,4) < 1900) || (dateOfBirth.substring(0,4) > 2100) || (dateOfBirth.length != 10)) {
+            alert("The date of birth you entered is invalid.");
             return;
         }
 
@@ -84,6 +89,10 @@ class CreateEmployee extends BindingClass {
             payload.deptName = deptName;
         }
         if (hireDate) {
+            if ((hireDate.substring(0,4) < 1900) || (hireDate.substring(0,4) > 2100) || (hireDate.length != 10)) {
+                alert("The hire date you entered is invalid.");
+                return;
+            }
             payload.hireDate = hireDate;
         }
         const employee = await this.client.createEmployee(payload);
