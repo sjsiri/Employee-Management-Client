@@ -26,10 +26,10 @@ class ViewEmployees extends BindingClass {
         document.getElementById('previous').disabled = true;
         document.getElementById('previous').style.background='grey';
         //Get all employees API
-        const employees = await this.client.getAllEmployees(0, true);
+        const employees = await this.client.getAllEmployees("A", true);
         this.dataStore.set('employees', employees);
-        this.dataStore.set('veryFirstEmpId', employees[0].employeeId);
-        this.dataStore.set('firstEmpId', employees[0].employeeId);
+        this.dataStore.set('veryFirstEmpId', employees[0].lastNameEmployeeId);
+        this.dataStore.set('firstEmpId', employees[0].lastNameEmployeeId);
         await this.loadDeptDropDown();
     }
 

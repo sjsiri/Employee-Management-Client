@@ -81,9 +81,10 @@ public class EmployeeDao {
         } else {
             //If Department ID is NOT passed as a query parameter, fetch all employees
             startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
-            startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
+            startKeyMap.put("lastNameEmployeeId", new AttributeValue().withS(employeeStartKey));
+            startKeyMap.put("employeeId", new AttributeValue().withS("0"));
 
-            queryExpression.setIndexName(Employee.EMPLOYEE_STATUS);
+            queryExpression.setIndexName(Employee.LASTNAME_STATUS);
             queryExpression.setKeyConditionExpression("employeeStatus = :employeeStatus");
         }
 

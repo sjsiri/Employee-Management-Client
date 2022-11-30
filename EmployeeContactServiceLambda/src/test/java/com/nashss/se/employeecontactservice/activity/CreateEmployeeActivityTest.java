@@ -61,6 +61,7 @@ class CreateEmployeeActivityTest {
         employee.setDateOfBirth(LocalDate.of(2000, 01, 01));
         employee.setEmail("j@mail.com");
         employee.setEmployeeId(result.getEmployeeModel().getEmployeeId());
+        employee.setLastNameEmployeeId("Taylor#" + employee.getEmployeeId());
 
         // THEN
         assertEquals(new EmployeeModel(employee), result.getEmployeeModel());

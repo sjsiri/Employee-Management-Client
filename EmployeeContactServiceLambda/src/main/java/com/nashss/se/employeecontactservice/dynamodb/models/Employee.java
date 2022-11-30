@@ -138,12 +138,15 @@ public class Employee {
     }
 
     @DynamoDBAttribute(attributeName = "employeeStatus")
-    @DynamoDBIndexHashKey(globalSecondaryIndexName = LASTNAME_STATUS, attributeName = "employeeStatus")
+    @DynamoDBIndexHashKey(globalSecondaryIndexNames =
+            {EMPLOYEE_STATUS, LASTNAME_STATUS}, attributeName = "employeeStatus")
     public String getEmployeeStatus() {
-        return employeeStatus; }
+        return employeeStatus;
+    }
 
     public void setEmployeeStatus(String employeeStatus) {
-        this.employeeStatus = employeeStatus; }
+        this.employeeStatus = employeeStatus;
+    }
 
     @DynamoDBAttribute(attributeName = "lastNameEmployeeId")
     @DynamoDBIndexRangeKey(globalSecondaryIndexName = LASTNAME_STATUS, attributeName = "lastNameEmployeeId")
@@ -207,6 +210,7 @@ public class Employee {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", employeeStatus='" + employeeStatus + '\'' +
+                ", lastNameEmployeeId='" + lastNameEmployeeId + '\'' +
                 '}';
     }
 }

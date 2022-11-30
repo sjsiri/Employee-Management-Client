@@ -2,22 +2,16 @@ package com.nashss.se.employeecontactservice.activity.requests;
 
 public class GetAllEmployeesRequest {
 
-    private final String employeeId;
     private final String lastNameEmployeeId;
     private final Boolean forwardBoolean;
     private final String deptId;
 
 
-    private GetAllEmployeesRequest(String employeeId, String lastNameEmployeeId,
+    private GetAllEmployeesRequest(String lastNameEmployeeId,
                                    Boolean forwardBoolean, String deptId) {
-        this.employeeId = employeeId;
         this.lastNameEmployeeId = lastNameEmployeeId;
         this.forwardBoolean = forwardBoolean;
         this.deptId = deptId;
-    }
-
-    public String getEmployeeId() {
-        return employeeId;
     }
 
     public String getLastNameEmployeeId() {
@@ -35,7 +29,6 @@ public class GetAllEmployeesRequest {
     @Override
     public String toString() {
         return "GetAllEmployeesRequest{" +
-                "employeeId='" + employeeId + '\'' +
                 ", lastNameEmployeeId='" + lastNameEmployeeId + '\'' +
                 ", forwardBoolean=" + forwardBoolean +
                 ", deptId='" + deptId + '\'' +
@@ -48,15 +41,9 @@ public class GetAllEmployeesRequest {
     }
 
     public static class Builder {
-        private String employeeId;
         private String lastNameEmployeeId;
         private Boolean forwardBoolean;
         private String deptId;
-
-        public Builder withEmployeeId(String employeeId) {
-            this.employeeId = employeeId;
-            return this;
-        }
 
         public Builder withLastNameEmployeeId(String lastNameEmployeeId) {
             this.lastNameEmployeeId = lastNameEmployeeId;
@@ -74,7 +61,7 @@ public class GetAllEmployeesRequest {
         }
 
         public GetAllEmployeesRequest build() {
-            return new GetAllEmployeesRequest(employeeId, lastNameEmployeeId, forwardBoolean, deptId);
+            return new GetAllEmployeesRequest(lastNameEmployeeId, forwardBoolean, deptId);
         }
     }
 }
