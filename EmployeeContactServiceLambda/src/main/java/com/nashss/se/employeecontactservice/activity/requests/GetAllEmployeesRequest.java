@@ -2,13 +2,22 @@ package com.nashss.se.employeecontactservice.activity.requests;
 
 public class GetAllEmployeesRequest {
 
+    private final String employeeId;
     private final String lastNameEmployeeId;
+    private final Boolean forwardBoolean;
+    private final String deptId;
 
-    private Boolean forwardBoolean;
 
-    private GetAllEmployeesRequest(String lastNameEmployeeId, Boolean forwardBoolean) {
+    private GetAllEmployeesRequest(String employeeId, String lastNameEmployeeId,
+                                   Boolean forwardBoolean, String deptId) {
+        this.employeeId = employeeId;
         this.lastNameEmployeeId = lastNameEmployeeId;
         this.forwardBoolean = forwardBoolean;
+        this.deptId = deptId;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
     }
 
     public String getLastNameEmployeeId() {
@@ -19,33 +28,53 @@ public class GetAllEmployeesRequest {
         return forwardBoolean;
     }
 
+    public String getDeptId() {
+        return deptId;
+    }
+
     @Override
     public String toString() {
         return "GetAllEmployeesRequest{" +
-                "lastNameEmployeeId='" + lastNameEmployeeId + '\'' +
+                "employeeId='" + employeeId + '\'' +
+                ", lastNameEmployeeId='" + lastNameEmployeeId + '\'' +
+                ", forwardBoolean=" + forwardBoolean +
+                ", deptId='" + deptId + '\'' +
                 '}';
     }
+
     //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }
 
     public static class Builder {
+        private String employeeId;
         private String lastNameEmployeeId;
-
         private Boolean forwardBoolean;
+        private String deptId;
+
+        public Builder withEmployeeId(String employeeId) {
+            this.employeeId = employeeId;
+            return this;
+        }
 
         public Builder withLastNameEmployeeId(String lastNameEmployeeId) {
             this.lastNameEmployeeId = lastNameEmployeeId;
             return this;
         }
 
-        public Builder withforwardBoolean(Boolean forwardBoolean) {
+        public Builder withForwardBoolean(Boolean forwardBoolean) {
             this.forwardBoolean = forwardBoolean;
             return this;
         }
+
+        public Builder withDeptId(String deptId) {
+            this.deptId = deptId;
+            return this;
+        }
+
         public GetAllEmployeesRequest build() {
-            return new GetAllEmployeesRequest(lastNameEmployeeId, forwardBoolean);
+            return new GetAllEmployeesRequest(employeeId, lastNameEmployeeId, forwardBoolean, deptId);
         }
     }
 }

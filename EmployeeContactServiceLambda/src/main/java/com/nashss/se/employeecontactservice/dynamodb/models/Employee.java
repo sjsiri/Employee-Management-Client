@@ -16,6 +16,8 @@ import java.util.Objects;
 public class Employee {
 
     public static final String LASTNAME_STATUS = "LastNameIdStatusIndex";
+    public static final String EMPLOYEE_STATUS = "EmployeeStatusIndex";
+    public static final String DEPARTMENT_GSI = "DepartmentIdIndex";
 
     private String employeeId;
 
@@ -42,6 +44,7 @@ public class Employee {
     private String lastNameEmployeeId;
 
     @DynamoDBHashKey(attributeName = "employeeId")
+    @DynamoDBIndexRangeKey(globalSecondaryIndexNames  = {EMPLOYEE_STATUS, DEPARTMENT_GSI})
     public String getEmployeeId() {
         return employeeId;
     }
@@ -86,7 +89,7 @@ public class Employee {
         this.email = email;
     }
 
-    // DeptId will be GSI Index HashKey( will implement later )
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = DEPARTMENT_GSI)
     @DynamoDBAttribute(attributeName = "deptId")
     public String getDeptId() {
         return deptId;

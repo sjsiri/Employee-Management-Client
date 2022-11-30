@@ -306,17 +306,35 @@ Resources:
           AttributeType: "S"
         - AttributeName: "lastNameEmployeeId"
           AttributeType: "S"
+        - AttributeName: "deptId"
+          AttributeType: "S"
       KeySchema:
         - AttributeName: "employeeId"
           KeyType: "HASH"
       BillingMode: "PAY_PER_REQUEST"
       TableName: "Employees"
       GlobalSecondaryIndexes:
+        - IndexName: "EmployeeStatusIndex"
+          KeySchema:
+            - AttributeName: "employeeStatus"
+              KeyType: "HASH"
+            - AttributeName: "employeeId"
+              KeyType: "RANGE"
+          Projection:
+            ProjectionType: "ALL"
         - IndexName: "LastNameIdStatusIndex"
           KeySchema:
             - AttributeName: "employeeStatus"
               KeyType: "HASH"
             - AttributeName: "lastNameEmployeeId"
+              KeyType: "RANGE"
+          Projection:
+            ProjectionType: "ALL"
+        - IndexName: "DepartmentIdIndex"
+          KeySchema:
+            - AttributeName: "deptId"
+              KeyType: "HASH"
+            - AttributeName: "employeeId"
               KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"
