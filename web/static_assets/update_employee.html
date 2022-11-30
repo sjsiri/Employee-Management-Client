@@ -29,13 +29,13 @@
             <label>Phone#</label>
             <input type="tel" id="phone">
         </p>
+        <label>Department Name:</label>
+
+        <select  id="depts">
+        </select>
         <p class="form-field">
-            <label>Department ID</label>
-            <input type="text" id="deptId">
-        </p>
-        <p class="form-field">
-            <label>Department Name</label>
-            <input type="text" id="deptName">
+        <div class="div-3">Department Id:</div>
+        <div class="div-2"  id="deptId" ></div>
         </p>
         <p class="form-field">
             <label>Date of Birth</label>
@@ -47,7 +47,10 @@
         </p>
         <p class="form-field">
             <label>Status</label>
-            <input type="text" id="employeeStatus">
+            <select id="empStatusBox">
+                <option value ="Active">Active</option>
+                <option value = "InActive">InActive</option>
+            </select>
         </p>
     </form>
     <button type="button"  id="save-employee">Save Employee</button>
