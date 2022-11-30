@@ -95,6 +95,9 @@ class CreateEmployee extends BindingClass {
             }
             payload.hireDate = hireDate;
         }
+        document.getElementById('save-employee').disabled = true;
+        document.getElementById('save-employee').innerHTML = 'Saving Employee...';
+        document.getElementById('save-employee').style.background='grey';
         const employee = await this.client.createEmployee(payload);
         this.dataStore.set('employee', employee);
         this.redirectToViewEmployee();
