@@ -52,24 +52,42 @@ public class EmployeeDao {
      *
      * @param employeeStartKey the Employee ID
      * @param forward boolean if true the page will go to the next if false it will go to previous.
+     * @param deptId deptId filters the results by the selected dept id
      * @return the stored Employees, or null if none was found.
      */
 
-    public List<Employee> getAllActiveEmployeesWithLimit(String employeeStartKey, Boolean forward) {
-        Map<String, AttributeValue> startKeyMap = new HashMap<>();
-        startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
-        startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
+    public List<Employee> getAllActiveEmployeesWithLimit(String employeeStartKey, Boolean forward, String deptId) {
 
+        Map<String, AttributeValue> startKeyMap = new HashMap<>();
         Map<String, AttributeValue> valueMap = new HashMap<>();
+
         valueMap.put(":employeeStatus", new AttributeValue().withS("Active"));
+
         DynamoDBQueryExpression<Employee> queryExpression = new DynamoDBQueryExpression<Employee>()
-                .withIndexName(Employee.EMPLOYEE_STATUS)
-                .withLimit(PAGE_SIZE)
                 .withScanIndexForward(forward)
-                .withConsistentRead(false)
+                .withLimit(PAGE_SIZE)
                 .withExclusiveStartKey(startKeyMap)
-                .withKeyConditionExpression("employeeStatus = :employeeStatus")
-                .withExpressionAttributeValues(valueMap);
+                .withExpressionAttributeValues(valueMap)
+                .withConsistentRead(false);
+
+        //If Department ID is passed as a query parameter, fetch employees in the department ID
+        if (deptId != null) {
+            startKeyMap.put("deptId", new AttributeValue().withS(deptId));
+            startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
+            valueMap.put(":deptId", new AttributeValue().withS(deptId));
+
+            queryExpression.setIndexName(Employee.DEPARTMENT_GSI);
+            queryExpression.setKeyConditionExpression("deptId = :deptId");
+            queryExpression.setFilterExpression("employeeStatus = :employeeStatus");
+
+        } else {
+            //If Department ID is NOT passed as a query parameter, fetch all employees
+            startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
+            startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
+
+            queryExpression.setIndexName(Employee.EMPLOYEE_STATUS);
+            queryExpression.setKeyConditionExpression("employeeStatus = :employeeStatus");
+        }
 
         return dynamoDBMapper.queryPage(Employee.class, queryExpression).getResults();
 
