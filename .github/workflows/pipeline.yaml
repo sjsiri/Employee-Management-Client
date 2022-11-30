@@ -9,7 +9,7 @@ on:
 env:
 
   # STUDENTS: Set this to the current API Gateway Resource ID
-  U5_API_RESOURCE_ID: 3uekq5z7x9
+  U5_API_RESOURCE_ID: brjx7ik9y0
 
   GH_PACKAGE_REG_READ_USER: ${{ secrets.GH_PACKAGE_REG_READ_USER }}
   GH_PACKAGE_REG_READ_PASS: ${{ secrets.GH_PACKAGE_REG_READ_PASS }}
