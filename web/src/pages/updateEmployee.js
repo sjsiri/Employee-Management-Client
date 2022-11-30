@@ -47,7 +47,7 @@ deptChange() {
     const dept = document.getElementById('depts');
     const deptId = document.getElementById('depts').value;
     const deptName = dept.options[dept.selectedIndex].innerHTML;
-    document.getElementById('deptId').value = deptId;
+    document.getElementById('deptId').innerHTML = deptId;
 }
 
 async loadDeptDropDown() {
@@ -104,7 +104,7 @@ async loadDeptDropDown() {
                  document.getElementById('depts').value = employeeDetail.deptId;
              }
              if (employeeDetail.deptId){
-                 document.getElementById('deptId').value = employeeDetail.deptId;
+                 document.getElementById('deptId').innerHTML = employeeDetail.deptId;
               }
          
     }
