@@ -65,10 +65,11 @@ class EmployeeDaoTest {
         // GIVEN
         String employeeIdStart = "0";
         Boolean forward = true;
+        String deptId = "001";
 
         // WHEN
         when(mapper.queryPage(eq(Employee.class), any())).thenReturn(queryResultPage);
-        employeeDao.getAllActiveEmployeesWithLimit(employeeIdStart, forward);
+        employeeDao.getAllActiveEmployeesWithLimit(employeeIdStart, forward, deptId);
 
         // THEN
         verify(mapper).queryPage(eq(Employee.class), any());

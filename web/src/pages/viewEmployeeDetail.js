@@ -24,12 +24,16 @@ class ViewEmployeeDetail extends BindingClass {
     async clientLoaded() {
         const urlParams = new URLSearchParams(window.location.search);
         const employeeId = urlParams.get('id');
+        document.getElementById('emp_loading').innerHTML = "(Loading employee details...)";
+
         const employeeDetail = await this.client.getEmployee(employeeId);
         this.dataStore.set('employeeDetail', employeeDetail);
         document.getElementById('update-employee').addEventListener('click', async evt => {
                           console.log('The element that was clicked was ', employeeId);
                             window.location.href = `/update_employee.html?id=${employeeId}`;
                           });
+
+        document.getElementById('emp_loading').innerHTML = "";
     }
 
     /**

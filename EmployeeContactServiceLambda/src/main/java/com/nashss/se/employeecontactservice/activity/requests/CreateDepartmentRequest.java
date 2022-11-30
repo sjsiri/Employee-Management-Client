@@ -7,11 +7,11 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 @JsonDeserialize(builder = CreateDepartmentRequest.Builder.class)
 public class CreateDepartmentRequest {
 
-    private String deptId;
+    private final String deptId;
 
-    private String deptName;
+    private final String deptName;
 
-    private String deptStatus;
+    private final String deptStatus;
 
     private CreateDepartmentRequest(String deptId,
                                   String deptName,
