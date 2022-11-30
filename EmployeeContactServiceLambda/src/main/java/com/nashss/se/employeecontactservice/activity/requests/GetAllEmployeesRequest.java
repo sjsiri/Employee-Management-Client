@@ -2,19 +2,20 @@ package com.nashss.se.employeecontactservice.activity.requests;
 
 public class GetAllEmployeesRequest {
 
-    private final String employeeId;
+    private final String lastNameEmployeeId;
+    private final Boolean forwardBoolean;
+    private final String deptId;
 
-    private Boolean forwardBoolean;
-    private String deptId;
 
-    private GetAllEmployeesRequest(String employeeId, Boolean forwardBoolean, String deptId) {
-        this.employeeId = employeeId;
+    private GetAllEmployeesRequest(String lastNameEmployeeId,
+                                   Boolean forwardBoolean, String deptId) {
+        this.lastNameEmployeeId = lastNameEmployeeId;
         this.forwardBoolean = forwardBoolean;
         this.deptId = deptId;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public String getLastNameEmployeeId() {
+        return lastNameEmployeeId;
     }
 
     public Boolean getForwardBoolean() {
@@ -28,21 +29,24 @@ public class GetAllEmployeesRequest {
     @Override
     public String toString() {
         return "GetAllEmployeesRequest{" +
-                "employeeId='" + employeeId + '\'' +
+                ", lastNameEmployeeId='" + lastNameEmployeeId + '\'' +
+                ", forwardBoolean=" + forwardBoolean +
+                ", deptId='" + deptId + '\'' +
                 '}';
     }
+
     //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }
 
     public static class Builder {
-        private String employeeId;
+        private String lastNameEmployeeId;
         private Boolean forwardBoolean;
         private String deptId;
 
-        public Builder withEmployeeId(String employeeId) {
-            this.employeeId = employeeId;
+        public Builder withLastNameEmployeeId(String lastNameEmployeeId) {
+            this.lastNameEmployeeId = lastNameEmployeeId;
             return this;
         }
 
@@ -57,7 +61,7 @@ public class GetAllEmployeesRequest {
         }
 
         public GetAllEmployeesRequest build() {
-            return new GetAllEmployeesRequest(employeeId, forwardBoolean, deptId);
+            return new GetAllEmployeesRequest(lastNameEmployeeId, forwardBoolean, deptId);
         }
     }
 }

@@ -61,6 +61,7 @@ public class CreateEmployeeActivity {
         employee.setPhoneNumber(request.getPhoneNumber());
         employee.setDateOfBirth(converter.unconvert(request.getDateOfBirth()));
         employee.setEmployeeStatus(request.getEmployeeStatus());
+        employee.setLastNameEmployeeId(employee.getLastName() + "_" + employee.getEmployeeId());
 
         employeeDao.saveEmployee(employee);
 
