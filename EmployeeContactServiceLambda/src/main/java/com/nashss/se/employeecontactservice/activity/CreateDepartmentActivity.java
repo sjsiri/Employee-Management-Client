@@ -58,7 +58,6 @@ public class CreateDepartmentActivity {
     }
 
     private void checkAttributes(CreateDepartmentRequest request) {
-
         if (request.getDeptName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName())) {
             throw new InvalidAttributeValueException("Department name \"" +
                     request.getDeptName() +

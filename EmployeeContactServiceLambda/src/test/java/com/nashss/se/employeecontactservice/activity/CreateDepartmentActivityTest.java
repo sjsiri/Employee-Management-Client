@@ -59,13 +59,12 @@ public class CreateDepartmentActivityTest {
     @Test
     void handleRequest_invalidDepartmentName_throwsException() {
         // GIVEN
-        CreateDepartmentRequest request = CreateDepartmentRequest.
-                builder().
-                withDeptName("\'apostrophe").
-                build();
+        CreateDepartmentRequest request = CreateDepartmentRequest
+                .builder()
+                .withDeptName("dep@rtment")
+                .build();
 
         // WHEN + THEN
         assertThrows(InvalidAttributeValueException.class, () -> createDepartmentActivity.handleRequest(request));
     }
-
 }
