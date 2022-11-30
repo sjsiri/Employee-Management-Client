@@ -33,12 +33,12 @@ public class GetAllEmployeesActivityTest {
     @Test
     void handleRequest_employeesFound_employeeListReturnedInResult() {
         // GIVEN
-        String employeeId = "1";
+        String lastNameEmployeeId = "0";
         Boolean forward = true;
         String deptId = "001";
         GetAllEmployeesRequest request =
                 GetAllEmployeesRequest.builder()
-                .withEmployeeId(employeeId)
+                .withLastNameEmployeeId(lastNameEmployeeId)
                 .withForwardBoolean(forward)
                 .withDeptId(deptId)
                 .build();
@@ -52,13 +52,13 @@ public class GetAllEmployeesActivityTest {
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(employee);
 
-        when(employeeDao.getAllActiveEmployeesWithLimit(employeeId, true, deptId)).thenReturn(employeeList);
+        when(employeeDao.getAllActiveEmployeesWithLimit("0", true, deptId)).thenReturn(employeeList);
 
         // WHEN
         GetAllEmployeesResult result = getAllEmployeesActivity.handleRequest(request);
 
         // THEN
-        verify(employeeDao).getAllActiveEmployeesWithLimit(employeeId, true, deptId);
+        verify(employeeDao).getAllActiveEmployeesWithLimit("0", true, deptId);
         assertNotNull(result.getEmployeeList());
         assertEquals(List.of(new EmployeeModel(employee)), result.getEmployeeList());
     }

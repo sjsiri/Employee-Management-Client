@@ -8,10 +8,11 @@ public class UpdateEmployeeRequest {
 
     private String employeeId;
     /**
-     * Uses the pathEmployee as our path and makes sure its the same
+     * Uses the pathEmployee as our path and makes sure it's the same
      * EmployeeID that is trying to be changed.
      */
     private String pathEmployeeId;
+
     private final String firstName;
 
     private final String lastName;
@@ -35,7 +36,7 @@ public class UpdateEmployeeRequest {
     /**
      * Takes in all the fields to be updated.
      *
-     * @param employeeId takes in the employee's Id.
+     * @param employeeId takes in the employee's ID.
      * @param firstName takes in the firstName.
      * @param lastName takes in the lastName.
      * @param jobTitle takes in the jobTitle.

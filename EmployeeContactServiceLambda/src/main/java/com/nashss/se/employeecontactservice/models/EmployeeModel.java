@@ -18,6 +18,7 @@ public class EmployeeModel {
     private String phoneNumber;
     private String dateOfBirth;
     private String employeeStatus;
+    private String lastNameEmployeeId;
 
     private LocalDateConverter converter;
 
@@ -39,6 +40,7 @@ public class EmployeeModel {
         this.phoneNumber = employee.getPhoneNumber();
         this.dateOfBirth = converter.convert(employee.getDateOfBirth());
         this.employeeStatus = employee.getEmployeeStatus();
+        this.lastNameEmployeeId = employee.getLastNameEmployeeId();
     }
 
     public String getEmployeeId() {
@@ -85,6 +87,10 @@ public class EmployeeModel {
         return employeeStatus;
     }
 
+    public String getLastNameEmployeeId() {
+        return lastNameEmployeeId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -104,7 +110,8 @@ public class EmployeeModel {
                 Objects.equals(hireDate, that.hireDate) &&
                 Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(dateOfBirth, that.dateOfBirth) &&
-                Objects.equals(employeeStatus, that.employeeStatus);
+                Objects.equals(employeeStatus, that.employeeStatus) &&
+                Objects.equals(lastNameEmployeeId, that.lastNameEmployeeId);
     }
 
     @Override
@@ -120,7 +127,8 @@ public class EmployeeModel {
                 hireDate,
                 phoneNumber,
                 dateOfBirth,
-                employeeStatus);
+                employeeStatus,
+                lastNameEmployeeId);
     }
 
     @Override
@@ -137,6 +145,7 @@ public class EmployeeModel {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", employeeStatus='" + employeeStatus + '\'' +
+                ", lastNameEmployeeId='" + lastNameEmployeeId + '\'' +
                 '}';
     }
 }

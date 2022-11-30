@@ -1,6 +1,5 @@
 package com.nashss.se.employeecontactservice.activity.requests;
 
-import com.amazonaws.internal.config.Builder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
