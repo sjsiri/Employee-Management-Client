@@ -1,15 +1,11 @@
-package com.nashss.se.musicplaylistservice.exceptions;
+package com.nashss.se.employeecontactservice.exceptions;
 
-/**
- * Exception to throw when a provided value is an invalid attribute change.
- */
-public class InvalidAttributeChangeException extends InvalidAttributeException {
-    private static final long serialVersionUID = 8302102707109419783L;
+public class MissingRequiredFieldException extends RuntimeException {
 
     /**
      * Exception with no message or cause.
      */
-    public InvalidAttributeChangeException() {
+    public MissingRequiredFieldException() {
         super();
     }
 
@@ -17,7 +13,7 @@ public class InvalidAttributeChangeException extends InvalidAttributeException {
      * Exception with a message, but no cause.
      * @param message A descriptive message for this exception.
      */
-    public InvalidAttributeChangeException(String message) {
+    public MissingRequiredFieldException(String message) {
         super(message);
     }
 
@@ -25,7 +21,7 @@ public class InvalidAttributeChangeException extends InvalidAttributeException {
      * Exception with no message, but with a cause.
      * @param cause The original throwable resulting in this exception.
      */
-    public InvalidAttributeChangeException(Throwable cause) {
+    public MissingRequiredFieldException(Throwable cause) {
         super(cause);
     }
 
@@ -34,7 +30,7 @@ public class InvalidAttributeChangeException extends InvalidAttributeException {
      * @param message A descriptive message for this exception.
      * @param cause The original throwable resulting in this exception.
      */
-    public InvalidAttributeChangeException(String message, Throwable cause) {
+    public MissingRequiredFieldException(String message, Throwable cause) {
         super(message, cause);
     }
 }

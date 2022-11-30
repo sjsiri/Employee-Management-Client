@@ -6,6 +6,7 @@ import com.nashss.se.employeecontactservice.converters.LocalDateConverter;
 import com.nashss.se.employeecontactservice.dynamodb.EmployeeDao;
 import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 import com.nashss.se.employeecontactservice.exceptions.InvalidAttributeValueException;
+import com.nashss.se.employeecontactservice.exceptions.MissingRequiredFieldException;
 import com.nashss.se.employeecontactservice.utils.EmployeeMgmtClientServiceUtils;
 
 import org.apache.logging.log4j.LogManager;
@@ -68,14 +69,37 @@ public class CreateEmployeeActivity {
                 .build();
     }
 
+    /**
+     * Checks the important attributes of a CreateEmployeeRequest for validity.
+     * <p>
+     * This includes required fields and String validation for email.
+     * </p>
+     * @param request the CreateEmployeeRequest to check
+     */
     private void checkAttributes(CreateEmployeeRequest request) {
-        if (request.getFirstName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getFirstName())) {
+        if (request.getFirstName() == null) {
+            throw new MissingRequiredFieldException("firstName is a required field.");
+        }
+
+        if (request.getLastName() == null) {
+            throw new MissingRequiredFieldException("lastName is a required field.");
+        }
+
+        if (request.getEmail() == null) {
+            throw new MissingRequiredFieldException("email is a required field.");
+        }
+
+        if (request.getDateOfBirth() == null) {
+            throw new MissingRequiredFieldException("dateOfBirth is a required field.");
+        }
+
+        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getFirstName())) {
             throw new InvalidAttributeValueException("First name \"" +
                     request.getFirstName() +
                     "\" contains invalid characters");
         }
 
-        if (request.getLastName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getLastName())) {
+        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getLastName())) {
             throw new InvalidAttributeValueException("Last name \"" +
                     request.getLastName() +
                     "\" contains invalid characters");
@@ -91,6 +115,17 @@ public class CreateEmployeeActivity {
             throw new InvalidAttributeValueException("Job title \"" +
                     request.getJobTitle() +
                     "\" contains invalid characters");
+        }
+
+        if (!EmployeeMgmtClientServiceUtils.isValidEmail(request.getEmail())) {
+            throw new InvalidAttributeValueException("Email \"" +
+                    request.getEmail() +
+                    "\" contains invalid characters");
+        }
+
+        if (request.getEmployeeStatus() != null &&
+                !(request.getEmployeeStatus().equals("Active") || request.getEmployeeStatus().equals("Inactive"))) {
+            throw new InvalidAttributeValueException("Status should only be \"Active\" or \"Inactive\"");
         }
     }
 }
