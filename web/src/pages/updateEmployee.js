@@ -95,6 +95,9 @@ async loadDeptDropDown() {
 
                  document.getElementById('depts').value = employeeDetail.deptId;
              }
+             if (employeeDetail.deptId){
+                 document.getElementById('deptId').value = employeeDetail.deptId;
+              }
          
     }
 
