@@ -53,18 +53,7 @@ public class UpdateDepartmentActivity {
     public UpdateDepartmentResult handleRequest(final UpdateDepartmentRequest updateDepartmentRequest) {
         log.info("Received UpdateDepartmentRequest {}", updateDepartmentRequest);
 
-
-        if (updateDepartmentRequest.getDeptId() != null &&
-                !updateDepartmentRequest.getDeptId().equals(updateDepartmentRequest.getPathDeptId())) {
-            throw new InvalidAttributeChangeException("Department's ID can't be changed");
-        }
-
-        if (!EmployeeMgmtClientServiceUtils.isValidString(updateDepartmentRequest.getDeptName()) &&
-                updateDepartmentRequest.getDeptName() != null) {
-            publishExceptionMetrics(true);
-            throw new InvalidAttributeValueException("Department Name [" +
-                    updateDepartmentRequest.getDeptName() + "] contains illegal characters");
-        }
+        checkAttributes(updateDepartmentRequest);
 
         Department department = departmentDao.getDepartment(updateDepartmentRequest.getPathDeptId());
 
@@ -83,6 +72,21 @@ public class UpdateDepartmentActivity {
         return UpdateDepartmentResult.builder().withDepartment(department).build();
 
     }
+
+    private void checkAttributes(UpdateDepartmentRequest request) {
+        if (request.getDeptId() != null &&
+                !request.getDeptId().equals(request.getPathDeptId())) {
+            throw new InvalidAttributeChangeException("Department's ID can't be changed");
+        }
+
+        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName()) &&
+                request.getDeptName() != null) {
+            publishExceptionMetrics(true);
+            throw new InvalidAttributeValueException("Department Name [" +
+                    request.getDeptName() + "] contains illegal characters");
+        }
+    }
+
     /**
      * Helper method to publish exception metrics.
      * @param isInvalidAttributeValue indicates whether InvalidAttributeValueException is thrown
