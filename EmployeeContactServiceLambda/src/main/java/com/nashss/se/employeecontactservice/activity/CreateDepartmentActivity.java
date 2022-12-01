@@ -62,12 +62,12 @@ public class CreateDepartmentActivity {
         try {
             departmentDao.getDepartment(request.getDeptId());
             throw new InvalidAttributeValueException("Department ID \"" + request.getDeptId() + "\" is already taken.");
-        } catch (DepartmentNotFoundException ignored) {}
-
-        if (request.getDeptName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName())) {
-            throw new InvalidAttributeValueException("Department name \"" +
-                    request.getDeptName() +
-                    "\" contains invalid characters");
+        } catch (DepartmentNotFoundException ignored) {
+            if (request.getDeptName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName())) {
+                throw new InvalidAttributeValueException("Department name \"" +
+                        request.getDeptName() +
+                        "\" contains invalid characters");
+            }
         }
     }
 }
