@@ -23,17 +23,17 @@ class ViewDepartmentDetail extends BindingClass {
      */
     async clientLoaded() {
         const urlParams = new URLSearchParams(window.location.search);
-        const employeeId = urlParams.get('deptId');
+        const deptId = urlParams.get('id');
         document.getElementById('dept_loading').innerHTML = "(Loading department details...)";
 
         const departmentDetail = await this.client.getDepartment(deptId);
         this.dataStore.set('departmentDetail', departmentDetail);
         document.getElementById('update-department').addEventListener('click', async evt => {
-                          console.log('The element that was clicked was ',deptId);
+                          console.log('The element that was clicked was ', departmentId);
                             window.location.href = `/update_department.html?id=${deptId}`;
                           });
 
-        document.getElementById('emp_loading').innerHTML = "";
+        document.getElementById('dept_loading').innerHTML = "";
     }
 
     /**
