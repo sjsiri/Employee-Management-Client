@@ -84,6 +84,37 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #dddddd;;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  background-color: var(--primary-color);;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: var(--tertiary-color);
+}
+
+.active {
+  background-color: var(--tertiary-color);
+}
+
+
 .header_home {
     font-size: 36px;
     line-height: 40px;

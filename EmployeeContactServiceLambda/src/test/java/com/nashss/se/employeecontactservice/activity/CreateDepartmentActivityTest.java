@@ -4,6 +4,7 @@ import com.nashss.se.employeecontactservice.activity.requests.CreateDepartmentRe
 import com.nashss.se.employeecontactservice.activity.results.CreateDepartmentResult;
 import com.nashss.se.employeecontactservice.dynamodb.DepartmentDao;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
+import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
 import com.nashss.se.employeecontactservice.exceptions.InvalidAttributeValueException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
 public class CreateDepartmentActivityTest {
@@ -20,7 +22,7 @@ public class CreateDepartmentActivityTest {
     @Mock
     DepartmentDao deptDao;
 
-   CreateDepartmentActivity createDepartmentActivity;
+    CreateDepartmentActivity createDepartmentActivity;
 
     @BeforeEach
     void setup() {
@@ -31,7 +33,9 @@ public class CreateDepartmentActivityTest {
     @Test
     void handleRequest_validAttributes_callsCreateDepartment() {
         // GIVEN
-        CreateDepartmentRequest request = CreateDepartmentRequest.builder().withDeptName("Josh").build();
+        CreateDepartmentRequest request = CreateDepartmentRequest.builder().withDeptId("1000")
+                .withDeptName("Josh").build();
+        when(deptDao.getDepartment(any())).thenThrow(new DepartmentNotFoundException());
 
         // WHEN
         createDepartmentActivity.handleRequest(request);
@@ -45,6 +49,7 @@ public class CreateDepartmentActivityTest {
         // GIVEN
         CreateDepartmentRequest request = CreateDepartmentRequest.builder().withDeptId("123").withDeptName("sss")
                 .build();
+        when(deptDao.getDepartment(any())).thenThrow(new DepartmentNotFoundException());
 
         // WHEN
         CreateDepartmentResult result = createDepartmentActivity.handleRequest(request);
