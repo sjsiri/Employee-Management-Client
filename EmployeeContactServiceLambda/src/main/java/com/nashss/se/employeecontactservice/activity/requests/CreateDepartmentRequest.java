@@ -37,6 +37,7 @@ public class CreateDepartmentRequest {
     public static Builder builder() {
         return new Builder();
     }
+
     @JsonPOJOBuilder
     public static class Builder {
         private String deptId;
