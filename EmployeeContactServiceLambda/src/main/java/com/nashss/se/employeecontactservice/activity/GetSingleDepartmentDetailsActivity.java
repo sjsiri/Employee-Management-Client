@@ -6,6 +6,7 @@ import com.nashss.se.employeecontactservice.dynamodb.DepartmentDao;
 
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
 import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,7 +39,7 @@ public class GetSingleDepartmentDetailsActivity {
      * @param getSingleDepartmentDetailsRequest request object containing the employee ID
      * @return getSingleDepartmentDetailsResult result object containing the API defined {@link Employee}
      */
-    public GetSingleDepartmentDetailsRequest handleRequest(final GetSingleDepartmentDetailsRequest
+    public GetSingleDepartmentDetailsResult handleRequest(final GetSingleDepartmentDetailsRequest
                                                                   getSingleDepartmentDetailsRequest) {
         log.info("Recieved GetSingleDepartmentRequest {}", getSingleDepartmentDetailsRequest);
         String requestedId = getSingleDepartmentDetailsRequest.getDeptId();

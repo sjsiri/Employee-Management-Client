@@ -1,11 +1,14 @@
 package com.nashss.se.employeecontactservice.activity.requests;
 
-import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-
 public class GetSingleDepartmentDetailsRequest {
 
     private final String deptId;
 
+    /**
+     * Instantiates a deptId.
+     *
+     * @param deptId linked to the deptId for department table.
+     */
     public GetSingleDepartmentDetailsRequest(String deptId) {
         this.deptId = deptId;
     }

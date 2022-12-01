@@ -1,12 +1,16 @@
 package com.nashss.se.employeecontactservice.activity.results;
 
-import com.nashss.se.employeecontactservice.activity.requests.GetSingleDepartmentDetailsRequest;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
 
 public class GetSingleDepartmentDetailsResult {
 
     private final Department singleDepartment;
 
+    /**
+     * Instantiates a new Department object.
+     *
+     * @param singleDepartment Department to access the department table.
+     */
     public GetSingleDepartmentDetailsResult(Department singleDepartment) {
         this.singleDepartment = singleDepartment;
     }
@@ -35,8 +39,8 @@ public class GetSingleDepartmentDetailsResult {
             this.singleDepartment = singleDepartment;
             return this;
         }
-        public GetSingleDepartmentDetailsRequest build() {
-            return new GetSingleDepartmentDetailsRequest(String.valueOf(singleDepartment));
+        public GetSingleDepartmentDetailsResult build() {
+            return new GetSingleDepartmentDetailsResult(singleDepartment);
         }
     }
 }

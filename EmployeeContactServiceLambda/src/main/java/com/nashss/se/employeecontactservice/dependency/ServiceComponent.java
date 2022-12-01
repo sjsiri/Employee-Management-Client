@@ -1,6 +1,12 @@
 package com.nashss.se.employeecontactservice.dependency;
 
-import com.nashss.se.employeecontactservice.activity.*;
+import com.nashss.se.employeecontactservice.activity.CreateDepartmentActivity;
+import com.nashss.se.employeecontactservice.activity.CreateEmployeeActivity;
+import com.nashss.se.employeecontactservice.activity.GetAllDepartmentsActivity;
+import com.nashss.se.employeecontactservice.activity.GetAllEmployeesActivity;
+import com.nashss.se.employeecontactservice.activity.GetSingleDepartmentDetailsActivity;
+import com.nashss.se.employeecontactservice.activity.GetSingleEmployeeDetailsActivity;
+import com.nashss.se.employeecontactservice.activity.UpdateEmployeeActivity;
 
 import dagger.Component;
 
