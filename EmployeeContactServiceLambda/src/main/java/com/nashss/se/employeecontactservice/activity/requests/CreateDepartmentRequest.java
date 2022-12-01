@@ -1,6 +1,5 @@
 package com.nashss.se.employeecontactservice.activity.requests;
 
-import com.amazonaws.internal.config.Builder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -38,6 +37,7 @@ public class CreateDepartmentRequest {
     public static Builder builder() {
         return new Builder();
     }
+
     @JsonPOJOBuilder
     public static class Builder {
         private String deptId;

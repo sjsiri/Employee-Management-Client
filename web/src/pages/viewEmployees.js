@@ -25,10 +25,10 @@ class ViewEmployees extends BindingClass {
         //Disable prev button on initial load
         document.getElementById('previous').className = 'disabled';
         //Get all employees API
-        const employees = await this.client.getAllEmployees(0, true);
+        const employees = await this.client.getAllEmployees("A", true);
         this.dataStore.set('employees', employees);
-        this.dataStore.set('veryFirstEmpId', employees[0].employeeId);
-        this.dataStore.set('firstEmpId', employees[0].employeeId);
+        this.dataStore.set('veryFirstEmpId', employees[0].lastNameEmployeeId);
+        this.dataStore.set('firstEmpId', employees[0].lastNameEmployeeId);
         await this.loadDeptDropDown();
     }
 
@@ -150,7 +150,7 @@ class ViewEmployees extends BindingClass {
          const deptName = dept.options[dept.selectedIndex].innerHTML;
 
          if (deptId == 'ALL'){
-            const employeesNext = await this.client.getAllEmployees(employees[19].employeeId, true);
+            const employeesNext = await this.client.getAllEmployees(employees[19].lastNameEmployeeId, true);
             if (employeesNext.length !=0){
                 document.getElementById('previous').className = 'enabled';;
                 this.dataStore.set('employees', employeesNext);
@@ -158,10 +158,9 @@ class ViewEmployees extends BindingClass {
              if (employeesNext.length < 20) {
                 document.getElementById('next').className = 'disabled';;
             }
-
-         } else {
-
-            const employeesInDept = await this.client.getAllEmployeesByDept(employees[19].employeeId, true, deptId);
+         }
+         else {
+            const employeesInDept = await this.client.getAllEmployeesByDept(employees[19].lastNameEmployeeId, true, deptId);
             if (employeesInDept.length !=0){
                document.getElementById('previous').className = 'enabled';;
                this.dataStore.set('employees', employeesInDept);
@@ -169,11 +168,8 @@ class ViewEmployees extends BindingClass {
              if (employeesInDept.length < 20)  {
                document.getElementById('next').className = 'disabled';;
             }
-
          }
-
-         this.dataStore.set('firstEmpId', employees[0].employeeId);
-
+         this.dataStore.set('firstEmpId', employees[0].lastNameEmployeeId);
      }
 
 
@@ -185,21 +181,24 @@ class ViewEmployees extends BindingClass {
          const deptName = dept.options[dept.selectedIndex].innerHTML;
 
          if (deptId == 'ALL'){
-            const employeesPrev = await this.client.getAllEmployees(employees[0].employeeId, false);
+            const employeesPrev = await this.client.getAllEmployees(employees[0].lastNameEmployeeId, false);
             this.dataStore.set('employees', employeesPrev);
+
             if (employeesPrev.length != 0 && employeesPrev[0].employeeId ==  this.dataStore.get('veryFirstEmpId')){
                 document.getElementById('previous').className = 'disabled';;
             }
 
          } else {
-            const employeesInDept = await this.client.getAllEmployeesByDept(employees[0].employeeId, false, deptId);
+            const employeesInDept = await this.client.getAllEmployeesByDept(employees[0].lastNameEmployeeId, false, deptId);
             this.dataStore.set('employees', employeesInDept);
+            
             if (employeesInDept.length != 0 && employeesInDept[0].employeeId ==  this.dataStore.get('veryFirstEmpIdOfDept')){
                 document.getElementById('previous').className = 'disabled';
             }
          }
         document.getElementById('next').className = 'enabled';
          this.dataStore.set('firstEmpId', employees[0].employeeId);
+
      }
 
       async deptChange() {
@@ -219,14 +218,14 @@ class ViewEmployees extends BindingClass {
          if (deptId == 'ALL'){
             const employees = await this.client.getAllEmployees(0, true, deptId);
             this.dataStore.set('employees', employees);
-            this.dataStore.set('veryFirstEmpIdOfDept', employees[0].employeeId);
+            this.dataStore.set('veryFirstEmpIdOfDept', employees[0].lastNameEmployeeId);
             if (employees.length < 20) {
                 document.getElementById('next').className = 'disabled';;
             }
          } else {
             const employeesInDept = await this.client.getAllEmployeesByDept(0, true, deptId);
             this.dataStore.set('employees', employeesInDept);
-            this.dataStore.set('veryFirstEmpIdOfDept', employeesInDept[0].employeeId);
+            this.dataStore.set('veryFirstEmpIdOfDept', employeesInDept[0].lastNameEmployeeId);
              if (employeesInDept.length < 20) {
                  document.getElementById('next').className = 'disabled';;
              }

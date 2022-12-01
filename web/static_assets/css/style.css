@@ -74,6 +74,11 @@ form label{
   display: inline-block;
 }
 
+.div-3{
+  font-weight:bold;
+  display: inline-block;
+}
+
 table {
   font-family: sans-serif;
   border-collapse: collapse;
@@ -128,6 +133,11 @@ tr:nth-child(even) {
     display: flex;
     flex-direction: column;
 }
+
+.required:after {
+    content:" *";
+    color: red;
+  }
 
 .tags {
     display: flex;

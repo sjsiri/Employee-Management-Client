@@ -274,7 +274,6 @@ Resources:
             Path: /departments
             Method: post
 
-
   UpdateDepartmentLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -306,6 +305,8 @@ Resources:
           AttributeType: "S"
         - AttributeName: "deptId"
           AttributeType: "S"
+        - AttributeName: "lastNameEmployeeId"
+          AttributeType: "S"
       KeySchema:
         - AttributeName: "employeeId"
           KeyType: "HASH"
@@ -320,11 +321,19 @@ Resources:
               KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"
-        - IndexName: "DepartmentIdIndex"
+        - IndexName: "DepartmentLastNameIdIndex"
           KeySchema:
             - AttributeName: "deptId"
               KeyType: "HASH"
-            - AttributeName: "employeeId"
+            - AttributeName: "lastNameEmployeeId"
+              KeyType: "RANGE"
+          Projection:
+            ProjectionType: "ALL"
+        - IndexName: "LastNameIdStatusIndex"
+          KeySchema:
+            - AttributeName: "employeeStatus"
+              KeyType: "HASH"
+            - AttributeName: "lastNameEmployeeId"
               KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"
