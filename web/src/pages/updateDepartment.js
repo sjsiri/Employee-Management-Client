@@ -6,7 +6,7 @@ import DataStore from "../util/DataStore";
 /**
  * Logic needed for the view department page of the website.
  */
-//Global variable to track the very first employee Id retrieved and the first page.
+//Global variable to track the very first department Id retrieved and the first page.
 
 class UpdateDepartment extends BindingClass {
 
@@ -18,13 +18,13 @@ class UpdateDepartment extends BindingClass {
     }
 
  /**
-     * Once the client is loaded, get the employee details.
+     * Once the client is loaded, get the department details.
      */
     async clientLoaded() {
         const urlParams = new URLSearchParams(window.location.search);
         const departmentId = urlParams.get('id');
-        this.dataStore.set('deptId', deptId);
-        const employeeDetail = await this.client.getDepartment(departmentId);
+        this.dataStore.set('deptId', departmentId);
+        const departmentDetail = await this.client.getDepartment(departmentId);
         this.dataStore.set('departmentDetail', departmentDetail);
         this.displayDeptDetails();
     }
@@ -48,22 +48,14 @@ class UpdateDepartment extends BindingClass {
     displayDeptDetails() {
              const departmentDetail = this.dataStore.get('departmentDetail');
 
-             if (!departmentDetail) {
-                 return;
-             }
-
          if (!departmentDetail) {
-              return;
-          }
-          if (departmentDetail.deptId){
-              document.getElementById('deptId').value = departmentDetail.deptId;
-          }
+             return;
+         }
+
           if (departmentDetail.deptName){
               document.getElementById('deptName').value = departmentDetail.deptName;
           }
-          if (departmentDetail.deptStatus){
-              document.getElementById('deptStatus').value = departmentDetail.deptStatus;
-          }
+
 
     }
 
@@ -85,11 +77,9 @@ class UpdateDepartment extends BindingClass {
     }
 
     redirectToViewDepartment() {
-        const employee = this.dataStore.get('department');
-        if (department) {
             window.location.href = `/departmentIndex.html`;
-        }
     }
+
 }
 
 /**
@@ -100,4 +90,7 @@ const main = async () => {
     await updateDepartment.mount();
 };
 
+
+
 window.addEventListener('DOMContentLoaded', main);
+
