@@ -61,39 +61,7 @@ public class UpdateEmployeeActivity {
     public UpdateEmployeeResult handleRequest(final UpdateEmployeeRequest updateEmployeeRequest) {
         log.info("Received UpdateEmployeeRequest {}", updateEmployeeRequest);
 
-
-        if (updateEmployeeRequest.getEmployeeId() != null &&
-                !updateEmployeeRequest.getEmployeeId().equals(updateEmployeeRequest.getPathEmployeeId())) {
-            throw new InvalidAttributeChangeException("Employee's ID can't be changed");
-        }
-
-        if (!EmployeeMgmtClientServiceUtils.isValidString(updateEmployeeRequest.getFirstName()) &&
-                updateEmployeeRequest.getFirstName() != null) {
-            publishExceptionMetrics(true);
-            throw new InvalidAttributeValueException("Employee firstName [" +
-                    updateEmployeeRequest.getFirstName() + "] contains illegal characters");
-        }
-
-        if (!EmployeeMgmtClientServiceUtils.isValidString(updateEmployeeRequest.getLastName()) &&
-                updateEmployeeRequest.getLastName() != null) {
-            publishExceptionMetrics(true);
-            throw new InvalidAttributeValueException("Employee lastName [" +
-                    updateEmployeeRequest.getLastName() + "] contains illegal characters");
-        }
-
-        if (!EmployeeMgmtClientServiceUtils.isValidString(updateEmployeeRequest.getJobTitle()) &&
-                updateEmployeeRequest.getJobTitle() != null) {
-            publishExceptionMetrics(true);
-            throw new InvalidAttributeValueException("Employee jobTitle [" +
-                    updateEmployeeRequest.getJobTitle() + "] contains illegal characters");
-        }
-
-        if (!EmployeeMgmtClientServiceUtils.isValidString(updateEmployeeRequest.getDeptName()) &&
-                updateEmployeeRequest.getDeptName() != null) {
-            publishExceptionMetrics(true);
-            throw new InvalidAttributeValueException("Employee DeptName [" +
-                    updateEmployeeRequest.getDeptName() + "] contains illegal characters");
-        }
+        checkAttributes(updateEmployeeRequest);
 
         LocalDateConverter converter = new LocalDateConverter();
 
@@ -103,6 +71,7 @@ public class UpdateEmployeeActivity {
         }
         if (updateEmployeeRequest.getLastName() != null) {
             employee.setLastName(updateEmployeeRequest.getLastName());
+            employee.setLastNameEmployeeId(updateEmployeeRequest.getLastName() + "_" + employee.getEmployeeId());
         }
         if (updateEmployeeRequest.getJobTitle() != null) {
             employee.setJobTitle(updateEmployeeRequest.getJobTitle());
@@ -134,6 +103,7 @@ public class UpdateEmployeeActivity {
         return UpdateEmployeeResult.builder().withEmployeeModel(employee).build();
 
     }
+
     /**
      * Helper method to publish exception metrics.
      * @param isInvalidAttributeValue indicates whether InvalidAttributeValueException is thrown
@@ -141,5 +111,40 @@ public class UpdateEmployeeActivity {
     private void publishExceptionMetrics(final boolean isInvalidAttributeValue) {
         metricsPublisher.addCount(MetricsConstants.UPDATEEMPLOYEE_INVALIDATTRIBUTEVALUE_COUNT,
                 isInvalidAttributeValue ? 1 : 0);
+    }
+
+    private void checkAttributes(UpdateEmployeeRequest request) {
+        if (request.getEmployeeId() != null &&
+                !request.getEmployeeId().equals(request.getPathEmployeeId())) {
+            throw new InvalidAttributeChangeException("Employee's ID can't be changed");
+        }
+
+        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getFirstName()) &&
+                request.getFirstName() != null) {
+            publishExceptionMetrics(true);
+            throw new InvalidAttributeValueException("Employee firstName [" +
+                    request.getFirstName() + "] contains illegal characters");
+        }
+
+        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getLastName()) &&
+                request.getLastName() != null) {
+            publishExceptionMetrics(true);
+            throw new InvalidAttributeValueException("Employee lastName [" +
+                    request.getLastName() + "] contains illegal characters");
+        }
+
+        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getJobTitle()) &&
+                request.getJobTitle() != null) {
+            publishExceptionMetrics(true);
+            throw new InvalidAttributeValueException("Employee jobTitle [" +
+                    request.getJobTitle() + "] contains illegal characters");
+        }
+
+        if (!EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName()) &&
+                request.getDeptName() != null) {
+            publishExceptionMetrics(true);
+            throw new InvalidAttributeValueException("Employee DeptName [" +
+                    request.getDeptName() + "] contains illegal characters");
+        }
     }
 }
