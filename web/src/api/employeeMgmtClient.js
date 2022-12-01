@@ -158,6 +158,14 @@ export default class EmployeeMgmtClient extends BindingClass {
          }
      }
 
+    async createDepartment(employee, errorCallback) {
+        try {
+            const response = await this.client.post(`departments`, employee);
+            return response.data.department;
+        } catch (error) {
+            this.handleError(error, errorCallback)
+        }
+    }
 
     /**
      * Helper method to log the error and run any error functions.

@@ -148,6 +148,11 @@ tr:nth-child(even) {
     flex: 80%;
 }
 
+.disabled {
+    disabled = true;
+    background-color : #454545;
+}
+
 /*
 Flexbox on a lists removes the numbers. We use a counter here to add them back.
 https://stackoverflow.com/a/34316093
