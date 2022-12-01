@@ -4,6 +4,7 @@ import com.nashss.se.employeecontactservice.activity.requests.CreateDepartmentRe
 import com.nashss.se.employeecontactservice.activity.results.CreateDepartmentResult;
 import com.nashss.se.employeecontactservice.dynamodb.DepartmentDao;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
+import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
 import com.nashss.se.employeecontactservice.exceptions.InvalidAttributeValueException;
 import com.nashss.se.employeecontactservice.utils.EmployeeMgmtClientServiceUtils;
 
@@ -44,7 +45,6 @@ public class CreateDepartmentActivity {
 
         checkAttributes(request);
 
-
         Department dept = new Department();
         dept.setDeptId(request.getDeptId());
         dept.setDeptName(request.getDeptName());
@@ -58,10 +58,16 @@ public class CreateDepartmentActivity {
     }
 
     private void checkAttributes(CreateDepartmentRequest request) {
-        if (request.getDeptName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName())) {
-            throw new InvalidAttributeValueException("Department name \"" +
-                    request.getDeptName() +
-                    "\" contains invalid characters");
+        // We want the department to not be found
+        try {
+            departmentDao.getDepartment(request.getDeptId());
+            throw new InvalidAttributeValueException("Department ID \"" + request.getDeptId() + "\" is already taken.");
+        } catch (DepartmentNotFoundException ignored) {
+            if (request.getDeptName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName())) {
+                throw new InvalidAttributeValueException("Department name \"" +
+                        request.getDeptName() +
+                        "\" contains invalid characters");
+            }
         }
     }
 }
