@@ -2,14 +2,14 @@ package com.nashss.se.employeecontactservice.activity.results;
 
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
 
-public class CreateDepartmentResult {
+public class UpdateDepartmentResult {
     private final Department department;
     /**
      * Constructs results.
      *
-     * @param department the department to be created.
+     * @param department the department to be updated.
      */
-    public CreateDepartmentResult(Department department) {
+    public UpdateDepartmentResult(Department department) {
         this.department = department;
     }
 
@@ -21,7 +21,7 @@ public class CreateDepartmentResult {
     @Override
     public String toString() {
         return "CreateDepartmentResult{" +
-                "department=" + department +
+                "departmentModel=" + department +
                 '}';
     }
 
@@ -33,13 +33,14 @@ public class CreateDepartmentResult {
     public static class Builder {
         private Department dept = new Department();
 
-        public Builder withDepartment(Department dept) {
+        public UpdateDepartmentResult.Builder withDepartment(Department dept) {
             this.dept = dept;
             return this;
         }
 
-        public CreateDepartmentResult build() {
-            return new CreateDepartmentResult(dept);
+        public UpdateDepartmentResult build() {
+            return new UpdateDepartmentResult(dept);
         }
     }
 }
+

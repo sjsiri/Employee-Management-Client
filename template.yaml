@@ -274,7 +274,6 @@ Resources:
             Path: /departments
             Method: post
 
-
   UpdateDepartmentLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -294,6 +293,26 @@ Resources:
           Properties:
             Path: /departments/{deptId}
             Method: put
+
+  GetDepartmentLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Role: !GetAtt AccessDynamoDBTablesRole.Arn
+      CodeUri: EmployeeContactServiceLambda
+      Handler: com.nashss.se.employeecontactservice.lambda.GetSingleDepartmentDetailsLambda::handleRequest
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+      Events:
+        EmployeeManagementClient:
+          Type: Api
+          Properties:
+            Path: /departments/{deptId}
+            Method: get
   #-----------------------------------------------------------------
 
   EmployeesTable:
@@ -305,6 +324,8 @@ Resources:
         - AttributeName: "employeeStatus"
           AttributeType: "S"
         - AttributeName: "deptId"
+          AttributeType: "S"
+        - AttributeName: "lastNameEmployeeId"
           AttributeType: "S"
       KeySchema:
         - AttributeName: "employeeId"
@@ -320,11 +341,19 @@ Resources:
               KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"
-        - IndexName: "DepartmentIdIndex"
+        - IndexName: "DepartmentLastNameIdIndex"
           KeySchema:
             - AttributeName: "deptId"
               KeyType: "HASH"
-            - AttributeName: "employeeId"
+            - AttributeName: "lastNameEmployeeId"
+              KeyType: "RANGE"
+          Projection:
+            ProjectionType: "ALL"
+        - IndexName: "LastNameIdStatusIndex"
+          KeySchema:
+            - AttributeName: "employeeStatus"
+              KeyType: "HASH"
+            - AttributeName: "lastNameEmployeeId"
               KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"

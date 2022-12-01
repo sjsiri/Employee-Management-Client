@@ -4,7 +4,9 @@ import com.nashss.se.employeecontactservice.activity.CreateDepartmentActivity;
 import com.nashss.se.employeecontactservice.activity.CreateEmployeeActivity;
 import com.nashss.se.employeecontactservice.activity.GetAllDepartmentsActivity;
 import com.nashss.se.employeecontactservice.activity.GetAllEmployeesActivity;
+import com.nashss.se.employeecontactservice.activity.GetSingleDepartmentDetailsActivity;
 import com.nashss.se.employeecontactservice.activity.GetSingleEmployeeDetailsActivity;
+import com.nashss.se.employeecontactservice.activity.UpdateDepartmentActivity;
 import com.nashss.se.employeecontactservice.activity.UpdateEmployeeActivity;
 
 import dagger.Component;
@@ -38,6 +40,11 @@ public interface ServiceComponent {
 
     /**
      * Provides the relevant activity.
+     * @return GetSingleDepartmentDetailsActivity
+     */
+    GetSingleDepartmentDetailsActivity provideGetSingleDepartmentDetailsActivity();
+    /**
+     * Provides the relevant activity.
      * @return CreateEmployeeActivity
      */
     CreateEmployeeActivity provideCreateEmployeeActivity();
@@ -53,5 +60,11 @@ public interface ServiceComponent {
      * @return GetAllDepartmentsActivity
      */
     GetAllDepartmentsActivity provideGetAllDepartmentsActivity();
+
+    /**
+     * Provides the relevant activity.
+     * @return UpdateEmployeeActivity
+     */
+    UpdateDepartmentActivity provideUpdateDepartmentActivity();
 
 }

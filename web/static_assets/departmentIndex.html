@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Management Client</title>
+  <script type="text/javascript" src="assets/viewDepartments.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+<header class="header" id="header"></header>
+<div class="card">
+  <h2>View Departments</h2>
+  <h2><a href ="index.html">View Employees</a></h2>
+
+  <div id="dept_loading"> <span> </span></div>
+  <div> <span> </span></div>
+  <table id="table" class="table">
+    <tr class="tr">
+      <th>Department ID</th>
+      <th>Department Name</th>
+      <th>Department Status</th>
+    </tr>
+  </table>
+  <ol id="departments"></ol>
+  <div></div>
+
+
+  <div>
+    <button type="button" id="create-department" onclick="location.href='create_department.html';">Create Department</button>
+  </div>
+</div>
+</body>
+</html>
