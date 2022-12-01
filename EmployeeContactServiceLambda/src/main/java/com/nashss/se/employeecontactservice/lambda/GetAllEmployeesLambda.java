@@ -18,7 +18,7 @@ public class GetAllEmployeesLambda extends LambdaActivityRunner<GetAllEmployeesR
         return super.runActivity(() ->
                     input.fromPath(path ->
                             GetAllEmployeesRequest.builder()
-                                    .withEmployeeId(path.get("employeeId"))
+                                    .withLastNameEmployeeId(path.get("employeeId"))
                                     .withDeptId(
                                             (ifNull(input.getQueryStringParameters(), new HashMap<String, String>())
                                             ).get("deptId"))

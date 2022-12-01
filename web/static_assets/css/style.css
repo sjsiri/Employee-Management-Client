@@ -115,6 +115,11 @@ tr:nth-child(even) {
     flex-direction: column;
 }
 
+.required:after {
+    content:" *";
+    color: red;
+  }
+
 .tags {
     display: flex;
     flex-direction: row;

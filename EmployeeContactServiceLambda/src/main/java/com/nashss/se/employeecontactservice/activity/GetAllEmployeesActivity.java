@@ -41,10 +41,11 @@ public class GetAllEmployeesActivity {
      */
     public GetAllEmployeesResult handleRequest(final GetAllEmployeesRequest getEmployeeRequest) {
         log.info("Received GetEmployeeRequest {}", getEmployeeRequest);
-        String requestedId = getEmployeeRequest.getEmployeeId();
         Boolean forward = getEmployeeRequest.getForwardBoolean();
         String deptId = getEmployeeRequest.getDeptId();
-        List<Employee> employeeList = employeeDao.getAllActiveEmployeesWithLimit(requestedId, forward, deptId);
+        String lastNameEmployeeId = getEmployeeRequest.getLastNameEmployeeId();
+        List<Employee> employeeList =
+                employeeDao.getAllActiveEmployeesWithLimit(lastNameEmployeeId, forward, deptId);
         if (!forward) {
             Collections.reverse(employeeList);
         }

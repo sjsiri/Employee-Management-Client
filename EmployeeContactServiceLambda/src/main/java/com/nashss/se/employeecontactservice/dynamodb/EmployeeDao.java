@@ -48,16 +48,14 @@ public class EmployeeDao {
     }
 
     /**
-     * Returns the list of {@link Employee} starting at the supplied ID.
+     * Returns the list of {@link Employee} starting at the last name + ID.
      *
      * @param employeeStartKey the Employee ID
      * @param forward boolean if true the page will go to the next if false it will go to previous.
      * @param deptId deptId filters the results by the selected dept id
      * @return the stored Employees, or null if none was found.
      */
-
     public List<Employee> getAllActiveEmployeesWithLimit(String employeeStartKey, Boolean forward, String deptId) {
-
         Map<String, AttributeValue> startKeyMap = new HashMap<>();
         Map<String, AttributeValue> valueMap = new HashMap<>();
 
@@ -73,7 +71,6 @@ public class EmployeeDao {
         //If Department ID is passed as a query parameter, fetch employees in the department ID
         if (deptId != null) {
             startKeyMap.put("deptId", new AttributeValue().withS(deptId));
-            startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
             valueMap.put(":deptId", new AttributeValue().withS(deptId));
 
             queryExpression.setIndexName(Employee.DEPARTMENT_GSI);
@@ -83,11 +80,15 @@ public class EmployeeDao {
         } else {
             //If Department ID is NOT passed as a query parameter, fetch all employees
             startKeyMap.put("employeeStatus", new AttributeValue().withS("Active"));
-            startKeyMap.put("employeeId", new AttributeValue().withS(employeeStartKey));
 
-            queryExpression.setIndexName(Employee.EMPLOYEE_STATUS);
+            queryExpression.setIndexName(Employee.LASTNAME_STATUS);
             queryExpression.setKeyConditionExpression("employeeStatus = :employeeStatus");
         }
+
+        startKeyMap.put("lastNameEmployeeId", new AttributeValue().withS(employeeStartKey));
+        String employeeId = (employeeStartKey.length() < 7) ? "0" :
+                employeeStartKey.substring(employeeStartKey.length() - 5);
+        startKeyMap.put("employeeId", new AttributeValue().withS(employeeId));
 
         return dynamoDBMapper.queryPage(Employee.class, queryExpression).getResults();
 

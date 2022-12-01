@@ -15,8 +15,9 @@ import java.util.Objects;
 @DynamoDBTable(tableName = "Employees")
 public class Employee {
 
+    public static final String LASTNAME_STATUS = "LastNameIdStatusIndex";
     public static final String EMPLOYEE_STATUS = "EmployeeStatusIndex";
-    public static final String DEPARTMENT_GSI = "DepartmentIdIndex";
+    public static final String DEPARTMENT_GSI = "DepartmentLastNameIdIndex";
 
     private String employeeId;
 
@@ -40,9 +41,10 @@ public class Employee {
 
     private String employeeStatus;
 
-    @DynamoDBHashKey(attributeName = "employeeId")
-    @DynamoDBIndexRangeKey(globalSecondaryIndexNames  = {EMPLOYEE_STATUS, DEPARTMENT_GSI})
+    private String lastNameEmployeeId;
 
+    @DynamoDBHashKey(attributeName = "employeeId")
+    @DynamoDBIndexRangeKey(globalSecondaryIndexName  = EMPLOYEE_STATUS)
     public String getEmployeeId() {
         return employeeId;
     }
@@ -87,7 +89,6 @@ public class Employee {
         this.email = email;
     }
 
-    // DeptId will be GSI Index HashKey( will implement later )
     @DynamoDBIndexHashKey(globalSecondaryIndexName = DEPARTMENT_GSI)
     @DynamoDBAttribute(attributeName = "deptId")
     public String getDeptId() {
@@ -137,12 +138,24 @@ public class Employee {
     }
 
     @DynamoDBAttribute(attributeName = "employeeStatus")
-    @DynamoDBIndexHashKey(globalSecondaryIndexName = EMPLOYEE_STATUS, attributeName = "employeeStatus")
+    @DynamoDBIndexHashKey(globalSecondaryIndexNames = {EMPLOYEE_STATUS, LASTNAME_STATUS})
     public String getEmployeeStatus() {
-        return employeeStatus; }
+        return employeeStatus;
+    }
 
     public void setEmployeeStatus(String employeeStatus) {
-        this.employeeStatus = employeeStatus; }
+        this.employeeStatus = employeeStatus;
+    }
+
+    @DynamoDBAttribute(attributeName = "lastNameEmployeeId")
+    @DynamoDBIndexRangeKey(globalSecondaryIndexNames = {LASTNAME_STATUS, DEPARTMENT_GSI})
+    public String getLastNameEmployeeId() {
+        return lastNameEmployeeId;
+    }
+
+    public void setLastNameEmployeeId(String lastNameEmployeeId) {
+        this.lastNameEmployeeId = lastNameEmployeeId;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -196,6 +209,7 @@ public class Employee {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", employeeStatus='" + employeeStatus + '\'' +
+                ", lastNameEmployeeId='" + lastNameEmployeeId + '\'' +
                 '}';
     }
 }

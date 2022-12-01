@@ -55,6 +55,10 @@ class CreateEmployee extends BindingClass {
      * Employee.
      */
     async submit() {
+        const nameRegex = new RegExp('[^a-zA-Z\\s-\'.]');
+        const emailRegex = new RegExp('^[a-zA-Z0-9_!#$%&\'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$');
+        const phoneRegex = new RegExp('\\D');
+
         const firstName = document.getElementById('firstName').value;
         const lastName = document.getElementById('lastName').value;
         const jobTitle = document.getElementById('jobTitle').value;
@@ -64,11 +68,64 @@ class CreateEmployee extends BindingClass {
         const deptId = document.getElementById('depts').value;
         const deptName = dept.options[dept.selectedIndex].innerHTML;
         const hireDate = document.getElementById('hireDate').value;
+        console.log(hireDate);
         const dateOfBirth = document.getElementById('dateOfBirth').value;
-        const employeeStatus = "Active";
-        document.getElementById('save-employee').innerHTML = 'Saving Employee...'
-        const employee = await this.client.createEmployee(firstName, lastName,
-        jobTitle, email, phoneNumber, deptId, deptName, hireDate, dateOfBirth, employeeStatus);
+        const employeeStatus = document.getElementById('employeeStatus').value;
+
+        if (!firstName || !lastName || !email || !dateOfBirth || !employeeStatus) {
+            alert("Please fill in all required fields");
+            return;
+        }
+        if (nameRegex.test(firstName)) {
+            alert("The first name you entered has invalid characters");
+            return;
+        }
+        if (nameRegex.test(lastName)) {
+            alert ("The last name you entered has invalid characters");
+            return;
+        }
+        if (!emailRegex.test(email)) {
+            alert("The email you entered is invalid");
+            return;
+        }
+        if ((dateOfBirth.substring(0,4) < 1900) || (dateOfBirth.substring(0,4) > 2100) || (dateOfBirth.length != 10)) {
+            alert("The date of birth you entered is invalid.");
+            return;
+        }
+
+        let payload = {firstName: firstName, lastName: lastName, email: email, dateOfBirth: dateOfBirth, employeeStatus: employeeStatus}
+
+        if (jobTitle) {
+            if (nameRegex.test(jobTitle)) {
+                alert("The job title you entered has invalid characters");
+                return;
+            }
+            payload.jobTitle = jobTitle;
+        }
+        if (phoneNumber) {
+            if (phoneRegex.test(phoneNumber)) {
+                alert("The phone number you entered is invalid. Please use only digits");
+                return;
+            }
+            payload.phoneNumber = phoneNumber;
+        }
+        if (deptId) {
+            payload.deptId = deptId;
+        }
+        if (deptName) {
+            payload.deptName = deptName;
+        }
+        if (hireDate) {
+            if ((hireDate.substring(0,4) < 1900) || (hireDate.substring(0,4) > 2100) || (hireDate.length != 10)) {
+                alert("The hire date you entered is invalid.");
+                return;
+            }
+            payload.hireDate = hireDate;
+        }
+        document.getElementById('save-employee').disabled = true;
+        document.getElementById('save-employee').innerHTML = 'Saving Employee...';
+        document.getElementById('save-employee').style.background='grey';
+        const employee = await this.client.createEmployee(payload);
         this.dataStore.set('employee', employee);
         this.redirectToViewEmployee();
     }
