@@ -4,9 +4,9 @@ import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
 
 /**
- * Logic needed for the view playlist page of the website.
+ * Logic needed for the view department page of the website.
  */
-//Global variable to track the very first employee Id retrieved and the first page.
+//Global variable to track the very first department Id retrieved and the first page.
 
 class ViewDepartmentDetail extends BindingClass {
 
@@ -19,7 +19,7 @@ class ViewDepartmentDetail extends BindingClass {
     }
 
  /**
-     * Once the client is loaded, get the employee details.
+     * Once the client is loaded, get the department details.
      */
     async clientLoaded() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -48,7 +48,7 @@ class ViewDepartmentDetail extends BindingClass {
 
 
  /**
-     * Display employee details  on the page.
+     * Display department details  on the page.
      */
     displayDeptDetails() {
         const departmentDetail = this.dataStore.get('departmentDetail');

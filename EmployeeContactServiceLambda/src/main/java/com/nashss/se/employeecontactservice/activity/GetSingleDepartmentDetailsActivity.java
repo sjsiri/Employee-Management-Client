@@ -5,7 +5,6 @@ import com.nashss.se.employeecontactservice.activity.results.GetSingleDepartment
 import com.nashss.se.employeecontactservice.dynamodb.DepartmentDao;
 
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-import com.nashss.se.employeecontactservice.dynamodb.models.Employee;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +20,7 @@ public class GetSingleDepartmentDetailsActivity {
     /**
      * Instantiates a new GetSingleDepartmentDetailsActivity object.
      *
-     * @param departmentDao EmployeeDao to access the employee table.
+     * @param departmentDao DepartmentDao to access the department table.
      */
 
     @Inject
@@ -30,14 +29,14 @@ public class GetSingleDepartmentDetailsActivity {
     }
 
     /**
-     * This method handles the incoming request by retrieving the employee from the database.
+     * This method handles the incoming request by retrieving the department from the database.
      * <p>
-     * It then returns the employee.
+     * It then returns the department.
      * <p>
-     * If the employee does not exist, this should throw a EmployeeNotFoundException.
+     * If the department does not exist, this should throw a DepartmentNotFoundException.
      *
-     * @param getSingleDepartmentDetailsRequest request object containing the employee ID
-     * @return getSingleDepartmentDetailsResult result object containing the API defined {@link Employee}
+     * @param getSingleDepartmentDetailsRequest request object containing the department ID
+     * @return getSingleDepartmentDetailsResult result object containing the API defined {@link Department}
      */
     public GetSingleDepartmentDetailsResult handleRequest(final GetSingleDepartmentDetailsRequest
                                                                   getSingleDepartmentDetailsRequest) {

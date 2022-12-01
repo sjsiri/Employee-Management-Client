@@ -4,7 +4,7 @@ import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
 
 /**
- * Logic needed for the view playlist page of the website.
+ * Logic needed for the view department page of the website.
  */
 
 class ViewDepartments extends BindingClass {
@@ -18,7 +18,7 @@ class ViewDepartments extends BindingClass {
     }
 
  /**
-     * Once the client is loaded, get the employees list.
+     * Once the client is loaded, get the departments list.
      */
     async clientLoaded() {
         document.getElementById('departments').innerText = "(Loading employee list...)";
@@ -71,7 +71,7 @@ class ViewDepartments extends BindingClass {
     }
 
  /**
-     * When the employees are updated in the datastore, update the list of employees on the page.
+     * When the departments are updated in the datastore, update the list of departments on the page.
      */
     async displayEmployeesOnPage() {
         const departments = this.dataStore.get('departments');

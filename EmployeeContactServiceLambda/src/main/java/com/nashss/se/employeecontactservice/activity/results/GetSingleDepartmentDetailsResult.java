@@ -7,7 +7,7 @@ public class GetSingleDepartmentDetailsResult {
     private final Department singleDepartment;
 
     /**
-     * Instantiates a new Department object.
+     *
      *
      * @param singleDepartment Department to access the department table.
      */

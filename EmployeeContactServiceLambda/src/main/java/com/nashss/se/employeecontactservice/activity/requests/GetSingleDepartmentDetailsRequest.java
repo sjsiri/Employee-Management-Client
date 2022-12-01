@@ -5,7 +5,7 @@ public class GetSingleDepartmentDetailsRequest {
     private final String deptId;
 
     /**
-     * Instantiates a deptId.
+     *
      *
      * @param deptId linked to the deptId for department table.
      */
