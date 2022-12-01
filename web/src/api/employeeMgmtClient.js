@@ -64,6 +64,21 @@ export default class EmployeeMgmtClient extends BindingClass {
         }
     }
 
+   /**
+     * Gets the department info for the given ID.
+     * @param deptId Unique identifier for an department
+     * @param errorCallback (Optional) A function to execute if the call fails.
+     * @returns The department's data.
+     */
+    async getDepartment(deptId, errorCallback) {
+        try {
+            const response = await this.client.get(`departments/${deptId}`);
+            return response.data.singleDepartment;
+        } catch (error) {
+            this.handleError(error, errorCallback)
+        }
+    }
+
     /**
      * Get all the employees on the list.
      * @param errorCallback (Optional) A function to execute if the call fails.
@@ -142,6 +157,7 @@ export default class EmployeeMgmtClient extends BindingClass {
              this.handleError(error, errorCallback)
          }
      }
+
 
     /**
      * Helper method to log the error and run any error functions.

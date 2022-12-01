@@ -4,6 +4,7 @@ import com.nashss.se.employeecontactservice.activity.CreateDepartmentActivity;
 import com.nashss.se.employeecontactservice.activity.CreateEmployeeActivity;
 import com.nashss.se.employeecontactservice.activity.GetAllDepartmentsActivity;
 import com.nashss.se.employeecontactservice.activity.GetAllEmployeesActivity;
+import com.nashss.se.employeecontactservice.activity.GetSingleDepartmentDetailsActivity;
 import com.nashss.se.employeecontactservice.activity.GetSingleEmployeeDetailsActivity;
 import com.nashss.se.employeecontactservice.activity.UpdateDepartmentActivity;
 import com.nashss.se.employeecontactservice.activity.UpdateEmployeeActivity;
@@ -37,6 +38,11 @@ public interface ServiceComponent {
      */
     GetSingleEmployeeDetailsActivity provideGetSingleEmployeeDetailsActivity();
 
+    /**
+     * Provides the relevant activity.
+     * @return GetSingleDepartmentDetailsActivity
+     */
+    GetSingleDepartmentDetailsActivity provideGetSingleDepartmentDetailsActivity();
     /**
      * Provides the relevant activity.
      * @return CreateEmployeeActivity
