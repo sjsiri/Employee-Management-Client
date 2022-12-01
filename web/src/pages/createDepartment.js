@@ -29,6 +29,7 @@ class CreateDepartment extends BindingClass {
      * Calls the EmployeeMgmtClient to create the department.
      */
     async submit() {
+    const submitButton = document.getElementById('save-department');
     const nameRegex = new RegExp('[^a-zA-Z\\s-\'.]');
 
     const deptId = document.getElementById('deptId').value;
@@ -47,17 +48,22 @@ class CreateDepartment extends BindingClass {
 
     let payload = {deptId: deptId, deptName:deptName, deptStatus: deptStatus}
 
-    document.getElementById('save-department').className = 'disabled';
-    const department = await this.client.createDepartment(payload);
-    this.datastore.set('department', department);
-    redirectToViewDepartment();
+    submitButton.className = 'disabled';
+    submitButton.innerHTML = "Creating Department...";
+    try {
+        const response = await this.client.createDepartment(payload);
+    } catch (error) {
+        submitButton.style.background = '#F5881F';
+        submitButton.disable = false;
+        submitButton.innerHTML = "Create Department"
+        alert(error.response.data.replace('{ "error_message": "', '').replace('" }', ''));
+        return;
+    }
+    this.redirectToViewDepartment();
     }
 
     redirectToViewDepartment() {
-        const department = this.dataStore.get('department');
-        if (department.deptName) {
-            window.location.href = `/departmentIndex.html`;
-        }
+        window.location.href = `/departmentIndex.html`;
     }
 }
 
