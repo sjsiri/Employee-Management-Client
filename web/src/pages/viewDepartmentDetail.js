@@ -29,7 +29,6 @@ class ViewDepartmentDetail extends BindingClass {
         const departmentDetail = await this.client.getDepartment(deptId);
         this.dataStore.set('departmentDetail', departmentDetail);
         document.getElementById('update-department').addEventListener('click', async evt => {
-                          console.log('The element that was clicked was ', departmentId);
                             window.location.href = `/update_department.html?id=${deptId}`;
                           });
 

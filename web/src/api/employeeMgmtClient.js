@@ -87,7 +87,6 @@ export default class EmployeeMgmtClient extends BindingClass {
     async getAllEmployees(startEmployee, navDirection , errorCallback) {
         try {
             const response = await this.client.get(`employees/${startEmployee}/${navDirection}`);
-            console.log("In GetAllEmployees method. Response value:", response);
             return response.data.employeeList;
         } catch (error) {
             this.handleError(error, errorCallback)
@@ -101,7 +100,6 @@ export default class EmployeeMgmtClient extends BindingClass {
     async getAllEmployeesByDept(startEmployee, navDirection , deptId, errorCallback) {
         try {
             const response = await this.client.get(`employees/${startEmployee}/${navDirection}?deptId=${deptId}`);
-            console.log("In GetAllEmployeesByDept method. Response value:", response);
             return response.data.employeeList;
         } catch (error) {
             this.handleError(error, errorCallback)

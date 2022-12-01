@@ -48,7 +48,6 @@ class ViewDepartments extends BindingClass {
             let row = table.insertRow();
 
             row.addEventListener('click', async evt => {
-                      console.log('The element that was clicked was ', element.deptId);
                         window.location.href = `/view_department.html?id=${element.deptId}`;
                       });
 
