@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Management Client</title>
+  <script type="text/javascript" src="assets/updateDepartment.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<header class="header" id="header"></header>
+<div class="card">
+  <h2>Edit Department</h2>
+  <form class="card-content" id="view-department-form">
+    <p class="form-field">
+      <label>Department Name</label>
+      <input type="text" required class="validated-field" id="deptName">
+    </p>
+    <p class="form-field">
+      <label>Department Status</label>
+      <select id="deptStatusBox">
+        <option value ="Active">Active</option>
+        <option value = "InActive">InActive</option>
+      </select>
+    </p>
+  </form>
+  <button type="button"  id="save-department">Save Department</button>
+</div>
+</html>
