@@ -4,7 +4,7 @@ import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
 
 /**
- * Logic needed for the view playlist page of the website.
+ * Logic needed for the view department page of the website.
  */
 //Global variable to track the very first employee Id retrieved and the first page.
 
