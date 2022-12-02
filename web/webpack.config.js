@@ -31,6 +31,7 @@ module.exports = {
   createEmployee: path.resolve(__dirname, 'src', 'pages', 'createEmployee.js'),
   viewEmployeeDetail: path.resolve(__dirname, 'src', 'pages', 'viewEmployeeDetail.js'),
   updateEmployee: path.resolve(__dirname, 'src', 'pages', 'updateEmployee.js'),
+  updateDepartment: path.resolve(__dirname, 'src', 'pages', 'updateDepartment.js'),
   viewDepartments: path.resolve(__dirname, 'src', 'pages', 'viewDepartments.js'),
   viewDepartmentDetail: path.resolve(__dirname, 'src', 'pages', 'viewDepartmentDetail.js'),
   createDepartment: path.resolve(__dirname, 'src', 'pages', 'createDepartment.js'),

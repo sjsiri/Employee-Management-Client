@@ -150,6 +150,18 @@ export default class EmployeeMgmtClient extends BindingClass {
             return response.data;
     }
 
+    async updateDepartment(department, errorCallback) {
+          try {
+              const response = await this.client.put(`departments/${department.deptId}`, {
+                  deptName: department.deptName,
+                  deptStatus: department.deptStatus
+              });
+              return response.data.singleDepartment;
+          } catch (error) {
+              this.handleError(error, errorCallback)
+          }
+    }
+
     /**
      * Helper method to log the error and run any error functions.
      * @param error The error received from the server.
