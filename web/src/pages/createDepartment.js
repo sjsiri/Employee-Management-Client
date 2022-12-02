@@ -48,12 +48,13 @@ class CreateDepartment extends BindingClass {
 
     let payload = {deptId: deptId, deptName:deptName, deptStatus: deptStatus}
 
-    submitButton.className = 'disabled';
+    submitButton.disable = true;
+    submitButton.style.background = '#FF7f50';
     submitButton.innerHTML = "Creating Department...";
     try {
         const response = await this.client.createDepartment(payload);
     } catch (error) {
-        submitButton.style.background = '#F5881F';
+        submitButton.style.background = '#FF7f50';
         submitButton.disable = false;
         submitButton.innerHTML = "Create Department"
         alert(error.response.data.replace('{ "error_message": "', '').replace('" }', ''));

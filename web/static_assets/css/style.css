@@ -1,8 +1,8 @@
 :root {
     /* css variables: https://developer.mozilla.org/en-US/docs/Web/CSS/var */
-    --primary-color: #5D5E5E;
+    --primary-color: #454545;
     --secondary-color: #ffffff;
-    --tertiary-color: #F5881F;
+    --tertiary-color: #454545;
     --error-color: #EE3A23;
 }
 
@@ -12,14 +12,18 @@
     counter-reset: section;
     font-family: "Helvetica Neue",Helvetica,sans-serif;
 }
+body {
+	font-family: Calibri,sans-serif;
+	font-weight: 100;
+}
 
 .header {
     /* Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: #ff7f50;
+    color:#FFFFFF;
     padding: 4px 20px;
 }
 
@@ -32,13 +36,28 @@ label{
 }
 
 button {
-  background-color: var(--tertiary-color);
-  border: none;
-  color: var(--secondary-color);
-  padding: 4px 8px;
-  text-align: center;
-  font-weight: bold;
-}
+   background-color: #ff7f50;
+    border-radius: 8px;
+    border-width: 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Calibri", Calibri, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
 
 form label{
   font-weight:bold;
@@ -61,7 +80,7 @@ form label{
 }
 
 table {
-  font-family: arial, sans-serif;
+  font-family: sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -107,11 +126,11 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: var(--tertiary-color);
+  background-color: #FF7f50;
 }
 
 .active {
-  background-color: var(--tertiary-color);
+  background-color: #FF7f50;
 }
 
 
@@ -179,16 +198,9 @@ li a:hover {
     flex: 80%;
 }
 
-.enabled {
-    disabled = false;
-    background-color : #FF7f50;
+.text-center {
+  text-align: center;
 }
-
-.disabled {
-    disabled = true;
-    background-color : #454545;
-}
-
 /*
 Flexbox on a lists removes the numbers. We use a counter here to add them back.
 https://stackoverflow.com/a/34316093
