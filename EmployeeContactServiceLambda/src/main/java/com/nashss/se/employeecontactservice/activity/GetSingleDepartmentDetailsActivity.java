@@ -7,6 +7,7 @@ import com.nashss.se.employeecontactservice.dynamodb.DepartmentDao;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
 
 import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
