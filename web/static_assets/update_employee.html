@@ -10,20 +10,20 @@
     <h2>Edit Employee</h2>
     <form class="card-content" id="view-employee-form">
         <p class="form-field">
-            <label>First Name</label>
-            <input type="text" required class="validated-field" id="fname">
+            <label class="required">First Name</label>
+            <input type="text" required id="firstName">
         </p>
         <p class="form-field">
-            <label>Last Name</label>
-            <input type="text" id="lname">
+            <label class="required">Last Name</label>
+            <input type="text" id="lastName" required>
         </p>
         <p class="form-field">
             <label>Job Title</label>
             <input type="text" id="jobtitle">
         </p>
         <p class="form-field">
-            <label>Email</label>
-            <input type="email" id="email">
+            <label class="required">Email</label>
+            <input type="email" id="email" required>
         </p>
         <p class="form-field">
             <label>Phone#</label>
@@ -38,18 +38,18 @@
         <div class="div-2"  id="deptId" ></div>
         </p>
         <p class="form-field">
-            <label>Date of Birth</label>
-            <input type="date" id="dob">
+            <label class="required">Date of Birth</label>
+            <input type="date" id="dateOfBirth" required>
         </p>
         <p class="form-field">
             <label>Hire Date</label>
             <input type="date" id="hireDate">
         </p>
         <p class="form-field">
-            <label>Status</label>
-            <select id="empStatusBox">
-                <option value ="Active">Active</option>
-                <option value = "InActive">InActive</option>
+            <label class="required">Employee Status</label>
+            <select required id="employeeStatus" name="employeeStatus">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
             </select>
         </p>
     </form>

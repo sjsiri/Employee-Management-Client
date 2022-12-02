@@ -29,7 +29,6 @@ class ViewEmployeeDetail extends BindingClass {
         const employeeDetail = await this.client.getEmployee(employeeId);
         this.dataStore.set('employeeDetail', employeeDetail);
         document.getElementById('update-employee').addEventListener('click', async evt => {
-                          console.log('The element that was clicked was ', employeeId);
                             window.location.href = `/update_employee.html?id=${employeeId}`;
                           });
 
