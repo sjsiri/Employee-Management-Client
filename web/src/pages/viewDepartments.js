@@ -21,7 +21,7 @@ class ViewDepartments extends BindingClass {
      * Once the client is loaded, get the departments list.
      */
     async clientLoaded() {
-        document.getElementById('departments').innerText = "(Loading employee list...)";
+        document.getElementById('departments').innerText = "(Loading department list...)";
         //Get all departments API
         const departments = await this.client.getAllDepartments();
         this.dataStore.set('departments', departments);
