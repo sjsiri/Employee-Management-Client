@@ -4,7 +4,7 @@ import com.nashss.se.employeecontactservice.activity.requests.CreateDepartmentRe
 import com.nashss.se.employeecontactservice.activity.results.CreateDepartmentResult;
 import com.nashss.se.employeecontactservice.dynamodb.DepartmentDao;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
+import com.nashss.se.employeecontactservice.exceptions.DepartmentIdTakenException;
 import com.nashss.se.employeecontactservice.exceptions.InvalidAttributeValueException;
 import com.nashss.se.employeecontactservice.utils.EmployeeMgmtClientServiceUtils;
 
@@ -34,7 +34,7 @@ public class CreateDepartmentActivity {
      * <p>
      * It then returns the department.
      * <p>
-     * If deptId and/or departmentName are invalid strings,
+     * If deptId is already taken, or departmentName is an invalid string,
      * this should throw an InvalidAttributeValueException.
      *
      * @param request request object containing the department's information
@@ -58,16 +58,15 @@ public class CreateDepartmentActivity {
     }
 
     private void checkAttributes(CreateDepartmentRequest request) {
-        // We want the department to not be found
-        try {
-            departmentDao.getDepartment(request.getDeptId());
-            throw new InvalidAttributeValueException("Department ID \"" + request.getDeptId() + "\" is already taken.");
-        } catch (DepartmentNotFoundException ignored) {
-            if (request.getDeptName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName())) {
-                throw new InvalidAttributeValueException("Department name \"" +
-                        request.getDeptName() +
-                        "\" contains invalid characters");
-            }
+        // If department is found, then the ID is already taken
+        if (departmentDao.getDepartment(request.getDeptId()) != null) {
+            throw new DepartmentIdTakenException("Department ID \"" + request.getDeptId() + "\" is already taken.");
+        }
+
+        if (request.getDeptName() != null && !EmployeeMgmtClientServiceUtils.isValidString(request.getDeptName())) {
+            throw new InvalidAttributeValueException("Department name \"" +
+                    request.getDeptName() +
+                    "\" contains invalid characters");
         }
     }
 }

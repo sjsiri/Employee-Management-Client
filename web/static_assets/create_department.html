@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Employee Management Client</title>
+    <script type="text/javascript" src="assets/createDepartment.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<header class="header" id="header"></header>
+<div class="card">
+    <h2>Create Employee </h2>
+    <form class="card-content" id="create-department-form">
+        <p class="form-field">
+            <label class="required">Department ID</label>
+            <input type="text" required id="deptId">
+        </p>
+        <p class="form-field">
+            <label class="required">Department Name</label>
+            <input type="text" required id="deptName">
+        </p>
+        <p class="form-field">
+            <label class="required">First Name</label>
+            <select id="status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </p>
+    </form>
+    <button type="button" id="save-department">Create Department</button>
+</div>
+</html>
