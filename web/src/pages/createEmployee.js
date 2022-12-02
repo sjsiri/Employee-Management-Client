@@ -37,7 +37,6 @@ class CreateEmployee extends BindingClass {
     async loadDeptDropDown() {
            //Get all depts API
            const departments = await this.client.getAllDepartments();
-           console.log(departments);
            const deptsDropDown = document.getElementById('depts');
 
            for (let key of departments) {
@@ -68,7 +67,6 @@ class CreateEmployee extends BindingClass {
         const deptId = document.getElementById('depts').value;
         const deptName = dept.options[dept.selectedIndex].innerHTML;
         const hireDate = document.getElementById('hireDate').value;
-        console.log(hireDate);
         const dateOfBirth = document.getElementById('dateOfBirth').value;
         const employeeStatus = document.getElementById('employeeStatus').value;
 

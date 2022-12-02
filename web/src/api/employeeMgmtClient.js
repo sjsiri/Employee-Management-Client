@@ -87,7 +87,6 @@ export default class EmployeeMgmtClient extends BindingClass {
     async getAllEmployees(startEmployee, navDirection , errorCallback) {
         try {
             const response = await this.client.get(`employees/${startEmployee}/${navDirection}`);
-            console.log("In GetAllEmployees method. Response value:", response);
             return response.data.employeeList;
         } catch (error) {
             this.handleError(error, errorCallback)
@@ -101,7 +100,6 @@ export default class EmployeeMgmtClient extends BindingClass {
     async getAllEmployeesByDept(startEmployee, navDirection , deptId, errorCallback) {
         try {
             const response = await this.client.get(`employees/${startEmployee}/${navDirection}?deptId=${deptId}`);
-            console.log("In GetAllEmployeesByDept method. Response value:", response);
             return response.data.employeeList;
         } catch (error) {
             this.handleError(error, errorCallback)
@@ -140,24 +138,17 @@ export default class EmployeeMgmtClient extends BindingClass {
 
     async updateEmployee(employee, errorCallback) {
          try {
-             const response = await this.client.put(`employees/${employee.employeeId}`, {
-                 firstName: employee.firstName,
-                 lastName: employee.lastName,
-                 jobTitle: employee.jobTitle,
-                 email: employee.email,
-                 deptId: employee.deptId,
-                 deptName: employee.deptName,
-                 hireDate: employee.hireDate,
-                 phoneNumber: employee.phoneNumber,
-                 dateOfBirth: employee.dateOfBirth,
-                 employeeStatus: employee.employeeStatus
-             });
+             const response = await this.client.put(`employees/${employee.employeeId}`, employee);
              return response.data.employeeModel;
          } catch (error) {
              this.handleError(error, errorCallback)
          }
      }
 
+    async createDepartment(employee, errorCallback) {
+            const response = await this.client.post(`departments`, employee);
+            return response.data;
+    }
 
     async updateDepartment(department, errorCallback) {
           try {

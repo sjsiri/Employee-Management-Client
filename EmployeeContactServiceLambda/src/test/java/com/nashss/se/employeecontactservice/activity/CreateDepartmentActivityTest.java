@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
 public class CreateDepartmentActivityTest {
@@ -20,7 +21,7 @@ public class CreateDepartmentActivityTest {
     @Mock
     DepartmentDao deptDao;
 
-   CreateDepartmentActivity createDepartmentActivity;
+    CreateDepartmentActivity createDepartmentActivity;
 
     @BeforeEach
     void setup() {
@@ -31,9 +32,13 @@ public class CreateDepartmentActivityTest {
     @Test
     void handleRequest_validAttributes_callsCreateDepartment() {
         // GIVEN
-        CreateDepartmentRequest request = CreateDepartmentRequest.builder().withDeptName("Josh").build();
+        CreateDepartmentRequest request = CreateDepartmentRequest.builder()
+                .withDeptId("1000")
+                .withDeptName("Josh")
+                .build();
 
         // WHEN
+        when(deptDao.getDepartment(any())).thenReturn(null);
         createDepartmentActivity.handleRequest(request);
 
         // THEN
@@ -43,10 +48,13 @@ public class CreateDepartmentActivityTest {
     @Test
     void handleRequest_validAttributes_returnsResult() {
         // GIVEN
-        CreateDepartmentRequest request = CreateDepartmentRequest.builder().withDeptId("123").withDeptName("sss")
+        CreateDepartmentRequest request = CreateDepartmentRequest.builder()
+                .withDeptId("123")
+                .withDeptName("sss")
                 .build();
 
         // WHEN
+        when(deptDao.getDepartment(any())).thenReturn(null);
         CreateDepartmentResult result = createDepartmentActivity.handleRequest(request);
 
         // THEN
@@ -65,6 +73,22 @@ public class CreateDepartmentActivityTest {
                 .build();
 
         // WHEN + THEN
+        assertThrows(InvalidAttributeValueException.class, () -> createDepartmentActivity.handleRequest(request));
+    }
+
+    @Test
+    void handleRequest_deptIdAlreadyTaken_throwsException() {
+        // GIVEN
+        CreateDepartmentRequest request = CreateDepartmentRequest.builder()
+                .withDeptId("taken")
+                .withDeptName("test")
+                .withDeptStatus("Active")
+                .build();
+
+        // WHEN
+        when(deptDao.getDepartment("taken")).thenReturn(new Department());
+
+        // THEN
         assertThrows(InvalidAttributeValueException.class, () -> createDepartmentActivity.handleRequest(request));
     }
 }
