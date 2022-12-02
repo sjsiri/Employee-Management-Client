@@ -4,7 +4,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -48,18 +47,18 @@ public class DepartmentDaoTest {
 
 
     @Test
-    void getDepartment_deptNotFound_throwsDepartmentNotFoundException() {
+    void getDepartment_deptNotFound_returnsNull() {
         // GIVEN
         String nonexistentDeptId = "NotReal";
         when(mapper.load(Department.class, nonexistentDeptId)).thenReturn(null);
 
         // WHEN + THEN
-        assertThrows(DepartmentNotFoundException.class, () -> deptDao.getDepartment(nonexistentDeptId));
+        assertNull(deptDao.getDepartment(nonexistentDeptId));
     }
 
 
     @Test
-    void getAllActiveDepartmentsWithLimit_queriesDatabase() {
+    void getAllActiveDepartmentsWithLimit_scansDatabase() {
         // GIVEN
         String deptId = "0";
 
@@ -69,7 +68,5 @@ public class DepartmentDaoTest {
 
         // THEN
         verify(mapper).scan(eq(Department.class), any());
-
     }
-
 }
