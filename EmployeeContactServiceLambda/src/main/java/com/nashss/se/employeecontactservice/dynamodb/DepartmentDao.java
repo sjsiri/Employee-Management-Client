@@ -1,6 +1,5 @@
 package com.nashss.se.employeecontactservice.dynamodb;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
@@ -15,10 +14,8 @@ import javax.inject.Inject;
 /**
  * Accesses data for a department using {@link Department} to represent the model in DynamoDB.
  */
-
 public class DepartmentDao {
 
-    private static final int PAGE_SIZE = 100;
     private final DynamoDBMapper dynamoDBMapper;
 
     /**
@@ -26,7 +23,6 @@ public class DepartmentDao {
      *
      * @param dynamoDBMapper the {@link DynamoDBMapper} used to interact with the department table
      */
-
     @Inject
     public DepartmentDao(DynamoDBMapper dynamoDBMapper) {
         this.dynamoDBMapper = dynamoDBMapper;
@@ -40,21 +36,14 @@ public class DepartmentDao {
         this.dynamoDBMapper.save(dept);
     }
 
-
     /**
      * Returns the {@link Department} corresponding to the specified id.
      *
      * @param deptId the Department ID
      * @return the stored Department, or null if none was found.
      */
-
     public Department getDepartment(String deptId) {
-        Department department = dynamoDBMapper.load(Department.class, deptId);
-        if (null == department) {
-            throw new DepartmentNotFoundException(String.format("Could not find Department with ID '%s' ", deptId)
-            );
-        }
-        return department;
+        return dynamoDBMapper.load(Department.class, deptId);
     }
 
     /**
@@ -64,7 +53,6 @@ public class DepartmentDao {
      * @return the stored Departments, or null if none was found.
      */
     public List<Department> getAllActiveDepartmentsWithLimit(String deptStartKey) {
-
         Map<String, AttributeValue> valueMap = new HashMap<>();
         valueMap.put(":deptStatus", new AttributeValue().withS("Active"));
 
@@ -73,7 +61,5 @@ public class DepartmentDao {
                 .withExpressionAttributeValues(valueMap);
 
         return dynamoDBMapper.scan(Department.class, scanExpression);
-
     }
-
 }

@@ -6,6 +6,8 @@ import com.nashss.se.employeecontactservice.dynamodb.DepartmentDao;
 
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
 
+import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +24,6 @@ public class GetSingleDepartmentDetailsActivity {
      *
      * @param departmentDao DepartmentDao to access the department table.
      */
-
     @Inject
     public GetSingleDepartmentDetailsActivity(DepartmentDao departmentDao) {
         this.departmentDao = departmentDao;
@@ -43,6 +44,10 @@ public class GetSingleDepartmentDetailsActivity {
         log.info("Recieved GetSingleDepartmentRequest {}", getSingleDepartmentDetailsRequest);
         String requestedId = getSingleDepartmentDetailsRequest.getDeptId();
         Department singleDepartment = departmentDao.getDepartment(requestedId);
+
+        if (singleDepartment == null) {
+            throw new DepartmentNotFoundException("There is no department with ID " + requestedId);
+        }
 
         return GetSingleDepartmentDetailsResult.builder()
                 .withSingleDepartment(singleDepartment)

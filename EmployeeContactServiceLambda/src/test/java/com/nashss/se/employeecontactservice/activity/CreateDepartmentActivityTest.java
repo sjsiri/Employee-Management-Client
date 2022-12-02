@@ -4,7 +4,6 @@ import com.nashss.se.employeecontactservice.activity.requests.CreateDepartmentRe
 import com.nashss.se.employeecontactservice.activity.results.CreateDepartmentResult;
 import com.nashss.se.employeecontactservice.dynamodb.DepartmentDao;
 import com.nashss.se.employeecontactservice.dynamodb.models.Department;
-import com.nashss.se.employeecontactservice.exceptions.DepartmentNotFoundException;
 import com.nashss.se.employeecontactservice.exceptions.InvalidAttributeValueException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,11 +32,13 @@ public class CreateDepartmentActivityTest {
     @Test
     void handleRequest_validAttributes_callsCreateDepartment() {
         // GIVEN
-        CreateDepartmentRequest request = CreateDepartmentRequest.builder().withDeptId("1000")
-                .withDeptName("Josh").build();
-        when(deptDao.getDepartment(any())).thenThrow(new DepartmentNotFoundException());
+        CreateDepartmentRequest request = CreateDepartmentRequest.builder()
+                .withDeptId("1000")
+                .withDeptName("Josh")
+                .build();
 
         // WHEN
+        when(deptDao.getDepartment(any())).thenReturn(null);
         createDepartmentActivity.handleRequest(request);
 
         // THEN
@@ -47,11 +48,13 @@ public class CreateDepartmentActivityTest {
     @Test
     void handleRequest_validAttributes_returnsResult() {
         // GIVEN
-        CreateDepartmentRequest request = CreateDepartmentRequest.builder().withDeptId("123").withDeptName("sss")
+        CreateDepartmentRequest request = CreateDepartmentRequest.builder()
+                .withDeptId("123")
+                .withDeptName("sss")
                 .build();
-        when(deptDao.getDepartment(any())).thenThrow(new DepartmentNotFoundException());
 
         // WHEN
+        when(deptDao.getDepartment(any())).thenReturn(null);
         CreateDepartmentResult result = createDepartmentActivity.handleRequest(request);
 
         // THEN
@@ -70,6 +73,22 @@ public class CreateDepartmentActivityTest {
                 .build();
 
         // WHEN + THEN
+        assertThrows(InvalidAttributeValueException.class, () -> createDepartmentActivity.handleRequest(request));
+    }
+
+    @Test
+    void handleRequest_deptIdAlreadyTaken_throwsException() {
+        // GIVEN
+        CreateDepartmentRequest request = CreateDepartmentRequest.builder()
+                .withDeptId("taken")
+                .withDeptName("test")
+                .withDeptStatus("Active")
+                .build();
+
+        // WHEN
+        when(deptDao.getDepartment("taken")).thenReturn(new Department());
+
+        // THEN
         assertThrows(InvalidAttributeValueException.class, () -> createDepartmentActivity.handleRequest(request));
     }
 }
