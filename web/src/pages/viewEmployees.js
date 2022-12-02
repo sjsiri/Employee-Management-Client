@@ -61,7 +61,6 @@ class ViewEmployees extends BindingClass {
        );
 
        this.dataStore.set('departments', departments);
-       console.log(departments);
        const deptsDropDown = document.getElementById('depts');
 
        for (let key of departments) {
@@ -84,7 +83,6 @@ class ViewEmployees extends BindingClass {
             let row = table.insertRow();
 
             row.addEventListener('click', async evt => {
-                      console.log('The element that was clicked was ', element.employeeId);
                         window.location.href = `/view_employee.html?id=${element.employeeId}`;
                       });
 
@@ -218,9 +216,6 @@ class ViewEmployees extends BindingClass {
 
          const deptId = document.getElementById('depts').value;
          const deptName = dept.options[dept.selectedIndex].innerHTML;
-
-         console.log("Department ID is: ", deptId);
-         console.log("Department Name is: ", deptName);
 
          if (deptId == 'ALL'){
             const employees = await this.client.getAllEmployees(0, true, deptId);

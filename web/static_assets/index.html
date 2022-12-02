@@ -8,33 +8,37 @@
 
 </head>
 <body>
-    <header class="header" id="header"></header>
-    <div class="card">
-        <h2>View Employees</h2>
-        <h2><a href ="departmentIndex.html">View Departments</a></h2>
+<header class="header" id="header"></header>
+<div class="card">
+    <ul>
+        <li ><a class="active" href="index.html">Employees</a></li>
+        <li id="deptPage"><a href="departmentIndex.html">Departments</a></li>
+    </ul>
+    <p></p> <p></p>
+    <div> <span> </span></div>
+    <label>Choose a department:</label>
 
-        <label>Choose a department:</label>
+    <select  id="depts">
 
-        <select  id="depts">
-
-        </select>
-        <div id="dept_loading"> <span> </span></div>
-        <div> <span> </span></div>
-        <table id="table" class="table">
-            <tr class="tr">
-                <th>Department</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-            </tr>
-        </table>
-        <ol id="employees"></ol>
-
-        <div class ="text-center">
-            <button type="button" id="previous" style="float: left;">Previous </button>
-            <button type="button" id="next" style="float: right;" >Next </button>
-            <button type="button" id="create-employee" onclick="location.href='create_employee.html';">Create Employee</button>
-        </div>
+    </select>
+    <div id="dept_loading"> <span> </span></div>
+    <div> <span> </span></div>
+    <table id="table" class="table">
+        <tr class="tr">
+            <th>Department</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+    </table>
+    <ol id="employees"></ol>
+    <div class ="text-center">
+        <button type="button" id="previous" style="float: left;">Previous </button>
+        <button type="button" id="next" style="float: right;" >Next </button>
+        <button type="button" id="create-employee" onclick="location.href='create_employee.html';">Create Employee</button>
     </div>
+    <div></div>
+
+</div>
 </body>
 </html>
