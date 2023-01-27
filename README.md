@@ -14,7 +14,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/sjsiri/EmployeeManagementClient">
+  <a href="https://github.com/sjsiri/Employee-Management-Client">
     <img src="resources/images/employee-logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -26,11 +26,11 @@
   </p>  
 
 <p>
-    <a href="https://github.com/sjsiri/EmployeeManagementClient">View Demo</a>
+    <a href="https://github.com/sjsiri/Employee-Management-Client">View Demo</a>
     ·
-    <a href="https://github.com/sjsiri/EmployeeManagementClient/issues">Report Bug</a>
+    <a href="https://github.com/sjsiri/Employee-Management-Client">Report Bug</a>
     ·
-    <a href="https://github.com/sjsiri/EmployeeManagementClient/issues">Request Feature</a>
+    <a href="https://github.com/sjsiri/Employee-Management-Client">Request Feature</a>
   </p>
 </div>
 
