@@ -14,7 +14,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/talkon2000/EmployeeManagementClient">
+  <a href="https://github.com/sjsiri/EmployeeManagementClient">
     <img src="resources/images/employee-logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -26,11 +26,11 @@
   </p>  
 
 <p>
-    <a href="https://github.com/talkon2000/EmployeeManagementClient">View Demo</a>
+    <a href="https://github.com/sjsiri/EmployeeManagementClient">View Demo</a>
     ·
-    <a href="https://github.com/talkon2000/EmployeeManagementClient/issues">Report Bug</a>
+    <a href="https://github.com/sjsiri/EmployeeManagementClient/issues">Report Bug</a>
     ·
-    <a href="https://github.com/talkon2000/EmployeeManagementClient/issues">Request Feature</a>
+    <a href="https://github.com/sjsiri/EmployeeManagementClient/issues">Request Feature</a>
   </p>
 </div>
 
