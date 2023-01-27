@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/sjsiri/Employee-Management-Client">
-    <img src="resources/images/employee-logo.png" alt="Logo" width="80" height="80">
+  <img src="https://github.com/lafleurss/employee-management-app/raw/main/resources/images/employee-logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Employee Management Client</h3>
@@ -61,7 +61,7 @@
 ## About The Project
 The Employee Management Client is a tool that supports the Human Resources to manage, connect and engage with employees easily in today’s ‘remote-first’ world. The app streamlines the management of employee contact information such as name, job title, email, phone#, department, birth date, hire date, employment status.
 
-[![Product Name Screen Shot][product-screenshot]]()
+<img src="https://github.com/lafleurss/employee-management-app/raw/main/resources/images/employee-management-client.png">
 
 ### Features
 * Users can view “All Employees” list across ALL departments
@@ -77,7 +77,7 @@ The Employee Management Client is a tool that supports the Human Resources to ma
 
 
 ### Built With
-[![Architecture][architecture diagram]]()
+<img src="https://github.com/lafleurss/employee-management-app/raw/main/resources/images/architecture_diagram.png">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
