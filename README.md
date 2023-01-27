@@ -25,13 +25,6 @@
     <br />
   </p>  
 
-<p>
-    <a href="https://github.com/sjsiri/Employee-Management-Client">View Demo</a>
-    ·
-    <a href="https://github.com/sjsiri/Employee-Management-Client">Report Bug</a>
-    ·
-    <a href="https://github.com/sjsiri/Employee-Management-Client">Request Feature</a>
-  </p>
 </div>
 
 
